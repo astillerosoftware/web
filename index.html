@@ -272,6 +272,21 @@ nav.menu a.activo::after{transform:scaleX(1)}
 .trab-txt .etq{align-self:flex-start}
 .trab-txt h3{font-size:clamp(30px,3.4vw,40px)}
 .trab-txt p{color:var(--muted)}
+/* tercera referencia: taller */
+.trab-vista.taller{background:#16181B}
+.taller .navg{background:#0E0F11;box-shadow:0 24px 50px -24px rgba(0,0,0,.8)}
+.taller .navg-cinta{height:8px;background:repeating-linear-gradient(-45deg,#FFC400 0 10px,#0E0F11 10px 20px)}
+.taller .navg-cab{border-bottom-color:rgba(244,242,236,.12)}
+.taller .navg-cab b{display:flex;align-items:center;gap:8px;color:#F4F2EC}
+.taller .navg-cab em{background:#FFC400;color:#0E0F11;font-weight:700;letter-spacing:.08em;text-transform:uppercase;border-radius:0}
+.taller .navg-hero::before{background:linear-gradient(90deg,rgba(14,15,17,.92),rgba(14,15,17,.3))}
+.taller .navg-hero strong{color:#F4F2EC}
+.taller .navg-hero strong i{font-style:normal;display:block;color:transparent;-webkit-text-stroke:1.2px #FFC400}
+.taller .navg-pie{background:#16181B}
+.taller .navg-pie figure{background:#0E0F11;padding:10px 8px 8px;border:1px solid rgba(244,242,236,.1)}
+.taller .navg-pie svg{width:44%;height:auto;margin:0 auto;display:block}
+.taller .navg-pie figcaption{color:#F4F2EC;text-align:center}
+.taller .navg-pie figcaption small{display:block;color:#FFC400;font:600 12px/1 var(--f-mono);letter-spacing:0;margin-top:4px}
 /* segunda referencia: imagen a la derecha y paleta sanitaria */
 @media (min-width:960px){.trab.inv{grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr)}.trab.inv .trab-vista{order:2}}
 .trab-vista.salud{background:#DCE8EF}
@@ -699,6 +714,35 @@ img{max-width:100%}
               <a class="btn btn-2" href="#contacto">Quiero una para mi centro</a>
             </div>
             <p class="trab-nota">Centro ficticio creado como referencia.</p>
+          </div>
+        </article>
+        <article class="trab rev">
+          <a class="trab-vista taller" href="/referencias/talleres-biela/" aria-label="Abrir la web de demostración de Talleres Biela">
+            <div class="navg" aria-hidden="true">
+              <div class="navg-barra"><i></i><i></i><i></i><span>talleresbiela · demostración</span></div>
+              <div class="navg-cinta"></div>
+              <div class="navg-cab"><b><svg width="20" height="20" viewBox="0 0 48 48"><rect width="48" height="48" fill="#FFC400"/><circle cx="15" cy="33" r="7.5" fill="none" stroke="#0E0F11" stroke-width="4"/><circle cx="33" cy="15" r="5" fill="none" stroke="#0E0F11" stroke-width="4"/><path d="M20 28L29.5 18.5" stroke="#0E0F11" stroke-width="7" stroke-linecap="round"/></svg>BIELA</b><em>Pedir cita</em></div>
+              <div class="navg-hero">
+                <img src="https://images.unsplash.com/photo-1602932365975-18086e1491b4?auto=format&fit=crop&w=1000&h=600&q=60" alt="" loading="lazy">
+                <p>Mecánica · Diagnosis · Repuestos</p><strong>Tu coche, a punto.<i>Sin sorpresas.</i></strong>
+              </div>
+              <div class="navg-pie">
+                <figure><svg viewBox="0 0 120 120" fill="none" stroke="#F4F2EC" stroke-width="4"><path d="M38 34h34l10 12v58H30V46z" fill="#FFC400" stroke="#FFC400"/><path d="M50 22h14v12H50z"/></svg><figcaption>Aceite 5W-30<small>42,90 €</small></figcaption></figure>
+                <figure><svg viewBox="0 0 120 120" fill="none" stroke="#F4F2EC" stroke-width="4"><circle cx="58" cy="62" r="40"/><circle cx="58" cy="62" r="16"/><path d="M84 30a42 42 0 0 1 12 18l-16 8a24 24 0 0 0-6-10z" fill="#FFC400" stroke="#FFC400"/></svg><figcaption>Pastillas<small>34,90 €</small></figcaption></figure>
+                <figure><svg viewBox="0 0 120 120" fill="none" stroke="#F4F2EC" stroke-width="4"><rect x="20" y="36" width="80" height="56" rx="4"/><path d="M58 46l-10 18h12l-8 18" stroke="#FFC400" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/></svg><figcaption>Batería 60 Ah<small>89,00 €</small></figcaption></figure>
+              </div>
+            </div>
+          </a>
+          <div class="trab-txt">
+            <span class="etq">Demostración · Automoción</span>
+            <h3>Talleres Biela</h3>
+            <p>Web de alto impacto para un taller mecánico: servicios con precio de partida, presupuesto al instante según el vehículo, cita online y una tienda de repuestos con cesta y reserva para recoger o montar en el taller.</p>
+            <ul><li>Presupuesto al instante</li><li>Tienda de repuestos</li><li>Cita con matrícula</li><li>Adaptada al móvil</li></ul>
+            <div class="ctas">
+              <a class="btn btn-1" href="/referencias/talleres-biela/">Ver la web <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+              <a class="btn btn-2" href="#contacto">Quiero una para mi taller</a>
+            </div>
+            <p class="trab-nota">Taller ficticio creado como referencia.</p>
           </div>
         </article>
       </div>
