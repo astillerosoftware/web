@@ -245,6 +245,37 @@ nav.menu a.activo::after{transform:scaleX(1)}
 /* segundo producto: Cucharón, con el móvil a la izquierda en escritorio */
 .proy-b{border-top:0}
 @media (min-width:960px){.proy-b .proy-grid > .escena{order:-1}}
+/* trabajos web: referencias de clientes (demostraciones) */
+.trab-grid{display:grid;gap:28px}
+.trab{display:grid;gap:0;border:1px solid var(--line-strong);border-radius:var(--r);overflow:hidden;background:var(--surface);box-shadow:var(--shadow)}
+@media (min-width:960px){.trab{grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr)}}
+.trab-vista{display:grid;align-content:center;position:relative;background:#0B0907;padding:clamp(16px,3vw,32px);text-decoration:none}
+.navg{border-radius:10px;overflow:hidden;background:#17120F;box-shadow:0 24px 50px -24px rgba(0,0,0,.7);transition:transform .4s cubic-bezier(.2,.7,.2,1)}
+.trab-vista:hover .navg{transform:translateY(-4px) rotate(-.4deg)}
+.navg-barra{display:flex;align-items:center;gap:6px;padding:9px 12px;background:#26201C}
+.navg-barra i{width:9px;height:9px;border-radius:50%;background:#4A3F38}
+.navg-barra span{margin-left:10px;flex:1;min-width:0;padding:4px 10px;border-radius:999px;background:#17120F;color:#B8AC9C;font:400 11px/1.2 var(--f-mono);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.navg-cinta{background:#C23B22;height:6px}
+.navg-cab{display:flex;justify-content:space-between;align-items:center;padding:12px 16px;border-bottom:1px solid #3A302A}
+.navg-cab b{font:800 15px/1 var(--f-display);letter-spacing:.08em;color:#F2EBE1}
+.navg-cab em{font-style:normal;font-size:10px;color:#fff;background:#C23B22;padding:5px 9px;border-radius:3px}
+.navg-hero{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:14px;align-items:center;padding:clamp(16px,3vw,28px) 16px}
+.navg-hero p{margin:0 0 8px;font:500 9px/1.3 var(--f-mono);letter-spacing:.14em;color:#B8AC9C;text-transform:uppercase}
+.navg-hero strong{display:block;font:800 clamp(24px,3.6vw,42px)/.9 var(--f-display);text-transform:uppercase;color:#F2EBE1}
+.navg-lam{background:#F2EBE1;border-radius:6px;padding:10px;display:grid;gap:6px}
+.navg-lam svg{width:100%;height:auto;display:block}
+.navg-lam .dos{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+.navg-pie{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;padding:0 16px 16px}
+.navg-pie span{background:#F2EBE1;color:#17120F;border-radius:4px;padding:8px;font:800 13px/1 var(--f-display);text-transform:uppercase;letter-spacing:.04em}
+.trab-txt{padding:clamp(24px,3.5vw,40px);display:flex;flex-direction:column;gap:16px}
+.trab-txt .etq{align-self:flex-start}
+.trab-txt h3{font-size:clamp(30px,3.4vw,40px)}
+.trab-txt p{color:var(--muted)}
+.trab-txt ul{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:8px}
+.trab-txt li{border:1px solid var(--line-strong);border-radius:999px;padding:5px 12px;font-size:13.5px}
+.trab-txt .ctas{margin-top:auto;padding-top:8px}
+.trab-nota{font-size:13px;color:var(--faint)}
+
 .telefono.cu{background:#1E2136;box-shadow:var(--shadow),inset 0 0 0 1.5px #3b3f63;transform:rotate(4deg)}
 .telefono.cu:hover{transform:rotate(0)}
 .pantalla.cu{background:#EAF1FF;color:#1E2136;font-family:"Nunito","Instrument Sans",system-ui,sans-serif;background-image:repeating-conic-gradient(#E1EAFC 0 25%,transparent 0 50%);background-size:28px 28px}
@@ -402,6 +433,7 @@ img{max-width:100%}
     <nav class="menu" aria-label="Principal">
       <a href="#servicios">Servicios</a>
       <a href="#proyectos">Proyectos</a>
+      <a href="#trabajos">Trabajos</a>
       <a href="#metodo">Cómo trabajamos</a>
       <a href="#configurador">Tu proyecto</a>
       <a href="#preguntas">Preguntas</a>
@@ -422,9 +454,10 @@ img{max-width:100%}
   <ol>
     <li><a href="#servicios"><span>01</span>Servicios</a></li>
     <li><a href="#proyectos"><span>02</span>Proyectos</a></li>
-    <li><a href="#metodo"><span>03</span>Método</a></li>
-    <li><a href="#configurador"><span>04</span>Tu proyecto</a></li>
-    <li><a href="#contacto"><span>05</span>Contacto</a></li>
+    <li><a href="#trabajos"><span>03</span>Trabajos</a></li>
+    <li><a href="#metodo"><span>04</span>Método</a></li>
+    <li><a href="#configurador"><span>05</span>Tu proyecto</a></li>
+    <li><a href="#contacto"><span>06</span>Contacto</a></li>
   </ol>
   <div class="pie"><span class="mono">Escríbenos</span><span>hola@astillerosoftware.es</span></div>
 </div>
@@ -581,6 +614,47 @@ img{max-width:100%}
             <div class="p-nav"><span class="on">Recetas</span><span>Añadir</span><span>Lista</span><span>Ruleta</span></div>
           </div>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRABAJOS WEB -->
+  <section id="trabajos">
+    <div class="wrap">
+      <div class="cab rev">
+        <span class="mono">Trabajos web</span>
+        <h2>Webs que se entienden<br>a la primera</h2>
+        <p class="lead">Propuestas que diseñamos para enseñar cómo trabajamos con cada sector. Ábrelas, navégalas en el móvil y piensa en la tuya.</p>
+      </div>
+      <div class="trab-grid">
+        <article class="trab rev">
+          <a class="trab-vista" href="/referencias/carnes-valdehierro/" aria-label="Abrir la web de demostración de Carnes Valdehierro">
+            <div class="navg" aria-hidden="true">
+              <div class="navg-barra"><i></i><i></i><i></i><span>carnesvaldehierro · demostración</span></div>
+              <div class="navg-cinta"></div>
+              <div class="navg-cab"><b>VALDEHIERRO</b><em>Hacer un encargo</em></div>
+              <div class="navg-hero">
+                <div><p>Cerdo · Cordero · Ternera</p><strong>Carne para quien vive de ella.</strong></div>
+                <div class="navg-lam">
+                  <svg viewBox="0 0 200 112"><path d="M30 60 C30 36 60 28 100 28 C140 28 162 34 170 50 L182 50 C188 51 190 56 188 62 L184 71 C182 76 176 76 172 74 C168 82 160 86 152 88 L152 104 L140 104 L138 90 L76 90 L74 104 L62 104 L60 88 C42 84 30 76 30 60 Z" fill="#17120F"/><path d="M148 32 L160 16 L164 38 Z" fill="#17120F"/><path d="M70 31 L70 89 M106 28 L106 89 M140 30 L140 88 M70 64 L140 64" stroke="#F2EBE1" stroke-width="1.6" stroke-dasharray="3 3" fill="none"/></svg>
+                  <div class="dos"><svg viewBox="0 0 200 112"><g fill="#17120F"><circle cx="58" cy="52" r="20"/><circle cx="82" cy="44" r="21"/><circle cx="108" cy="44" r="21"/><circle cx="132" cy="50" r="19"/><circle cx="72" cy="66" r="19"/><circle cx="100" cy="68" r="19"/><circle cx="124" cy="66" r="18"/><rect x="64" y="70" width="7" height="34" rx="2"/><rect x="80" y="72" width="7" height="32" rx="2"/><rect x="118" y="72" width="7" height="32" rx="2"/><rect x="132" y="70" width="7" height="34" rx="2"/><ellipse cx="160" cy="44" rx="15" ry="11" transform="rotate(18 160 44)"/><ellipse cx="148" cy="34" rx="9" ry="4" transform="rotate(-20 148 34)"/></g></svg><svg viewBox="0 0 200 112"><path d="M25 46 C25 35 35 30 50 30 L130 28 C140 28 146 26 150 24 L165 22 C172 22 176 26 178 32 L186 48 C188 54 184 58 178 58 L172 58 C168 62 162 64 156 62 L152 74 C150 80 146 82 140 82 L140 106 L130 106 L128 84 L60 84 L58 106 L48 106 L46 82 C32 80 25 70 25 60 Z" fill="#17120F"/><path d="M163 23 C164 13 171 10 177 12" fill="none" stroke="#17120F" stroke-width="3" stroke-linecap="round"/></svg></div>
+                </div>
+              </div>
+              <div class="navg-pie"><span>Cerdo</span><span>Cordero</span><span>Ternera</span></div>
+            </div>
+          </a>
+          <div class="trab-txt">
+            <span class="etq">Demostración · Alimentación B2B</span>
+            <h3>Carnes Valdehierro</h3>
+            <p>Web para un obrador cárnico mayorista que vende solo a profesionales. Es su escaparate: enseña las piezas de cerdo, cordero y ternera, explica cada calidad y recoge encargos de restaurantes y carnicerías sin necesidad de tienda online.</p>
+            <ul><li>Catálogo por especie y pieza</li><li>Guía de calidades</li><li>Formulario de encargos</li><li>Adaptada al móvil</li></ul>
+            <div class="ctas">
+              <a class="btn btn-1" href="/referencias/carnes-valdehierro/">Ver la web <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+              <a class="btn btn-2" href="#contacto">Quiero una para mi negocio</a>
+            </div>
+            <p class="trab-nota">Empresa ficticia creada como referencia.</p>
+          </div>
+        </article>
       </div>
     </div>
   </section>
