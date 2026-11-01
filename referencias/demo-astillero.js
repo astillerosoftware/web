@@ -6,8 +6,9 @@
   if (document.getElementById("ast-demo-estilos")) return;
   const PORTAL = "/#trabajos";
   const css = `
-  .ast-volver{position:fixed;left:max(16px,env(safe-area-inset-left,0px));bottom:max(16px,env(safe-area-inset-bottom,0px));z-index:75;display:inline-flex;align-items:center;gap:10px;min-height:48px;padding:0 18px 0 8px;border-radius:999px;background:#0A1522;color:#E9EFF6;font:600 14.5px/1 system-ui,-apple-system,"Segoe UI",sans-serif;text-decoration:none;box-shadow:0 12px 30px -10px rgba(0,0,0,.55),0 0 0 1px rgba(147,184,222,.25);transition:transform .2s,box-shadow .2s}
-  .ast-volver:hover{transform:translateY(-2px);box-shadow:0 16px 34px -10px rgba(0,0,0,.6),0 0 0 1px rgba(227,86,62,.7)}
+  .ast-volver{position:fixed;left:max(16px,env(safe-area-inset-left,0px));bottom:max(16px,env(safe-area-inset-bottom,0px));z-index:75;display:inline-flex;align-items:center;gap:10px;min-height:48px;padding:0 18px 0 8px;border-radius:999px;background:#0A1522;color:#E9EFF6;font:600 14.5px/1 system-ui,-apple-system,"Segoe UI",sans-serif;text-decoration:none;box-shadow:0 12px 30px -10px rgba(0,0,0,.55),0 0 0 1px rgba(147,184,222,.25);transition:transform .25s,box-shadow .2s,opacity .25s,visibility .25s;opacity:0;visibility:hidden;transform:translateY(12px)}
+  .ast-volver.ast-ver{opacity:1;visibility:visible;transform:none}
+  .ast-volver.ast-ver:hover{transform:translateY(-2px);box-shadow:0 16px 34px -10px rgba(0,0,0,.6),0 0 0 1px rgba(227,86,62,.7)}
   .ast-volver:focus-visible{outline:3px solid #E3563E;outline-offset:3px}
   .ast-volver svg{width:34px;height:34px;flex:none}
   .ast-volver small{display:block;font-size:11px;font-weight:500;color:#93A7BC;margin-top:3px;letter-spacing:.02em}
@@ -32,6 +33,9 @@
   a.setAttribute("aria-label", "Volver al portal de Astillero Software");
   a.innerHTML = logo + '<span class="ast-t">Volver a Astillero<small>Ver más trabajos</small></span>';
   document.body.appendChild(a);
+  const umbral = () => Math.min(innerHeight * 0.6, 520);
+  const revisar = () => a.classList.toggle("ast-ver", scrollY > umbral());
+  addEventListener("scroll", revisar, { passive: true }); revisar();
 
   const cierre = document.createElement("section");
   cierre.className = "ast-cierre"; cierre.setAttribute("aria-label", "Astillero Software");
