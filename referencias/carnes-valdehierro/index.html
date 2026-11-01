@@ -4,334 +4,362 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Carnes Valdehierro · Web de demostración · Astillero Software</title>
-<meta name="description" content="Web de demostración de Astillero Software para un obrador cárnico mayorista ficticio: catálogo de cerdo, cordero y ternera, calidades y encargos profesionales.">
+<meta name="description" content="Web de demostración de Astillero Software para un obrador cárnico mayorista ficticio: cerdo, cordero y ternera de la dehesa, calidades y encargos profesionales.">
 <meta name="robots" content="noindex, follow">
 <meta name="theme-color" content="#17120F">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://images.unsplash.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;800&family=Archivo:wght@400;500;600&display=swap">
 <style>
+:root{
+  --ink:#17120F; --ink-2:#221B17; --bone:#F2EBE1; --bone-2:#E7DDCF; --card:#FBF7F1;
+  --muted:#D9CFC2; --muted-2:#B8AC9C; --brown:#4A3F35; --brown-2:#6B5F52; --line:#3A302A;
+  --red:#C23B22; --red-hover:#A83119;
+  --f-d:"Big Shoulders Display","Arial Narrow",Impact,sans-serif;
+  --f-b:"Archivo",system-ui,-apple-system,"Segoe UI",sans-serif;
+}
 *{box-sizing:border-box}
 html{scroll-behavior:smooth;scroll-padding-top:16px}
-body{margin:0;background:#17120F;-webkit-font-smoothing:antialiased;overflow-x:hidden}
-a{color:#F2EBE1}a:hover{color:#ffffff}
+body{margin:0;background:var(--ink);color:var(--bone);font:16px/1.55 var(--f-b);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{max-width:100%;display:block}
+a{color:inherit}
+:focus-visible{outline:2px solid #F0B3A6;outline-offset:3px;border-radius:2px}
 input,select,textarea,button{font:inherit}
-:focus-visible{outline:2px solid #E8B4A8;outline-offset:3px}
-.aviso{grid-column:1/-1;margin:0;padding:12px 14px;border-radius:4px;background:#17120F;color:#F2EBE1;font-size:14px}
+.wrap{max-width:1240px;margin:0 auto;padding:0 24px}
+.eyebrow{margin:0;font-size:13px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted-2)}
+h1,h2,h3{font-family:var(--f-d);font-weight:800;text-transform:uppercase;margin:0;line-height:.92;text-wrap:balance}
+h2{font-size:clamp(44px,5.5vw,76px)}
+p{margin:0}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:52px;padding:0 28px;border-radius:4px;font-weight:600;text-decoration:none;border:1px solid transparent;transition:background .2s,border-color .2s}
+.btn-r{background:var(--red);color:#fff}.btn-r:hover{background:var(--red-hover)}
+.btn-g{border-color:rgba(242,235,225,.55);color:var(--bone);background:rgba(23,18,15,.25);backdrop-filter:blur(4px)}.btn-g:hover{border-color:var(--bone)}
+
+/* banda demo */
+.demo{display:block;background:var(--red);color:#fff;text-align:center;font-size:13px;letter-spacing:.04em;padding:10px 16px;text-decoration:none}
+.demo:hover{background:var(--red-hover)}
+
+/* cabecera */
+.top{position:absolute;left:0;right:0;z-index:5}
+.top .wrap{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px;padding-top:22px;padding-bottom:22px}
+.logo{display:flex;align-items:center;gap:12px;text-decoration:none}
+.logo svg{width:40px;height:40px;flex:none}
+.logo b{display:block;font:800 26px/1 var(--f-d);letter-spacing:.06em}
+.logo small{display:block;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-top:4px}
+.menu{display:flex;flex-wrap:wrap;align-items:center;gap:8px 26px;font-size:15px}
+.menu a{text-decoration:none;color:var(--bone)}
+.menu a:not(.btn):hover{text-decoration:underline;text-underline-offset:5px}
+.menu .btn{min-height:44px;padding:0 20px}
+@media (max-width:760px){.menu a:not(.btn){display:none}}
+
+/* hero con dehesa */
+.hero{position:relative;min-height:min(92vh,860px);display:flex;align-items:flex-end;isolation:isolate;background:#2b2a1f}
+.hero > img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2}
+.hero::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(15,12,10,.72) 0%,rgba(15,12,10,.25) 38%,rgba(15,12,10,.55) 66%,rgba(15,12,10,.94) 100%)}
+.hero .wrap{width:100%;padding-top:150px;padding-bottom:72px;display:grid;gap:26px}
+.hero h1{font-size:clamp(60px,9.5vw,136px);max-width:11ch;text-shadow:0 2px 30px rgba(0,0,0,.35)}
+.hero .lead{font-size:clamp(17px,1.7vw,20px);color:var(--bone);max-width:36rem;text-shadow:0 1px 12px rgba(0,0,0,.5)}
+.hero .ctas{display:flex;flex-wrap:wrap;gap:12px}
+.hero .eyebrow{color:var(--bone)}
+.foto-pie{position:absolute;right:16px;bottom:12px;font-size:11px;color:rgba(242,235,225,.7)}
+
+/* ventajas */
+.ventajas{border-bottom:1px solid var(--line)}
+.ventajas .wrap{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(260px,100%),1fr));gap:24px;padding-top:32px;padding-bottom:32px}
+.ventaja{display:flex;gap:16px;align-items:flex-start}
+.ventaja svg{width:32px;height:32px;flex:none;stroke:var(--bone)}
+.ventaja b{display:block;font-weight:600}
+.ventaja span{font-size:14px;color:var(--muted-2)}
+
+/* origen: banda dehesa */
+.origen{position:relative;isolation:isolate;min-height:560px;display:flex;align-items:center;background:#2b2a1f}
+.origen > img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2}
+.origen::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(15,12,10,.9) 0%,rgba(15,12,10,.7) 42%,rgba(15,12,10,.05) 75%)}
+.origen .wrap{width:100%;padding-top:96px;padding-bottom:96px}
+.origen .txt{max-width:34rem;display:grid;gap:18px}
+.origen p.lead{font-size:18px;color:var(--muted)}
+.origen ul{list-style:none;margin:8px 0 0;padding:0;display:grid;gap:10px}
+.origen li{display:flex;gap:12px;align-items:baseline;color:var(--bone)}
+.origen li::before{content:"";width:18px;height:2px;background:var(--red);flex:none;transform:translateY(-4px)}
+
+/* catálogo */
+.catalogo{background:var(--bone);color:var(--ink)}
+.catalogo .wrap{padding-top:96px;padding-bottom:96px;display:grid;gap:48px}
+.cab-fila{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:24px}
+.cab-fila .t{display:grid;gap:12px;max-width:40rem}
+.catalogo .eyebrow{color:var(--brown-2)}
+.cab-fila > p{max-width:26rem;color:var(--brown)}
+.cartas{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));gap:24px}
+.carta{background:var(--card);border:1px solid #D8CCBC;border-radius:6px;overflow:hidden;display:flex;flex-direction:column}
+.carta figure{margin:0;aspect-ratio:4/3;overflow:hidden;background:#3a2a24}
+.carta figure img{width:100%;height:100%;object-fit:cover;transition:transform .6s cubic-bezier(.2,.7,.2,1)}
+.carta:hover figure img{transform:scale(1.04)}
+.carta .cuerpo{padding:28px;display:flex;flex-direction:column;gap:16px;flex-grow:1}
+.carta .tit{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:4px 16px}
+.carta h3{font-size:42px;line-height:1}
+.carta .tit span{font-size:13px;color:var(--brown-2)}
+.carta p{color:var(--brown)}
+.piezas{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:8px;font-size:14px}
+.piezas li{border:1px solid #CFC3B3;border-radius:999px;padding:4px 12px}
+.carta .ir{margin-top:auto;color:var(--red-hover);font-weight:600;text-decoration:none}
+.carta .ir:hover{text-decoration:underline;text-underline-offset:4px}
+
+/* calidades */
+.calidades .wrap{padding-top:96px;padding-bottom:96px;display:grid;gap:48px}
+.calidades .cab{display:grid;gap:12px;max-width:46rem}
+.calidades .cab p.lead{color:var(--muted);font-size:18px}
+.tabla{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:6px;overflow:hidden}
+.col{background:var(--ink);padding:32px;display:grid;gap:22px;align-content:start}
+.col h3{font:600 30px/1 var(--f-d);letter-spacing:.06em;color:#E5664D}
+.col b{display:block;font-weight:600;font-size:18px}
+.col span{color:var(--muted-2);font-size:15px}
+
+/* obrador */
+.obrador{background:var(--bone-2);color:var(--ink)}
+.obrador .wrap{padding-top:96px;padding-bottom:96px;display:grid;gap:48px}
+.obrador-top{display:grid;gap:40px;align-items:center}
+@media (min-width:900px){.obrador-top{grid-template-columns:minmax(0,1fr) minmax(0,1.1fr)}}
+.obrador-top .t{display:grid;gap:14px}
+.obrador .eyebrow{color:#5C5045}
+.obrador-top p.lead{color:var(--brown);font-size:18px;max-width:32rem}
+.obrador-top figure{margin:0;border-radius:6px;overflow:hidden;aspect-ratio:3/2;background:#3a2a24}
+.obrador-top figure img{width:100%;height:100%;object-fit:cover}
+.pasos{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(230px,100%),1fr));gap:32px}
+.pasos li{border-top:3px solid var(--ink);padding-top:20px;display:grid;gap:8px;align-content:start}
+.pasos .n{font:800 48px/1 var(--f-d);color:var(--red-hover)}
+.pasos b{font-size:19px}
+.pasos span{color:var(--brown)}
+
+/* encargo sobre dehesa al atardecer */
+.encargo{position:relative;isolation:isolate;background:#2b2a1f}
+.encargo > img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2}
+.encargo::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(15,12,10,.6),rgba(15,12,10,.82))}
+.encargo .wrap{padding-top:110px;padding-bottom:110px;display:flex;flex-wrap:wrap;gap:56px;align-items:flex-start}
+.encargo .info{flex:1 1 340px;min-width:0;display:grid;gap:20px}
+.encargo .info p.lead{color:var(--bone);font-size:18px}
+.contacto{border-top:1px solid rgba(242,235,225,.25);padding-top:20px;display:grid;gap:6px;font-size:15px;color:var(--muted)}
+form{flex:1.4 1 520px;min-width:0;background:var(--bone);color:var(--ink);border-radius:6px;padding:clamp(20px,3vw,32px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(220px,100%),1fr));gap:20px;box-shadow:0 30px 60px -30px rgba(0,0,0,.7)}
+label{display:flex;flex-direction:column;gap:6px;font-size:14px;font-weight:600}
+input,select,textarea{min-height:46px;padding:0 12px;border:1px solid #9C8F80;border-radius:4px;background:#fff;font-weight:400;color:var(--ink);width:100%}
+textarea{padding:12px;resize:vertical}
+.ancho{grid-column:1/-1}
+.envio{grid-column:1/-1;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px}
+.envio span{font-size:13px;color:#5C5045;max-width:26rem}
+.envio button{border:0;cursor:pointer;font-size:16px}
+.aviso{grid-column:1/-1;margin:0;padding:12px 14px;border-radius:4px;background:var(--ink);color:var(--bone);font-size:14px}
+
+/* pie */
+footer{border-top:1px solid var(--line)}
+footer .wrap{padding-top:40px;padding-bottom:40px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:24px;font-size:14px;color:var(--muted-2)}
+footer .marca{display:grid;gap:4px}
+footer .marca b{font:800 22px/1 var(--f-d);letter-spacing:.06em;color:var(--bone)}
+footer nav{display:flex;flex-wrap:wrap;gap:8px 24px;align-items:flex-end}
+footer a{color:var(--muted)}
 </style>
 </head>
 <body>
-<div style="width: 100%; background: #17120F; color: #F2EBE1; font-family: 'Archivo', system-ui, sans-serif; font-size: 16px; line-height: 1.55;">
 
-  <!-- Banda demo -->
-  <a href="/#trabajos" style="display: block; background: #C23B22; color: #ffffff; font-size: 13px; letter-spacing: 0.04em; text-align: center; padding: 10px 16px; text-decoration: none;">Web de demostración · Diseño y desarrollo de Astillero Software — volver a astillerosoftware.es</a>
+<a class="demo" href="/#trabajos">Web de demostración · Diseño y desarrollo de Astillero Software — volver a astillerosoftware.es</a>
 
-  <!-- Navegación -->
-  <header style="border-bottom: 1px solid #3A302A;">
-    <div style="max-width: 1240px; margin: 0 auto; padding: 20px 24px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px;">
-      <a href="#inicio" style="display: flex; align-items: center; gap: 12px; text-decoration: none;">
-        <svg width="40" height="40" viewBox="0 0 40 40" aria-hidden="true"><rect x="2" y="2" width="36" height="36" rx="4" fill="none" stroke="#F2EBE1" stroke-width="2"></rect><path d="M11 12 L20 29 L29 12" fill="none" stroke="#F2EBE1" stroke-width="3" stroke-linejoin="round"></path></svg>
-        <span style="display: flex; flex-direction: column; line-height: 1;">
-          <span style="font-family: 'Big Shoulders Display', sans-serif; font-weight: 800; font-size: 26px; letter-spacing: 0.06em; color: #F2EBE1;">VALDEHIERRO</span>
-          <span style="font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: #B8AC9C; margin-top: 4px;">Obrador cárnico · Mayorista</span>
-        </span>
+<section class="hero" id="inicio" aria-labelledby="h-hero">
+  <img src="https://images.unsplash.com/photo-1653751749028-d071e5209218?auto=format&fit=crop&w=2000&q=70" srcset="https://images.unsplash.com/photo-1653751749028-d071e5209218?auto=format&fit=crop&w=900&q=70 900w, https://images.unsplash.com/photo-1653751749028-d071e5209218?auto=format&fit=crop&w=1600&q=70 1600w, https://images.unsplash.com/photo-1653751749028-d071e5209218?auto=format&fit=crop&w=2400&q=70 2400w" sizes="100vw" alt="Dehesa de encinas con hierba verde y luz de tarde" fetchpriority="high">
+  <div class="top">
+    <div class="wrap">
+      <a class="logo" href="#inicio">
+        <svg viewBox="0 0 40 40" aria-hidden="true"><rect x="2" y="2" width="36" height="36" rx="4" fill="none" stroke="#F2EBE1" stroke-width="2"/><path d="M11 12 L20 29 L29 12" fill="none" stroke="#F2EBE1" stroke-width="3" stroke-linejoin="round"/></svg>
+        <span><b>VALDEHIERRO</b><small>Obrador cárnico · Mayorista</small></span>
       </a>
-      <nav aria-label="Principal" style="display: flex; flex-wrap: wrap; align-items: center; gap: 8px 28px; font-size: 15px;">
-        <a href="#catalogo" style="text-decoration: none; color: #D9CFC2;">Catálogo</a>
-        <a href="#calidades" style="text-decoration: none; color: #D9CFC2;">Calidades</a>
-        <a href="#obrador" style="text-decoration: none; color: #D9CFC2;">Cómo trabajamos</a>
-        <a href="#encargo" style="text-decoration: none; color: #ffffff; background: #C23B22; padding: 12px 20px; border-radius: 4px; font-weight: 600;">Hacer un encargo</a>
+      <nav class="menu" aria-label="Principal">
+        <a href="#origen">Origen</a>
+        <a href="#catalogo">Catálogo</a>
+        <a href="#calidades">Calidades</a>
+        <a href="#obrador">Cómo trabajamos</a>
+        <a class="btn btn-r" href="#encargo">Hacer un encargo</a>
       </nav>
     </div>
-  </header>
-
-  <!-- Hero -->
-  <section id="inicio" style="max-width: 1240px; margin: 0 auto; padding: 88px 24px 72px; display: flex; flex-wrap: wrap; gap: 56px; align-items: center;">
-    <div style="flex: 1 1 480px; min-width: 0; display: flex; flex-direction: column; gap: 28px;">
-      <p style="margin: 0; font-size: 13px; letter-spacing: 0.18em; text-transform: uppercase; color: #B8AC9C;">Cerdo · Cordero · Ternera — solo para profesionales</p>
-      <h1 style="margin: 0; font-family: 'Big Shoulders Display', sans-serif; font-weight: 800; font-size: clamp(56px, 8vw, 112px); line-height: 0.9; letter-spacing: 0.01em; text-transform: uppercase;">Carne para quien vive de ella.</h1>
-      <p style="margin: 0; font-size: 19px; color: #D9CFC2; max-width: 34rem;">Abastecemos a restaurantes, carnicerías, hoteles y catering con piezas seleccionadas en origen, despiezadas en nuestro obrador al corte que tu cocina necesita.</p>
-      <div style="display: flex; flex-wrap: wrap; gap: 12px;">
-        <a href="#encargo" style="text-decoration: none; background: #C23B22; color: #ffffff; padding: 16px 28px; border-radius: 4px; font-weight: 600;">Solicitar encargo</a>
-        <a href="#catalogo" style="text-decoration: none; color: #F2EBE1; padding: 15px 27px; border: 1px solid #6B5F52; border-radius: 4px; font-weight: 500;">Ver catálogo de piezas</a>
-      </div>
+  </div>
+  <div class="wrap">
+    <p class="eyebrow">Cerdo · Cordero · Ternera — solo para profesionales</p>
+    <h1 id="h-hero">Carne para quien vive de ella.</h1>
+    <p class="lead">Abastecemos a restaurantes, carnicerías, hoteles y catering con animales seleccionados en la dehesa, despiezados en nuestro obrador al corte que tu cocina necesita.</p>
+    <div class="ctas">
+      <a class="btn btn-r" href="#encargo">Solicitar encargo</a>
+      <a class="btn btn-g" href="#catalogo">Ver catálogo de piezas</a>
     </div>
+  </div>
+</section>
 
-    <!-- Lámina ilustrada -->
-    <figure style="flex: 1 1 440px; min-width: 0; margin: 0; background: #F2EBE1; color: #17120F; border-radius: 6px; padding: 28px; display: flex; flex-direction: column; gap: 10px;">
-      <div style="display: flex; justify-content: space-between; align-items: baseline; border-bottom: 2px solid #17120F; padding-bottom: 10px;">
-        <span style="font-family: 'Big Shoulders Display', sans-serif; font-weight: 800; font-size: 22px; letter-spacing: 0.08em;">LÁMINA DE DESPIECE</span>
-        <span style="font-size: 12px; letter-spacing: 0.12em; color: #6B5F52;">Nº 01 · 02 · 03</span>
-      </div>
-      <svg viewBox="0 0 200 112" style="width: 100%; height: auto;" role="img" aria-label="Ilustración de un cerdo con líneas de despiece">
-        <path d="M30 60 C30 36 60 28 100 28 C140 28 162 34 170 50 L182 50 C188 51 190 56 188 62 L184 71 C182 76 176 76 172 74 C168 82 160 86 152 88 L152 104 L140 104 L138 90 L76 90 L74 104 L62 104 L60 88 C42 84 30 76 30 60 Z" fill="#17120F"></path>
-        <path d="M148 32 L160 16 L164 38 Z" fill="#17120F"></path>
-        <path d="M31 56 C22 50 18 60 25 62 C31 63 30 54 23 55" fill="none" stroke="#17120F" stroke-width="2.5" stroke-linecap="round"></path>
-        <path d="M70 31 L70 89 M106 28 L106 89 M140 30 L140 88 M70 64 L140 64" stroke="#F2EBE1" stroke-width="1.4" stroke-dasharray="3 3" fill="none"></path>
-      </svg>
-      <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px;">
-        <svg viewBox="0 0 200 112" style="width: 100%; height: auto;" role="img" aria-label="Ilustración de un cordero con líneas de despiece">
-          <g fill="#17120F">
-            <circle cx="58" cy="52" r="20"></circle><circle cx="82" cy="44" r="21"></circle><circle cx="108" cy="44" r="21"></circle><circle cx="132" cy="50" r="19"></circle><circle cx="72" cy="66" r="19"></circle><circle cx="100" cy="68" r="19"></circle><circle cx="124" cy="66" r="18"></circle>
-            <rect x="64" y="70" width="7" height="34" rx="2"></rect><rect x="80" y="72" width="7" height="32" rx="2"></rect><rect x="118" y="72" width="7" height="32" rx="2"></rect><rect x="132" y="70" width="7" height="34" rx="2"></rect>
-            <ellipse cx="160" cy="44" rx="15" ry="11" transform="rotate(18 160 44)"></ellipse>
-            <ellipse cx="148" cy="34" rx="9" ry="4" transform="rotate(-20 148 34)"></ellipse>
-          </g>
-          <path d="M84 26 L84 84 M116 26 L116 84" stroke="#F2EBE1" stroke-width="1.4" stroke-dasharray="3 3" fill="none"></path>
-        </svg>
-        <svg viewBox="0 0 200 112" style="width: 100%; height: auto;" role="img" aria-label="Ilustración de una ternera con líneas de despiece">
-          <path d="M25 46 C25 35 35 30 50 30 L130 28 C140 28 146 26 150 24 L165 22 C172 22 176 26 178 32 L186 48 C188 54 184 58 178 58 L172 58 C168 62 162 64 156 62 L152 74 C150 80 146 82 140 82 L140 106 L130 106 L128 84 L60 84 L58 106 L48 106 L46 82 C32 80 25 70 25 60 Z" fill="#17120F"></path>
-          <path d="M163 23 C164 13 171 10 177 12" fill="none" stroke="#17120F" stroke-width="3" stroke-linecap="round"></path>
-          <path d="M26 48 C18 58 18 72 22 86" fill="none" stroke="#17120F" stroke-width="2.5" stroke-linecap="round"></path>
-          <path d="M62 31 L62 83 M92 30 L92 83 M122 29 L122 83 M62 58 L150 58" stroke="#F2EBE1" stroke-width="1.4" stroke-dasharray="3 3" fill="none"></path>
-        </svg>
-      </div>
-      <figcaption style="font-size: 13px; color: #6B5F52; border-top: 1px solid #CFC3B3; padding-top: 10px;">Despiece tradicional, cortado a medida para hostelería y comercio.</figcaption>
-    </figure>
-  </section>
-
-  <!-- Ventajas -->
-  <section aria-label="Por qué trabajar con nosotros" style="border-top: 1px solid #3A302A; border-bottom: 1px solid #3A302A;">
-    <div style="max-width: 1240px; margin: 0 auto; padding: 32px 24px; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr)); gap: 24px;">
-      <div style="display: flex; gap: 16px; align-items: flex-start;">
-        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#F2EBE1" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 6h13v10H1z"></path><path d="M14 9h4l4 4v3h-8z"></path><circle cx="5.5" cy="18" r="2"></circle><circle cx="17.5" cy="18" r="2"></circle></svg>
-        <div><div style="font-weight: 600;">Reparto propio en frío</div><div style="font-size: 14px; color: #B8AC9C;">Vehículos refrigerados y entrega en franja acordada.</div></div>
-      </div>
-      <div style="display: flex; gap: 16px; align-items: flex-start;">
-        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#F2EBE1" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 15 L15 3 L21 3 L21 9 L9 21 Z"></path><path d="M14 10 L17 7"></path><circle cx="18" cy="6" r="0.8"></circle></svg>
-        <div><div style="font-weight: 600;">Despiece a medida</div><div style="font-size: 14px; color: #B8AC9C;">Pieza entera, porcionado, fileteado o envasado al vacío.</div></div>
-      </div>
-      <div style="display: flex; gap: 16px; align-items: flex-start;">
-        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#F2EBE1" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 5v14M6 5v14M10 5v14M13 5v14M17 5v14M21 5v14"></path></svg>
-        <div><div style="font-weight: 600;">Trazabilidad por lote</div><div style="font-size: 14px; color: #B8AC9C;">Cada pieza sale etiquetada con origen y fecha de sacrificio.</div></div>
-      </div>
+<section class="ventajas" aria-label="Por qué trabajar con nosotros">
+  <div class="wrap">
+    <div class="ventaja">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 6h13v10H1z"/><path d="M14 9h4l4 4v3h-8z"/><circle cx="5.5" cy="18" r="2"/><circle cx="17.5" cy="18" r="2"/></svg>
+      <div><b>Reparto propio en frío</b><span>Vehículos refrigerados y entrega en franja acordada.</span></div>
     </div>
-  </section>
+    <div class="ventaja">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 15 L15 3 L21 3 L21 9 L9 21 Z"/><path d="M14 10 L17 7"/></svg>
+      <div><b>Despiece a medida</b><span>Pieza entera, porcionado, fileteado o envasado al vacío.</span></div>
+    </div>
+    <div class="ventaja">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 5v14M6 5v14M10 5v14M13 5v14M17 5v14M21 5v14"/></svg>
+      <div><b>Trazabilidad por lote</b><span>Cada pieza sale etiquetada con origen y fecha de sacrificio.</span></div>
+    </div>
+  </div>
+</section>
 
-  <!-- Catálogo -->
-  <section id="catalogo" style="background: #F2EBE1; color: #17120F;">
-    <div style="max-width: 1240px; margin: 0 auto; padding: 96px 24px; display: flex; flex-direction: column; gap: 48px;">
-      <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 24px;">
-        <div style="display: flex; flex-direction: column; gap: 12px; max-width: 40rem;">
-          <p style="margin: 0; font-size: 13px; letter-spacing: 0.18em; text-transform: uppercase; color: #6B5F52;">Catálogo</p>
-          <h2 style="margin: 0; font-family: 'Big Shoulders Display', sans-serif; font-weight: 800; font-size: clamp(44px, 5.5vw, 72px); line-height: 0.95; text-transform: uppercase;">Tres especies. Todas las piezas.</h2>
+<section class="origen" id="origen" aria-labelledby="h-origen">
+  <img src="https://images.unsplash.com/photo-1759620318411-83a5aa31a976?auto=format&fit=crop&w=2000&q=70" srcset="https://images.unsplash.com/photo-1759620318411-83a5aa31a976?auto=format&fit=crop&w=900&q=70 900w, https://images.unsplash.com/photo-1759620318411-83a5aa31a976?auto=format&fit=crop&w=1600&q=70 1600w, https://images.unsplash.com/photo-1759620318411-83a5aa31a976?auto=format&fit=crop&w=2400&q=70 2400w" sizes="100vw" alt="Cerdo ibérico negro pastando bajo las encinas de la dehesa" loading="lazy">
+  <div class="wrap">
+    <div class="txt">
+      <p class="eyebrow">Origen</p>
+      <h2 id="h-origen">Criados en la dehesa.</h2>
+      <p class="lead">Encinas, pasto y tiempo. Trabajamos con ganaderías del sur que crían a sus animales en libertad, y eso se nota en la veta, el color y el sabor de cada pieza.</p>
+      <ul>
+        <li>Ganaderías seleccionadas y visitadas en persona</li>
+        <li>Montanera para el ibérico, pasto para cordero y vacuno</li>
+        <li>Del campo al obrador sin intermediarios</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="catalogo" id="catalogo" aria-labelledby="h-cat">
+  <div class="wrap">
+    <div class="cab-fila">
+      <div class="t">
+        <p class="eyebrow">Catálogo</p>
+        <h2 id="h-cat">Tres especies. Todas las piezas.</h2>
+      </div>
+      <p>Trabajamos canal completa, así que si una pieza no aparece aquí, pídela: casi siempre la tenemos o la preparamos.</p>
+    </div>
+    <div class="cartas">
+      <article class="carta">
+        <figure><img src="https://images.unsplash.com/photo-1611059263765-f57653f3bba3?auto=format&fit=crop&w=900&h=675&q=70" alt="Piezas de cerdo fresco recién cortadas" loading="lazy"></figure>
+        <div class="cuerpo">
+          <div class="tit"><h3>Cerdo</h3><span>Blanco · Duroc · Ibérico</span></div>
+          <p>La base de nuestra casa. Cortes nobles para brasa y piezas de rendimiento para obrador y cocina.</p>
+          <ul class="piezas"><li>Presa</li><li>Secreto</li><li>Pluma</li><li>Lomo</li><li>Solomillo</li><li>Costilla</li><li>Panceta</li><li>Carrillada</li></ul>
+          <a class="ir" href="#encargo">Encargar cerdo →</a>
         </div>
-        <p style="margin: 0; max-width: 26rem; color: #4A3F35;">Trabajamos canal completa, así que si una pieza no aparece aquí, pídela: casi siempre la tenemos o la preparamos.</p>
+      </article>
+      <article class="carta">
+        <figure><img src="https://images.unsplash.com/photo-1692106914421-e04e1066bd62?auto=format&fit=crop&w=900&h=675&q=70" alt="Chuletas de cordero de costillar sobre tabla de madera" loading="lazy"></figure>
+        <div class="cuerpo">
+          <div class="tit"><h3>Cordero</h3><span>Lechal · Recental · Pascual</span></div>
+          <p>Cordero seleccionado por peso y conformación, ideal para asados, parrilla y menús de temporada.</p>
+          <ul class="piezas"><li>Paletilla</li><li>Pierna</li><li>Chuletillas</li><li>Costillar</li><li>Cuello</li><li>Medio cordero</li><li>Canal entera</li></ul>
+          <a class="ir" href="#encargo">Encargar cordero →</a>
+        </div>
+      </article>
+      <article class="carta">
+        <figure><img src="https://images.unsplash.com/photo-1788178941299-b206d3f4c4c6?auto=format&fit=crop&w=900&h=675&q=70" alt="Chuletón de vacuno crudo con hueso" loading="lazy"></figure>
+        <div class="cuerpo">
+          <div class="tit"><h3>Ternera</h3><span>Ternera · Añojo · Vaca</span></div>
+          <p>Desde cortes magros para el día a día hasta vaca madurada en cámara para cartas de brasa.</p>
+          <ul class="piezas"><li>Chuletón</li><li>Lomo bajo</li><li>Entrecot</li><li>Solomillo</li><li>Aguja</li><li>Babilla</li><li>Morcillo</li><li>Picada</li></ul>
+          <a class="ir" href="#encargo">Encargar ternera →</a>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="calidades" id="calidades" aria-labelledby="h-cal">
+  <div class="wrap">
+    <div class="cab">
+      <p class="eyebrow">Calidades</p>
+      <h2 id="h-cal">Cada cocina pide una carne distinta.</h2>
+      <p class="lead">Te ayudamos a elegir la calidad según el plato, el rendimiento y el precio de tu carta.</p>
+    </div>
+    <div class="tabla">
+      <div class="col">
+        <h3>Cerdo</h3>
+        <div><b>Cerdo blanco</b><span>Calibre regular y buen rendimiento para menú diario y obrador.</span></div>
+        <div><b>Duroc</b><span>Más grasa infiltrada: jugosidad extra en plancha y brasa.</span></div>
+        <div><b>Ibérico de cebo</b><span>Presa, secreto y pluma con veta marcada para carta.</span></div>
       </div>
-
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr)); gap: 24px;">
-        <article style="background: #FBF7F1; border: 1px solid #D8CCBC; border-radius: 6px; overflow: hidden; display: flex; flex-direction: column;">
-          <div style="background: #17120F; padding: 28px 28px 20px; display: flex; flex-direction: column; gap: 8px;">
-            <svg viewBox="0 0 200 112" style="width: 70%; height: auto; align-self: center;" aria-hidden="true"><path d="M30 60 C30 36 60 28 100 28 C140 28 162 34 170 50 L182 50 C188 51 190 56 188 62 L184 71 C182 76 176 76 172 74 C168 82 160 86 152 88 L152 104 L140 104 L138 90 L76 90 L74 104 L62 104 L60 88 C42 84 30 76 30 60 Z" fill="#F2EBE1"></path><path d="M148 32 L160 16 L164 38 Z" fill="#F2EBE1"></path></svg>
-          </div>
-          <div style="padding: 28px; display: flex; flex-direction: column; gap: 16px; flex-grow: 1;">
-            <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 4px 16px;">
-              <h3 style="margin: 0; font-family: 'Big Shoulders Display', sans-serif; font-weight: 800; font-size: 40px; text-transform: uppercase; line-height: 1;">Cerdo</h3>
-              <span style="font-size: 13px; color: #6B5F52;">Blanco · Duroc · Ibérico</span>
-            </div>
-            <p style="margin: 0; color: #4A3F35;">La base de nuestra casa. Cortes nobles para brasa y piezas de rendimiento para obrador y cocina.</p>
-            <ul style="list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; font-size: 14px;">
-              <li style="border: 1px solid #CFC3B3; border-radius: 999px; padding: 4px 12px;">Presa</li>
-              <li style="border: 1px solid #CFC3B3; border-radius: 999px; padding: 4px 12px;">Secreto</li>
-              <li style="border: 1px solid #CFC3B3; border-radius: 999px; padding: 4px 12px;">Pluma</li>
-              <li style="border: 1px solid #CFC3B3; border-radius: 999px; padding: 4px 12px;">Lomo</li>
-              <li style="border: 1px solid #CFC3B3; border-radius: 999px; padding: 4px 12px;">Solomillo</li>
-              <li style="border: 1px solid #CFC3B3; border-radius: 999px; padding: 4px 12px;">Costilla</li>
-              <li style="border: 1px solid #CFC3B3; border-radius: 999px; padding: 4px 12px;">Panceta</li>
-              <li style="border: 1px solid #CFC3B3; border-radius: 999px; padding: 4px 12px;">Carrillada</li>
-            </ul>
-            <a href="#encargo" style="margin-top: auto; color: #C23B22; font-weight: 600; text-decoration: none;">Encargar cerdo →</a>
-          </div>
-        </article>
-
-        <article style="background: #FBF7F1; border: 1px solid #D8CCBC; border-radius: 6px; overflow: hidden; display: flex; flex-direction: column;">
-          <div style="background: #17120F; padding: 28px 28px 20px; display: flex; flex-direction: column; gap: 8px;">
-            <svg viewBox="0 0 200 112" style="width: 70%; height: auto; align-self: center;" aria-hidden="true"><g fill="#F2EBE1"><circle cx="58" cy="52" r="20"></circle><circle cx="82" cy="44" r="21"></circle><circle cx="108" cy="44" r="21"></circle><circle cx="132" cy="50" r="19"></circle><circle cx="72" cy="66" r="19"></circle><circle cx="100" cy="68" r="19"></circle><circle cx="124" cy="66" r="18"></circle><rect x="64" y="70" width="7" height="34" rx="2"></rect><rect x="80" y="72" width="7" height="32" rx="2"></rect><rect x="118" y="72" width="7" height="32" rx="2"></rect><rect x="132" y="70" width="7" height="34" rx="2"></rect><ellipse cx="160" cy="44" rx="15" ry="11" transform="rotate(18 160 44)"></ellipse><ellipse cx="148" cy="34" rx="9" ry="4" transform="rotate(-20 148 34)"></ellipse></g></svg>
-          </div>
-          <div style="padding: 28px; display: flex; flex-direction: column; gap: 16px; flex-grow: 1;">
-            <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 4px 16px;">
-              <h3 style="margin: 0; font-family: 'Big Shoulders Display', sans-serif; font-weight: 800; font-size: 40px; text-transform: uppercase; line-height: 1;">Cordero</h3>
-              <span style="font-size: 13px; color: #6B5F52;">Lechal · Recental · Pascual</span>
-            </div>
-            <p style="margin: 0; color: #4A3F35;">Cordero seleccionado por peso y conformación, ideal para asados, parrilla y menús de temporada.</p>
-            <ul style="list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; font-size: 14px;">
-              <li style="border: 1px solid #CFC3B3; border-radius: 999px; padding: 4px 12px;">Paletilla</li>
-              <li style="border: 1px solid #CFC3B3; border-radius: 999px; padding: 4px 12px;">Pierna</li>
-              <li style="border: 1px solid #CFC3B3; border-radius: 999px; padding: 4px 12px;">Chuletillas</li>
-              <li style="border: 1px solid #CFC3B3; border-radius: 999px; padding: 4px 12px;">Costillar</li>
-              <li style="border: 1px solid #CFC3B3; border-radius: 999px; padding: 4px 12px;">Cuello</li>
-              <li style="border: 1px solid #CFC3B3; border-radius: 999px; padding: 4px 12px;">Medio cordero</li>
-              <li style="border: 1px solid #CFC3B3; border-radius: 999px; padding: 4px 12px;">Canal entera</li>
-            </ul>
-            <a href="#encargo" style="margin-top: auto; color: #C23B22; font-weight: 600; text-decoration: none;">Encargar cordero →</a>
-          </div>
-        </article>
-
-        <article style="background: #FBF7F1; border: 1px solid #D8CCBC; border-radius: 6px; overflow: hidden; display: flex; flex-direction: column;">
-          <div style="background: #17120F; padding: 28px 28px 20px; display: flex; flex-direction: column; gap: 8px;">
-            <svg viewBox="0 0 200 112" style="width: 70%; height: auto; align-self: center;" aria-hidden="true"><path d="M25 46 C25 35 35 30 50 30 L130 28 C140 28 146 26 150 24 L165 22 C172 22 176 26 178 32 L186 48 C188 54 184 58 178 58 L172 58 C168 62 162 64 156 62 L152 74 C150 80 146 82 140 82 L140 106 L130 106 L128 84 L60 84 L58 106 L48 106 L46 82 C32 80 25 70 25 60 Z" fill="#F2EBE1"></path><path d="M163 23 C164 13 171 10 177 12" fill="none" stroke="#F2EBE1" stroke-width="3" stroke-linecap="round"></path></svg>
-          </div>
-          <div style="padding: 28px; display: flex; flex-direction: column; gap: 16px; flex-grow: 1;">
-            <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 4px 16px;">
-              <h3 style="margin: 0; font-family: 'Big Shoulders Display', sans-serif; font-weight: 800; font-size: 40px; text-transform: uppercase; line-height: 1;">Ternera</h3>
-              <span style="font-size: 13px; color: #6B5F52;">Ternera · Añojo · Vaca</span>
-            </div>
-            <p style="margin: 0; color: #4A3F35;">Desde cortes magros para el día a día hasta vaca madurada en cámara para cartas de brasa.</p>
-            <ul style="list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; font-size: 14px;">
-              <li style="border: 1px solid #CFC3B3; border-radius: 999px; padding: 4px 12px;">Chuletón</li>
-              <li style="border: 1px solid #CFC3B3; border-radius: 999px; padding: 4px 12px;">Lomo bajo</li>
-              <li style="border: 1px solid #CFC3B3; border-radius: 999px; padding: 4px 12px;">Entrecot</li>
-              <li style="border: 1px solid #CFC3B3; border-radius: 999px; padding: 4px 12px;">Solomillo</li>
-              <li style="border: 1px solid #CFC3B3; border-radius: 999px; padding: 4px 12px;">Aguja</li>
-              <li style="border: 1px solid #CFC3B3; border-radius: 999px; padding: 4px 12px;">Babilla</li>
-              <li style="border: 1px solid #CFC3B3; border-radius: 999px; padding: 4px 12px;">Morcillo</li>
-              <li style="border: 1px solid #CFC3B3; border-radius: 999px; padding: 4px 12px;">Picada</li>
-            </ul>
-            <a href="#encargo" style="margin-top: auto; color: #C23B22; font-weight: 600; text-decoration: none;">Encargar ternera →</a>
-          </div>
-        </article>
+      <div class="col">
+        <h3>Cordero</h3>
+        <div><b>Lechal</b><span>Alimentado con leche materna: carne clara, tierna y delicada.</span></div>
+        <div><b>Recental</b><span>Pasto y cereal: más sabor y piezas algo mayores.</span></div>
+        <div><b>Pascual</b><span>Piezas grandes para asar enteras y raciones generosas.</span></div>
+      </div>
+      <div class="col">
+        <h3>Ternera</h3>
+        <div><b>Ternera</b><span>Carne rosada y magra, versátil para cocina y guisos.</span></div>
+        <div><b>Añojo</b><span>Equilibrio entre grasa y sabor; el corte de referencia.</span></div>
+        <div><b>Vaca madurada</b><span>Maduración en cámara para chuletón y lomo de brasa.</span></div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- Calidades -->
-  <section id="calidades" style="background: #17120F;">
-    <div style="max-width: 1240px; margin: 0 auto; padding: 96px 24px; display: flex; flex-direction: column; gap: 48px;">
-      <div style="display: flex; flex-direction: column; gap: 12px; max-width: 46rem;">
-        <p style="margin: 0; font-size: 13px; letter-spacing: 0.18em; text-transform: uppercase; color: #B8AC9C;">Calidades</p>
-        <h2 style="margin: 0; font-family: 'Big Shoulders Display', sans-serif; font-weight: 800; font-size: clamp(44px, 5.5vw, 72px); line-height: 0.95; text-transform: uppercase;">Cada cocina pide una carne distinta.</h2>
-        <p style="margin: 0; color: #D9CFC2; font-size: 18px;">Te ayudamos a elegir la calidad según el plato, el rendimiento y el precio de tu carta.</p>
+<section class="obrador" id="obrador" aria-labelledby="h-obr">
+  <div class="wrap">
+    <div class="obrador-top">
+      <div class="t">
+        <p class="eyebrow">Cómo trabajamos</p>
+        <h2 id="h-obr">Del obrador a tu cámara.</h2>
+        <p class="lead">Nuestros carniceros despiezan a mano cada mañana. Tú nos dices el plato; nosotros cortamos la pieza, el gramaje y el formato.</p>
       </div>
+      <figure><img src="https://images.unsplash.com/photo-1597760665504-82545eb8d32b?auto=format&fit=crop&w=1200&h=800&q=70" alt="Carnicero despiezando una canal en el obrador" loading="lazy"></figure>
+    </div>
+    <ol class="pasos">
+      <li><span class="n">01</span><b>Elige especie y pieza</b><span>Desde el catálogo o contándonos el plato que quieres sacar.</span></li>
+      <li><span class="n">02</span><b>Indica el formato</b><span>Pieza entera, porcionado por gramaje, fileteado o al vacío.</span></li>
+      <li><span class="n">03</span><b>Te confirmamos</b><span>Precio, disponibilidad y día de entrega, por teléfono o correo.</span></li>
+      <li><span class="n">04</span><b>Reparto en frío</b><span>Cortamos el día anterior y lo llevamos refrigerado a tu puerta.</span></li>
+    </ol>
+  </div>
+</section>
 
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr)); gap: 1px; background: #3A302A; border: 1px solid #3A302A; border-radius: 6px; overflow: hidden;">
-        <div style="background: #17120F; padding: 32px; display: flex; flex-direction: column; gap: 24px;">
-          <h3 style="margin: 0; font-family: 'Big Shoulders Display', sans-serif; font-weight: 600; font-size: 30px; letter-spacing: 0.06em; text-transform: uppercase; color: #C23B22;">Cerdo</h3>
-          <div><div style="font-weight: 600; font-size: 18px;">Cerdo blanco</div><div style="color: #B8AC9C; font-size: 15px;">Calibre regular y buen rendimiento para menú diario y obrador.</div></div>
-          <div><div style="font-weight: 600; font-size: 18px;">Duroc</div><div style="color: #B8AC9C; font-size: 15px;">Más grasa infiltrada: jugosidad extra en plancha y brasa.</div></div>
-          <div><div style="font-weight: 600; font-size: 18px;">Ibérico de cebo</div><div style="color: #B8AC9C; font-size: 15px;">Presa, secreto y pluma con veta marcada para carta.</div></div>
-        </div>
-        <div style="background: #17120F; padding: 32px; display: flex; flex-direction: column; gap: 24px;">
-          <h3 style="margin: 0; font-family: 'Big Shoulders Display', sans-serif; font-weight: 600; font-size: 30px; letter-spacing: 0.06em; text-transform: uppercase; color: #C23B22;">Cordero</h3>
-          <div><div style="font-weight: 600; font-size: 18px;">Lechal</div><div style="color: #B8AC9C; font-size: 15px;">Alimentado con leche materna: carne clara, tierna y delicada.</div></div>
-          <div><div style="font-weight: 600; font-size: 18px;">Recental</div><div style="color: #B8AC9C; font-size: 15px;">Pasto y cereal: más sabor y piezas algo mayores.</div></div>
-          <div><div style="font-weight: 600; font-size: 18px;">Pascual</div><div style="color: #B8AC9C; font-size: 15px;">Piezas grandes para asar enteras y raciones generosas.</div></div>
-        </div>
-        <div style="background: #17120F; padding: 32px; display: flex; flex-direction: column; gap: 24px;">
-          <h3 style="margin: 0; font-family: 'Big Shoulders Display', sans-serif; font-weight: 600; font-size: 30px; letter-spacing: 0.06em; text-transform: uppercase; color: #C23B22;">Ternera</h3>
-          <div><div style="font-weight: 600; font-size: 18px;">Ternera</div><div style="color: #B8AC9C; font-size: 15px;">Carne rosada y magra, versátil para cocina y guisos.</div></div>
-          <div><div style="font-weight: 600; font-size: 18px;">Añojo</div><div style="color: #B8AC9C; font-size: 15px;">Equilibrio entre grasa y sabor; el corte de referencia.</div></div>
-          <div><div style="font-weight: 600; font-size: 18px;">Vaca madurada</div><div style="color: #B8AC9C; font-size: 15px;">Maduración en cámara para chuletón y lomo de brasa.</div></div>
-        </div>
+<section class="encargo" id="encargo" aria-labelledby="h-enc">
+  <img src="https://images.unsplash.com/photo-1639174895407-c128eaa6d93f?auto=format&fit=crop&w=2000&q=70" srcset="https://images.unsplash.com/photo-1639174895407-c128eaa6d93f?auto=format&fit=crop&w=900&q=70 900w, https://images.unsplash.com/photo-1639174895407-c128eaa6d93f?auto=format&fit=crop&w=1600&q=70 1600w, https://images.unsplash.com/photo-1639174895407-c128eaa6d93f?auto=format&fit=crop&w=2400&q=70 2400w" sizes="100vw" alt="Atardecer en la dehesa con una encina a contraluz" loading="lazy">
+  <div class="wrap">
+    <div class="info">
+      <p class="eyebrow" style="color:var(--bone)">Encargos profesionales</p>
+      <h2 id="h-enc">Haz tu encargo.</h2>
+      <p class="lead">No vendemos online: nos dejas lo que necesitas y te llamamos para cerrar precio y entrega. Sin compromiso.</p>
+      <div class="contacto">
+        <span>Teléfono de pedidos: 900 000 000</span>
+        <span>Correo: encargos@valdehierro.example</span>
+        <span>Horario de obrador: lunes a sábado, de 6:00 a 14:00</span>
       </div>
     </div>
-  </section>
-
-  <!-- Cómo trabajamos -->
-  <section id="obrador" style="background: #E7DDCF; color: #17120F;">
-    <div style="max-width: 1240px; margin: 0 auto; padding: 96px 24px; display: flex; flex-direction: column; gap: 48px;">
-      <div style="display: flex; flex-direction: column; gap: 12px; max-width: 40rem;">
-        <p style="margin: 0; font-size: 13px; letter-spacing: 0.18em; text-transform: uppercase; color: #5C5045;">Cómo trabajamos</p>
-        <h2 style="margin: 0; font-family: 'Big Shoulders Display', sans-serif; font-weight: 800; font-size: clamp(44px, 5.5vw, 72px); line-height: 0.95; text-transform: uppercase;">Del obrador a tu cámara.</h2>
+    <form id="fEncargo">
+      <label>Nombre del negocio<input type="text" placeholder="Restaurante, carnicería…" autocomplete="organization"></label>
+      <label>Tipo de cliente<select><option>Restaurante / bar</option><option>Carnicería</option><option>Hotel</option><option>Catering</option><option>Otro</option></select></label>
+      <label>Teléfono de contacto<input type="tel" placeholder="600 000 000" autocomplete="tel"></label>
+      <label>Correo electrónico<input type="email" placeholder="tu@negocio.es" autocomplete="email"></label>
+      <label>Especie<select><option>Cerdo</option><option>Cordero</option><option>Ternera</option><option>Varias</option></select></label>
+      <label>Formato<select><option>Pieza entera</option><option>Porcionado por gramaje</option><option>Fileteado</option><option>Envasado al vacío</option></select></label>
+      <label>Cantidad aproximada (kg)<input type="number" min="1" placeholder="20"></label>
+      <label>Fecha de entrega deseada<input type="date"></label>
+      <label class="ancho">Piezas y observaciones<textarea rows="4" placeholder="Ej.: 6 kg de presa ibérica porcionada a 250 g, 2 paletillas de lechal…"></textarea></label>
+      <div class="envio">
+        <span>Al enviar aceptas que te contactemos para gestionar el encargo. No se realiza ningún pago en la web.</span>
+        <button class="btn btn-r" type="submit">Enviar encargo</button>
       </div>
-      <ol style="list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr)); gap: 32px;">
-        <li style="border-top: 3px solid #17120F; padding-top: 20px; display: flex; flex-direction: column; gap: 8px;">
-          <span style="font-family: 'Big Shoulders Display', sans-serif; font-weight: 800; font-size: 48px; line-height: 1; color: #C23B22;">01</span>
-          <span style="font-weight: 600; font-size: 19px;">Elige especie y pieza</span>
-          <span style="color: #4A3F35;">Desde el catálogo o contándonos el plato que quieres sacar.</span>
-        </li>
-        <li style="border-top: 3px solid #17120F; padding-top: 20px; display: flex; flex-direction: column; gap: 8px;">
-          <span style="font-family: 'Big Shoulders Display', sans-serif; font-weight: 800; font-size: 48px; line-height: 1; color: #C23B22;">02</span>
-          <span style="font-weight: 600; font-size: 19px;">Indica el formato</span>
-          <span style="color: #4A3F35;">Pieza entera, porcionado por gramaje, fileteado o al vacío.</span>
-        </li>
-        <li style="border-top: 3px solid #17120F; padding-top: 20px; display: flex; flex-direction: column; gap: 8px;">
-          <span style="font-family: 'Big Shoulders Display', sans-serif; font-weight: 800; font-size: 48px; line-height: 1; color: #C23B22;">03</span>
-          <span style="font-weight: 600; font-size: 19px;">Te confirmamos</span>
-          <span style="color: #4A3F35;">Precio, disponibilidad y día de entrega, por teléfono o correo.</span>
-        </li>
-        <li style="border-top: 3px solid #17120F; padding-top: 20px; display: flex; flex-direction: column; gap: 8px;">
-          <span style="font-family: 'Big Shoulders Display', sans-serif; font-weight: 800; font-size: 48px; line-height: 1; color: #C23B22;">04</span>
-          <span style="font-weight: 600; font-size: 19px;">Reparto en frío</span>
-          <span style="color: #4A3F35;">Cortamos el día anterior y lo llevamos refrigerado a tu puerta.</span>
-        </li>
-      </ol>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="marca">
+      <b>VALDEHIERRO</b>
+      <span>Obrador cárnico · Venta exclusiva a profesionales</span>
+      <span>Datos de contacto ficticios, solo para demostración · Fotografías: <a href="https://unsplash.com" rel="noopener">Unsplash</a></span>
     </div>
-  </section>
+    <nav aria-label="Pie">
+      <a href="#catalogo">Catálogo</a>
+      <a href="#calidades">Calidades</a>
+      <a href="#encargo">Encargos</a>
+      <span>Web de demostración por <a href="/">Astillero Software</a></span>
+    </nav>
+  </div>
+</footer>
 
-  <!-- Encargo -->
-  <section id="encargo" style="background: #17120F;">
-    <div style="max-width: 1240px; margin: 0 auto; padding: 96px 24px; display: flex; flex-wrap: wrap; gap: 56px;">
-      <div style="flex: 1 1 340px; min-width: 0; display: flex; flex-direction: column; gap: 20px;">
-        <p style="margin: 0; font-size: 13px; letter-spacing: 0.18em; text-transform: uppercase; color: #B8AC9C;">Encargos profesionales</p>
-        <h2 style="margin: 0; font-family: 'Big Shoulders Display', sans-serif; font-weight: 800; font-size: clamp(44px, 5.5vw, 72px); line-height: 0.95; text-transform: uppercase;">Haz tu encargo.</h2>
-        <p style="margin: 0; color: #D9CFC2; font-size: 18px;">No vendemos online: nos dejas lo que necesitas y te llamamos para cerrar precio y entrega. Sin compromiso.</p>
-        <div style="border-top: 1px solid #3A302A; padding-top: 20px; display: flex; flex-direction: column; gap: 6px; font-size: 15px; color: #D9CFC2;">
-          <span>Teléfono de pedidos: 900 000 000</span>
-          <span>Correo: encargos@valdehierro.example</span>
-          <span>Horario de obrador: lunes a sábado, de 6:00 a 14:00</span>
-        </div>
-      </div>
-
-      <form id="fEncargo" style="flex: 1.4 1 520px; min-width: 0; background: #F2EBE1; color: #17120F; border-radius: 6px; padding: 32px; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(220px, 100%), 1fr)); gap: 20px;">
-        <label style="display: flex; flex-direction: column; gap: 6px; font-size: 14px; font-weight: 600;">Nombre del negocio
-          <input type="text" placeholder="Restaurante, carnicería…" style="height: 46px; padding: 0 12px; border: 1px solid #9C8F80; border-radius: 4px; background: #ffffff; font-weight: 400; color: #17120F;">
-        </label>
-        <label style="display: flex; flex-direction: column; gap: 6px; font-size: 14px; font-weight: 600;">Tipo de cliente
-          <select style="height: 46px; padding: 0 12px; border: 1px solid #9C8F80; border-radius: 4px; background: #ffffff; font-weight: 400; color: #17120F;">
-            <option>Restaurante / bar</option><option>Carnicería</option><option>Hotel</option><option>Catering</option><option>Otro</option>
-          </select>
-        </label>
-        <label style="display: flex; flex-direction: column; gap: 6px; font-size: 14px; font-weight: 600;">Teléfono de contacto
-          <input type="tel" placeholder="600 000 000" style="height: 46px; padding: 0 12px; border: 1px solid #9C8F80; border-radius: 4px; background: #ffffff; font-weight: 400; color: #17120F;">
-        </label>
-        <label style="display: flex; flex-direction: column; gap: 6px; font-size: 14px; font-weight: 600;">Correo electrónico
-          <input type="email" placeholder="tu@negocio.es" style="height: 46px; padding: 0 12px; border: 1px solid #9C8F80; border-radius: 4px; background: #ffffff; font-weight: 400; color: #17120F;">
-        </label>
-        <label style="display: flex; flex-direction: column; gap: 6px; font-size: 14px; font-weight: 600;">Especie
-          <select style="height: 46px; padding: 0 12px; border: 1px solid #9C8F80; border-radius: 4px; background: #ffffff; font-weight: 400; color: #17120F;">
-            <option>Cerdo</option><option>Cordero</option><option>Ternera</option><option>Varias</option>
-          </select>
-        </label>
-        <label style="display: flex; flex-direction: column; gap: 6px; font-size: 14px; font-weight: 600;">Formato
-          <select style="height: 46px; padding: 0 12px; border: 1px solid #9C8F80; border-radius: 4px; background: #ffffff; font-weight: 400; color: #17120F;">
-            <option>Pieza entera</option><option>Porcionado por gramaje</option><option>Fileteado</option><option>Envasado al vacío</option>
-          </select>
-        </label>
-        <label style="display: flex; flex-direction: column; gap: 6px; font-size: 14px; font-weight: 600;">Cantidad aproximada (kg)
-          <input type="number" min="1" placeholder="20" style="height: 46px; padding: 0 12px; border: 1px solid #9C8F80; border-radius: 4px; background: #ffffff; font-weight: 400; color: #17120F;">
-        </label>
-        <label style="display: flex; flex-direction: column; gap: 6px; font-size: 14px; font-weight: 600;">Fecha de entrega deseada
-          <input type="date" style="height: 46px; padding: 0 12px; border: 1px solid #9C8F80; border-radius: 4px; background: #ffffff; font-weight: 400; color: #17120F;">
-        </label>
-        <label style="grid-column: 1 / -1; display: flex; flex-direction: column; gap: 6px; font-size: 14px; font-weight: 600;">Piezas y observaciones
-          <textarea rows="4" placeholder="Ej.: 6 kg de presa ibérica porcionada a 250 g, 2 paletillas de lechal…" style="padding: 12px; border: 1px solid #9C8F80; border-radius: 4px; background: #ffffff; font-weight: 400; color: #17120F; resize: vertical;"></textarea>
-        </label>
-        <div style="grid-column: 1 / -1; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px;">
-          <span style="font-size: 13px; color: #5C5045; max-width: 26rem;">Al enviar aceptas que te contactemos para gestionar el encargo. No se realiza ningún pago en la web.</span>
-          <button type="submit" style="height: 52px; padding: 0 32px; border: 0; border-radius: 4px; background: #C23B22; color: #ffffff; font-weight: 600; font-size: 16px; cursor: pointer;">Enviar encargo</button>
-        </div>
-      </form>
-    </div>
-  </section>
-
-  <!-- Pie -->
-  <footer style="border-top: 1px solid #3A302A;">
-    <div style="max-width: 1240px; margin: 0 auto; padding: 40px 24px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 24px; font-size: 14px; color: #B8AC9C;">
-      <div style="display: flex; flex-direction: column; gap: 4px;">
-        <span style="font-family: 'Big Shoulders Display', sans-serif; font-weight: 800; font-size: 22px; letter-spacing: 0.06em; color: #F2EBE1;">VALDEHIERRO</span>
-        <span>Obrador cárnico · Venta exclusiva a profesionales</span>
-        <span>Datos de contacto ficticios, solo para demostración</span>
-      </div>
-      <div style="display: flex; flex-wrap: wrap; gap: 8px 24px; align-items: flex-end;">
-        <a href="#catalogo" style="color: #D9CFC2;">Catálogo</a>
-        <a href="#calidades" style="color: #D9CFC2;">Calidades</a>
-        <a href="#encargo" style="color: #D9CFC2;">Encargos</a>
-        <span>Web de demostración por <a href="/" style="color: #D9CFC2;">Astillero Software</a></span>
-      </div>
-    </div>
-  </footer>
-</div>
 <script>
 document.getElementById("fEncargo").addEventListener("submit", function (e) {
   e.preventDefault();

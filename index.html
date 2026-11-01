@@ -259,14 +259,15 @@ nav.menu a.activo::after{transform:scaleX(1)}
 .navg-cab{display:flex;justify-content:space-between;align-items:center;padding:12px 16px;border-bottom:1px solid #3A302A}
 .navg-cab b{font:800 15px/1 var(--f-display);letter-spacing:.08em;color:#F2EBE1}
 .navg-cab em{font-style:normal;font-size:10px;color:#fff;background:#C23B22;padding:5px 9px;border-radius:3px}
-.navg-hero{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:14px;align-items:center;padding:clamp(16px,3vw,28px) 16px}
-.navg-hero p{margin:0 0 8px;font:500 9px/1.3 var(--f-mono);letter-spacing:.14em;color:#B8AC9C;text-transform:uppercase}
-.navg-hero strong{display:block;font:800 clamp(24px,3.6vw,42px)/.9 var(--f-display);text-transform:uppercase;color:#F2EBE1}
-.navg-lam{background:#F2EBE1;border-radius:6px;padding:10px;display:grid;gap:6px}
-.navg-lam svg{width:100%;height:auto;display:block}
-.navg-lam .dos{display:grid;grid-template-columns:1fr 1fr;gap:6px}
-.navg-pie{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;padding:0 16px 16px}
-.navg-pie span{background:#F2EBE1;color:#17120F;border-radius:4px;padding:8px;font:800 13px/1 var(--f-display);text-transform:uppercase;letter-spacing:.04em}
+.navg-hero{position:relative;isolation:isolate;padding:clamp(48px,7vw,84px) 16px 18px;background:#2b2a1f}
+.navg-hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2}
+.navg-hero::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(15,12,10,.35),rgba(15,12,10,.9))}
+.navg-hero p{margin:0 0 8px;font:500 9px/1.3 var(--f-mono);letter-spacing:.14em;color:#F2EBE1;text-transform:uppercase}
+.navg-hero strong{display:block;max-width:11ch;font:800 clamp(26px,4vw,48px)/.9 var(--f-display);text-transform:uppercase;color:#F2EBE1}
+.navg-pie{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;padding:12px 16px 16px;background:#F2EBE1}
+.navg-pie figure{margin:0;display:grid;gap:6px}
+.navg-pie img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:3px;display:block}
+.navg-pie figcaption{font:800 13px/1 var(--f-display);text-transform:uppercase;letter-spacing:.04em;color:#17120F}
 .trab-txt{padding:clamp(24px,3.5vw,40px);display:flex;flex-direction:column;gap:16px}
 .trab-txt .etq{align-self:flex-start}
 .trab-txt h3{font-size:clamp(30px,3.4vw,40px)}
@@ -634,19 +635,20 @@ img{max-width:100%}
               <div class="navg-cinta"></div>
               <div class="navg-cab"><b>VALDEHIERRO</b><em>Hacer un encargo</em></div>
               <div class="navg-hero">
-                <div><p>Cerdo · Cordero · Ternera</p><strong>Carne para quien vive de ella.</strong></div>
-                <div class="navg-lam">
-                  <svg viewBox="0 0 200 112"><path d="M30 60 C30 36 60 28 100 28 C140 28 162 34 170 50 L182 50 C188 51 190 56 188 62 L184 71 C182 76 176 76 172 74 C168 82 160 86 152 88 L152 104 L140 104 L138 90 L76 90 L74 104 L62 104 L60 88 C42 84 30 76 30 60 Z" fill="#17120F"/><path d="M148 32 L160 16 L164 38 Z" fill="#17120F"/><path d="M70 31 L70 89 M106 28 L106 89 M140 30 L140 88 M70 64 L140 64" stroke="#F2EBE1" stroke-width="1.6" stroke-dasharray="3 3" fill="none"/></svg>
-                  <div class="dos"><svg viewBox="0 0 200 112"><g fill="#17120F"><circle cx="58" cy="52" r="20"/><circle cx="82" cy="44" r="21"/><circle cx="108" cy="44" r="21"/><circle cx="132" cy="50" r="19"/><circle cx="72" cy="66" r="19"/><circle cx="100" cy="68" r="19"/><circle cx="124" cy="66" r="18"/><rect x="64" y="70" width="7" height="34" rx="2"/><rect x="80" y="72" width="7" height="32" rx="2"/><rect x="118" y="72" width="7" height="32" rx="2"/><rect x="132" y="70" width="7" height="34" rx="2"/><ellipse cx="160" cy="44" rx="15" ry="11" transform="rotate(18 160 44)"/><ellipse cx="148" cy="34" rx="9" ry="4" transform="rotate(-20 148 34)"/></g></svg><svg viewBox="0 0 200 112"><path d="M25 46 C25 35 35 30 50 30 L130 28 C140 28 146 26 150 24 L165 22 C172 22 176 26 178 32 L186 48 C188 54 184 58 178 58 L172 58 C168 62 162 64 156 62 L152 74 C150 80 146 82 140 82 L140 106 L130 106 L128 84 L60 84 L58 106 L48 106 L46 82 C32 80 25 70 25 60 Z" fill="#17120F"/><path d="M163 23 C164 13 171 10 177 12" fill="none" stroke="#17120F" stroke-width="3" stroke-linecap="round"/></svg></div>
-                </div>
+                <img src="https://images.unsplash.com/photo-1653751749028-d071e5209218?auto=format&fit=crop&w=1000&q=60" alt="" loading="lazy">
+                <p>Cerdo · Cordero · Ternera</p><strong>Carne para quien vive de ella.</strong>
               </div>
-              <div class="navg-pie"><span>Cerdo</span><span>Cordero</span><span>Ternera</span></div>
+              <div class="navg-pie">
+                <figure><img src="https://images.unsplash.com/photo-1611059263765-f57653f3bba3?auto=format&fit=crop&w=300&h=225&q=60" alt="" loading="lazy"><figcaption>Cerdo</figcaption></figure>
+                <figure><img src="https://images.unsplash.com/photo-1692106914421-e04e1066bd62?auto=format&fit=crop&w=300&h=225&q=60" alt="" loading="lazy"><figcaption>Cordero</figcaption></figure>
+                <figure><img src="https://images.unsplash.com/photo-1788178941299-b206d3f4c4c6?auto=format&fit=crop&w=300&h=225&q=60" alt="" loading="lazy"><figcaption>Ternera</figcaption></figure>
+              </div>
             </div>
           </a>
           <div class="trab-txt">
             <span class="etq">Demostración · Alimentación B2B</span>
             <h3>Carnes Valdehierro</h3>
-            <p>Web para un obrador cárnico mayorista que vende solo a profesionales. Es su escaparate: enseña las piezas de cerdo, cordero y ternera, explica cada calidad y recoge encargos de restaurantes y carnicerías sin necesidad de tienda online.</p>
+            <p>Web para un obrador cárnico mayorista que vende solo a profesionales. Es su escaparate: cuenta el origen en la dehesa, enseña las piezas de cerdo, cordero y ternera, explica cada calidad y recoge encargos de restaurantes y carnicerías sin necesidad de tienda online.</p>
             <ul><li>Catálogo por especie y pieza</li><li>Guía de calidades</li><li>Formulario de encargos</li><li>Adaptada al móvil</li></ul>
             <div class="ctas">
               <a class="btn btn-1" href="/referencias/carnes-valdehierro/">Ver la web <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
