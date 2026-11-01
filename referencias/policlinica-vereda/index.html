@@ -1,0 +1,1128 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Policlínica Vereda · Web de demostración · Astillero Software</title>
+<meta name="description" content="Web de demostración de Astillero Software para una policlínica ficticia: especialidades médicas, odontología, TAC dental, radiología, podología, fisioterapia y medicina estética, con cita online y asistente virtual.">
+<meta name="robots" content="noindex, follow">
+<meta name="theme-color" content="#0F1E33" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#F6F4EF" media="(prefers-color-scheme: light)">
+<meta name="color-scheme" content="light dark">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700;800&family=Figtree:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap">
+<style>
+/* ---------- tokens ---------- */
+:root{
+  --bg:#F6F4EF; --bg-2:#EDE9E1; --surface:#FFFFFF; --surface-2:#F9F8F5;
+  --fg:#0F1E33; --muted:#4B5A6E; --faint:#7A8698;
+  --line:rgba(15,30,51,.12); --line-2:rgba(15,30,51,.22);
+  --navy:#162437; --brand:#0E6E8C; --brand-ink:#FFFFFF; --brand-soft:#DDEFF4;
+  --c-clinica:#1F5FAE; --c-dental:#0C8A7E; --c-estetica:#B4466A; --c-fisio:#5B7A1F;
+  --s-clinica:#E3ECF8; --s-dental:#DDF2EF; --s-estetica:#F8E4EA; --s-fisio:#ECF1DD;
+  --ok:#1D7A4A; --warn:#9A5B00;
+  --shadow:0 1px 2px rgba(15,30,51,.06),0 12px 32px -12px rgba(15,30,51,.18);
+  --r:18px; --r-s:12px; --max:1200px;
+  --f-d:"Plus Jakarta Sans",ui-sans-serif,system-ui,sans-serif;
+  --f-b:"Figtree",ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
+  color-scheme:light;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0B1626; --bg-2:#0F1E33; --surface:#13253D; --surface-2:#172C47;
+  --fg:#EEF2F7; --muted:#A9B6C7; --faint:#7F8EA3;
+  --line:rgba(169,190,220,.14); --line-2:rgba(169,190,220,.28);
+  --brand:#4FB6D3; --brand-ink:#06202B; --brand-soft:#123A4A;
+  --c-clinica:#7FB0F0; --c-dental:#4FD1C0; --c-estetica:#F08FAE; --c-fisio:#AACB5E;
+  --s-clinica:#16304F; --s-dental:#103A38; --s-estetica:#3A1E2A; --s-fisio:#26321A;
+  --ok:#5BD08F; --warn:#F2B75B;
+  --shadow:0 1px 2px rgba(0,0,0,.3),0 16px 40px -16px rgba(0,0,0,.6);
+  color-scheme:dark;
+}}
+:root[data-theme="dark"]{
+  --bg:#0B1626; --bg-2:#0F1E33; --surface:#13253D; --surface-2:#172C47;
+  --fg:#EEF2F7; --muted:#A9B6C7; --faint:#7F8EA3;
+  --line:rgba(169,190,220,.14); --line-2:rgba(169,190,220,.28);
+  --brand:#4FB6D3; --brand-ink:#06202B; --brand-soft:#123A4A;
+  --c-clinica:#7FB0F0; --c-dental:#4FD1C0; --c-estetica:#F08FAE; --c-fisio:#AACB5E;
+  --s-clinica:#16304F; --s-dental:#103A38; --s-estetica:#3A1E2A; --s-fisio:#26321A;
+  --ok:#5BD08F; --warn:#F2B75B;
+  --shadow:0 1px 2px rgba(0,0,0,.3),0 16px 40px -16px rgba(0,0,0,.6);
+  color-scheme:dark;
+}
+
+/* ---------- base ---------- */
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:88px;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--fg);font:17px/1.6 var(--f-b);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img,svg{display:block;max-width:100%}
+a{color:inherit}
+button,input,select,textarea{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--brand);outline-offset:3px;border-radius:8px}
+.wrap{max-width:var(--max);margin:0 auto;padding-inline:max(16px,env(safe-area-inset-left))}
+@media (min-width:720px){.wrap{padding-inline:32px}}
+h1,h2,h3,h4{font-family:var(--f-d);font-weight:700;letter-spacing:-.02em;line-height:1.05;margin:0;text-wrap:balance}
+h2{font-size:clamp(34px,4.6vw,56px)}
+h3{font-size:22px;letter-spacing:-.01em}
+p{margin:0}
+.lead{font-size:clamp(18px,1.6vw,20px);color:var(--muted);max-width:60ch}
+.kicker{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--brand)}
+.kicker::before{content:"";width:22px;height:2px;border-radius:2px;background:currentColor}
+section{padding-block:clamp(64px,9vw,112px)}
+.cab{display:grid;gap:14px;margin-bottom:clamp(28px,4vw,48px);max-width:760px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.ico{width:22px;height:22px;flex:none;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+
+/* botones */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:48px;padding:0 22px;border-radius:999px;border:1px solid transparent;font-weight:600;font-size:16px;text-decoration:none;cursor:pointer;transition:transform .2s,background .2s,border-color .2s,box-shadow .2s;white-space:nowrap}
+.btn:active{transform:scale(.98)}
+.btn-1{background:var(--brand);color:var(--brand-ink);box-shadow:0 8px 20px -10px var(--brand)}
+.btn-1:hover{background:color-mix(in srgb,var(--brand) 88%,var(--fg))}
+.btn-2{background:var(--surface);border-color:var(--line-2)}
+.btn-2:hover{border-color:var(--fg)}
+.btn-wa{background:#1FA855;color:#fff}
+.btn-wa:hover{background:#178D46}
+
+/* barra propuesta */
+.propuesta{background:var(--navy);color:#E9EEF5;font-size:14px}
+.propuesta .wrap{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px 16px;padding-block:10px}
+.propuesta b{font-weight:600}
+.propuesta button{background:transparent;border:1px solid rgba(233,238,245,.4);color:#E9EEF5;border-radius:999px;padding:6px 14px;font-size:13px;font-weight:600;cursor:pointer;min-height:36px}
+.propuesta button:hover{border-color:#fff}
+.mejoras{display:none;background:var(--navy);color:#E9EEF5;border-top:1px solid rgba(233,238,245,.15)}
+.mejoras.ver{display:block}
+.mejoras .wrap{padding-block:20px 26px;display:grid;gap:14px}
+.mejoras ul{margin:0;padding:0;list-style:none;display:grid;gap:10px 28px;grid-template-columns:repeat(auto-fit,minmax(min(280px,100%),1fr));font-size:14.5px}
+.mejoras li{display:flex;gap:10px}
+.mejoras li::before{content:"";width:7px;height:7px;border-radius:50%;background:#4FB6D3;margin-top:8px;flex:none}
+.mejoras small{color:#A9B6C7}
+
+/* progreso de lectura (scroll-driven) */
+.progreso{position:fixed;inset:0 0 auto;height:3px;background:var(--brand);transform-origin:0 50%;transform:scaleX(0);z-index:70;pointer-events:none}
+@supports (animation-timeline: scroll()){
+  .progreso{animation:prog linear both;animation-timeline:scroll(root)}
+  @keyframes prog{to{transform:scaleX(1)}}
+}
+
+/* cabecera */
+header.top{position:sticky;top:0;z-index:60;background:color-mix(in srgb,var(--bg) 84%,transparent);backdrop-filter:blur(14px) saturate(1.4);-webkit-backdrop-filter:blur(14px) saturate(1.4);border-bottom:1px solid var(--line)}
+.barra{display:flex;align-items:center;justify-content:space-between;gap:16px;height:72px}
+.marca{display:flex;align-items:center;gap:12px;text-decoration:none}
+.logo-v{width:46px;height:46px;flex:none}
+.logo-pie{width:40px;height:40px}
+.marca b{display:block;font:800 19px/1 var(--f-d);letter-spacing:-.01em}
+.marca small{display:block;font-size:12px;color:var(--muted);margin-top:3px;letter-spacing:.04em}
+nav.menu{display:none;gap:2px}
+nav.menu a{padding:10px 14px;border-radius:999px;text-decoration:none;font-weight:500;font-size:15.5px;color:var(--muted)}
+nav.menu a:hover{color:var(--fg);background:var(--bg-2)}
+.acciones{display:flex;align-items:center;gap:8px}
+.icono{width:46px;height:46px;display:grid;place-items:center;border-radius:50%;border:1px solid var(--line-2);background:var(--surface);cursor:pointer}
+.icono:hover{border-color:var(--fg)}
+.acciones .btn-1{display:none}
+@media (min-width:1040px){nav.menu{display:flex}.acciones .btn-1{display:inline-flex}#bMenu{display:none}}
+.movil{position:fixed;inset:0;z-index:90;background:var(--bg);padding:16px;display:none;flex-direction:column;gap:12px;overflow:auto}
+.movil.ver{display:flex}
+.movil .fila{display:flex;justify-content:space-between;align-items:center}
+.movil a.item{display:flex;align-items:center;justify-content:space-between;padding:18px 4px;border-bottom:1px solid var(--line);text-decoration:none;font:700 26px/1.1 var(--f-d)}
+
+/* hero */
+.hero{padding-block:clamp(40px,7vw,88px) clamp(48px,7vw,80px);position:relative;overflow:hidden}
+.hero::before{content:"";position:absolute;inset:-20% -10% auto auto;width:min(760px,90vw);aspect-ratio:1;border-radius:50%;background:radial-gradient(closest-side,color-mix(in srgb,var(--brand) 22%,transparent),transparent);z-index:-1;filter:blur(8px)}
+.hero-grid{display:grid;gap:40px;align-items:center}
+@media (min-width:980px){.hero-grid{grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr)}}
+.hero h1{font-size:clamp(42px,5.4vw,72px);font-weight:800;letter-spacing:-.035em}
+.hero h1 em{font-style:normal;color:var(--brand)}
+.hero .lead{margin-top:20px}
+.sello{display:inline-flex;align-items:center;gap:10px;padding:6px 14px 6px 6px;border-radius:999px;background:var(--surface);border:1px solid var(--line);font-size:14px;font-weight:500;margin-bottom:22px}
+.sello b{background:var(--brand-soft);color:var(--brand);border-radius:999px;padding:3px 10px;font-weight:700}
+
+/* buscador */
+.buscador{margin-top:30px;position:relative;max-width:620px}
+.campo{display:flex;align-items:center;gap:10px;background:var(--surface);border:1.5px solid var(--line-2);border-radius:999px;padding:6px 6px 6px 20px;box-shadow:var(--shadow);transition:border-color .2s}
+.campo:focus-within{border-color:var(--brand)}
+.campo input{flex:1;min-width:0;border:0;background:transparent;font-size:17px;outline:none;min-height:44px}
+.campo .ico{color:var(--muted)}
+.sugerencias{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px;font-size:14px;color:var(--muted);align-items:center}
+.sugerencias button{border:1px solid var(--line-2);background:transparent;border-radius:999px;padding:6px 12px;cursor:pointer;font-size:14px;min-height:36px}
+.sugerencias button:hover{border-color:var(--fg);color:var(--fg)}
+.resultados{position:absolute;left:0;right:0;top:calc(100% + 8px);background:var(--surface);border:1px solid var(--line-2);border-radius:var(--r);box-shadow:var(--shadow);z-index:20;max-height:min(440px,60vh);overflow:auto;display:none;padding:8px}
+.resultados.ver{display:block}
+.res{display:grid;grid-template-columns:auto 1fr auto;gap:12px;align-items:center;padding:12px;border-radius:12px;text-decoration:none;cursor:pointer;border:0;background:transparent;width:100%;text-align:left}
+.res:hover,.res[aria-selected="true"]{background:var(--bg-2)}
+.res .pt{width:10px;height:10px;border-radius:50%}
+.res b{display:block;font-weight:600}
+.res span{font-size:14px;color:var(--muted)}
+.res em{font-style:normal;font-size:13px;font-weight:600;color:var(--brand)}
+.vacio{padding:14px;color:var(--muted);font-size:15px}
+
+/* tarjeta hero: próxima cita */
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:28px;box-shadow:var(--shadow);padding:24px;display:grid;gap:18px}
+.panel-cab{display:flex;justify-content:space-between;align-items:center;gap:12px}
+.panel-cab b{font:700 20px/1.1 var(--f-d)}
+.vivo{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:600;color:var(--ok)}
+.vivo i{width:8px;height:8px;border-radius:50%;background:currentColor;box-shadow:0 0 0 0 currentColor;animation:latido 2s infinite}
+@keyframes latido{70%{box-shadow:0 0 0 8px transparent}100%{box-shadow:0 0 0 0 transparent}}
+.unidades-mini{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.um{display:grid;gap:4px;padding:14px;border-radius:16px;text-decoration:none;border:1px solid transparent;transition:transform .2s,border-color .2s}
+.um:hover{transform:translateY(-2px);border-color:var(--line-2)}
+.um b{font:700 17px/1.1 var(--f-d)}
+.um span{font-size:13.5px;color:var(--muted)}
+.um[data-u="clinica"]{background:var(--s-clinica)} .um[data-u="clinica"] b{color:var(--c-clinica)}
+.um[data-u="dental"]{background:var(--s-dental)} .um[data-u="dental"] b{color:var(--c-dental)}
+.um[data-u="estetica"]{background:var(--s-estetica)} .um[data-u="estetica"] b{color:var(--c-estetica)}
+.um[data-u="fisio"]{background:var(--s-fisio)} .um[data-u="fisio"] b{color:var(--c-fisio)}
+.contacto-rapido{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.contacto-rapido .btn{width:100%;padding:0 12px;font-size:15px}
+
+/* cifras */
+.cifras{border-block:1px solid var(--line);background:var(--surface-2)}
+.cifras .wrap{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(200px,100%),1fr));gap:20px;padding-block:28px}
+.cifra b{display:block;font:800 clamp(30px,3.6vw,42px)/1 var(--f-d);letter-spacing:-.03em}
+.cifra span{color:var(--muted);font-size:15px}
+
+/* unidades */
+.unidades{display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(min(270px,100%),1fr))}
+.unidad{position:relative;display:flex;flex-direction:column;gap:14px;padding:28px;border-radius:var(--r);background:var(--surface);border:1px solid var(--line);overflow:hidden;transition:transform .25s,box-shadow .25s}
+.unidad:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
+.unidad::after{content:"";position:absolute;inset:auto -40px -60px auto;width:160px;height:160px;border-radius:50%;background:var(--tono-s);opacity:.9;z-index:0}
+.unidad > *{position:relative;z-index:1}
+.unidad .badge{width:52px;height:52px;border-radius:16px;display:grid;place-items:center;background:var(--tono-s);color:var(--tono)}
+.unidad .badge .ico{width:26px;height:26px}
+.unidad h3{font-size:28px;color:var(--tono)}
+.unidad p{color:var(--muted)}
+.unidad ul{margin:0;padding:0;list-style:none;display:flex;flex-wrap:wrap;gap:6px}
+.unidad li{font-size:13.5px;padding:4px 10px;border-radius:999px;background:var(--bg);border:1px solid var(--line)}
+.unidad .pie{margin-top:auto;display:flex;flex-wrap:wrap;gap:8px;padding-top:6px}
+.unidad .btn{min-height:44px;padding:0 18px;font-size:15px}
+.t-clinica{--tono:var(--c-clinica);--tono-s:var(--s-clinica)}
+.t-dental{--tono:var(--c-dental);--tono-s:var(--s-dental)}
+.t-estetica{--tono:var(--c-estetica);--tono-s:var(--s-estetica)}
+.t-fisio{--tono:var(--c-fisio);--tono-s:var(--s-fisio)}
+.nota-dental{display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:600;color:var(--c-dental)}
+
+/* especialistas */
+.esp-sec{background:var(--surface-2);border-block:1px solid var(--line)}
+.filtros{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:24px}
+.filtros button{min-height:42px;padding:0 16px;border-radius:999px;border:1px solid var(--line-2);background:var(--surface);cursor:pointer;font-weight:600;font-size:15px}
+.filtros button[aria-pressed="true"]{background:var(--fg);color:var(--bg);border-color:var(--fg)}
+.esp-grid{display:grid;gap:12px;grid-template-columns:repeat(auto-fill,minmax(min(260px,100%),1fr))}
+.esp{display:flex;gap:14px;align-items:center;padding:16px;border-radius:16px;background:var(--surface);border:1px solid var(--line);view-transition-name:var(--vt)}
+.av{width:48px;height:48px;border-radius:14px;display:grid;place-items:center;font:700 16px/1 var(--f-d);flex:none;background:var(--tono-s);color:var(--tono)}
+.esp b{display:block;font-weight:600;line-height:1.25}
+.esp span{font-size:14px;color:var(--muted)}
+.esp button{margin-left:auto;flex:none;width:42px;height:42px;border-radius:50%;border:1px solid var(--line-2);background:transparent;cursor:pointer;display:grid;place-items:center;color:var(--brand)}
+.esp button:hover{background:var(--brand);color:var(--brand-ink);border-color:var(--brand)}
+::view-transition-old(root),::view-transition-new(root){animation-duration:.25s}
+
+/* bloque doble: seguros + resultados */
+.doble{display:grid;gap:18px}
+@media (min-width:900px){.doble{grid-template-columns:1fr 1fr}}
+.caja{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:clamp(22px,3vw,32px);display:grid;gap:16px;align-content:start}
+.caja h3{font-size:26px}
+.caja p{color:var(--muted)}
+.sel{display:flex;flex-wrap:wrap;gap:10px}
+.sel select{flex:1 1 220px;min-height:50px;border-radius:14px;border:1.5px solid var(--line-2);background:var(--bg);padding:0 14px;font-size:16px}
+.veredicto{display:none;gap:12px;align-items:flex-start;padding:16px;border-radius:14px;font-size:15.5px}
+.veredicto.ver{display:flex}
+.veredicto.si{background:color-mix(in srgb,var(--ok) 12%,transparent);color:var(--fg)}
+.veredicto.consulta{background:color-mix(in srgb,var(--warn) 14%,transparent)}
+.veredicto .ico{margin-top:2px}
+.veredicto.si .ico{color:var(--ok)} .veredicto.consulta .ico{color:var(--warn)}
+.logos{display:flex;flex-wrap:wrap;gap:8px}
+.logos span{font-size:14px;font-weight:600;padding:8px 14px;border-radius:10px;background:var(--bg);border:1px solid var(--line)}
+.labs{display:grid;gap:10px}
+.lab{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:16px 18px;border-radius:14px;background:var(--bg);border:1px solid var(--line);text-decoration:none;font-weight:600}
+.lab:hover{border-color:var(--fg)}
+.lab small{display:block;font-weight:400;color:var(--muted);font-size:14px}
+
+/* reconocimientos + pruebas */
+.chips{display:flex;flex-wrap:wrap;gap:10px}
+.chip{display:inline-flex;align-items:center;gap:8px;padding:10px 16px;border-radius:999px;background:var(--surface);border:1px solid var(--line);font-weight:500;font-size:15.5px}
+.chip .ico{width:18px;height:18px;color:var(--brand)}
+.pruebas{display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(min(440px,100%),1fr));align-items:start;margin-top:28px}
+.pruebas details{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:6px 22px}
+.pruebas summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:12px;min-height:60px;font:700 19px/1.2 var(--f-d)}
+.pruebas summary::-webkit-details-marker{display:none}
+.pruebas summary .mas{width:32px;height:32px;border-radius:50%;display:grid;place-items:center;background:var(--bg-2);transition:transform .25s;flex:none}
+.pruebas details[open] summary .mas{transform:rotate(45deg)}
+.pruebas ul{margin:0 0 18px;padding:0 0 0 18px;color:var(--muted);display:grid;gap:4px}
+
+/* regalo-box */
+.regalo-box{background:var(--navy);color:#EEF2F7;border-radius:28px;padding:clamp(28px,5vw,56px);display:grid;gap:24px;align-items:center;position:relative;overflow:hidden}
+@media (min-width:860px){.regalo-box{grid-template-columns:1.2fr .8fr}}
+.regalo-box h2{color:#fff}
+.regalo-box p{color:#C5D0DD}
+.regalo-box .kicker{color:#7FD1E6}
+.caja-regalo{justify-self:center;width:min(260px,70vw);aspect-ratio:1;position:relative}
+.caja-regalo svg{width:100%;height:100%}
+
+/* blog */
+.posts{display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(min(280px,100%),1fr))}
+.post{display:flex;flex-direction:column;gap:10px;padding:24px;border-radius:var(--r);background:var(--surface);border:1px solid var(--line);text-decoration:none;transition:border-color .2s}
+.post:hover{border-color:var(--fg)}
+.post .et{font-size:13px;font-weight:600;color:var(--tono)}
+.post h3{font-size:22px}
+.post span{color:var(--muted);font-size:15px}
+
+/* contacto */
+.contacto-grid{display:grid;gap:18px}
+@media (min-width:960px){.contacto-grid{grid-template-columns:.9fr 1.1fr}}
+.datos{display:grid;gap:12px}
+.dato{display:flex;gap:14px;align-items:flex-start;padding:18px;border-radius:16px;background:var(--surface);border:1px solid var(--line);text-decoration:none}
+.dato .ico{color:var(--brand);margin-top:2px}
+.dato b{display:block}
+.dato span{color:var(--muted);font-size:15px}
+.mapa{border-radius:var(--r);overflow:hidden;border:1px solid var(--line);min-height:360px;background:var(--bg-2)}
+.mapa-demo{display:grid;place-content:center;justify-items:center;gap:10px;text-align:center;padding:32px;background:radial-gradient(circle at 50% 45%,var(--brand-soft),transparent 60%),repeating-linear-gradient(0deg,transparent 0 39px,var(--line) 39px 40px),repeating-linear-gradient(90deg,transparent 0 39px,var(--line) 39px 40px),var(--surface-2)}
+.mapa-demo .pin{width:64px;height:64px;border-radius:50%;display:grid;place-items:center;background:var(--brand);color:var(--brand-ink);box-shadow:var(--shadow)}
+.mapa-demo .pin .ico{width:30px;height:30px}
+.mapa-demo b{font:700 20px/1.2 var(--f-d)}
+.mapa-demo > span:last-child{color:var(--muted)}
+
+/* pie */
+footer{background:var(--navy);color:#C5D0DD;padding-block:48px 32px;font-size:15px}
+footer .wrap{display:grid;gap:28px}
+.pie-grid{display:grid;gap:28px;grid-template-columns:repeat(auto-fit,minmax(min(200px,100%),1fr))}
+footer h4{color:#fff;font-size:16px;margin-bottom:10px;font-family:var(--f-b);font-weight:700;letter-spacing:0}
+footer ul{margin:0;padding:0;list-style:none;display:grid;gap:6px}
+footer a{color:#C5D0DD;text-decoration:none}
+footer a:hover{color:#fff;text-decoration:underline}
+.legal{border-top:1px solid rgba(197,208,221,.18);padding-top:20px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;font-size:13.5px;color:#93A2B5}
+
+/* ---------- modal cita ---------- */
+dialog{border:0;padding:0;border-radius:24px;background:var(--surface);color:var(--fg);width:min(640px,calc(100vw - 24px));max-height:calc(100dvh - 24px);box-shadow:0 30px 80px -20px rgba(0,0,0,.5)}
+dialog::backdrop{background:rgba(8,16,28,.55);backdrop-filter:blur(4px)}
+dialog[open]{animation:sube .3s cubic-bezier(.2,.8,.2,1)}
+@keyframes sube{from{opacity:0;transform:translateY(16px) scale(.98)}}
+.m-cab{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:20px 22px;border-bottom:1px solid var(--line);position:sticky;top:0;background:var(--surface);z-index:2}
+.m-cab b{font:700 22px/1.1 var(--f-d)}
+.pasos{display:flex;gap:6px;padding:14px 22px 0}
+.pasos i{flex:1;height:5px;border-radius:5px;background:var(--bg-2);transition:background .3s}
+.pasos i.on{background:var(--brand)}
+.m-cuerpo{padding:22px;display:grid;gap:16px}
+.m-cuerpo h4{font:700 19px/1.2 var(--f-d)}
+.opciones{display:grid;gap:10px;grid-template-columns:repeat(auto-fill,minmax(min(170px,100%),1fr))}
+.op{display:flex;flex-direction:column;align-items:flex-start;gap:4px;padding:14px 16px;border-radius:14px;border:1.5px solid var(--line-2);background:var(--bg);cursor:pointer;text-align:left;min-height:56px}
+.op:hover{border-color:var(--fg)}
+.op[aria-pressed="true"]{border-color:var(--brand);background:var(--brand-soft)}
+.op b{font-weight:600;line-height:1.25}
+.op span{font-size:13.5px;color:var(--muted)}
+.dias{display:grid;grid-template-columns:repeat(auto-fill,minmax(78px,1fr));gap:8px}
+.dias .op{align-items:center;text-align:center;padding:10px 6px}
+.dias .op b{font:700 22px/1 var(--f-d)}
+.horas{display:grid;grid-template-columns:repeat(auto-fill,minmax(84px,1fr));gap:8px}
+.horas .op{align-items:center;padding:10px;min-height:48px}
+.horas .op[disabled]{opacity:.35;cursor:not-allowed;text-decoration:line-through}
+.form-cita{display:grid;gap:14px}
+.form-cita label{display:grid;gap:6px;font-weight:600;font-size:15px}
+.form-cita input[type=text],.form-cita input[type=tel]{min-height:50px;border-radius:12px;border:1.5px solid var(--line-2);background:var(--bg);padding:0 14px;font-size:16px}
+.check{display:flex !important;grid-template-columns:none;align-items:flex-start;gap:10px;font-weight:400 !important;font-size:14.5px !important;color:var(--muted)}
+.check input{width:20px;height:20px;margin-top:2px;accent-color:var(--brand);flex:none}
+.resumen{display:grid;gap:6px;padding:16px;border-radius:14px;background:var(--bg);border:1px solid var(--line);font-size:15px}
+.resumen div{display:flex;justify-content:space-between;gap:12px}
+.resumen span{color:var(--muted)}
+.m-pie{display:flex;justify-content:space-between;gap:10px;padding:16px 22px 22px;border-top:1px solid var(--line);position:sticky;bottom:0;background:var(--surface)}
+.aviso-demo{font-size:13px;color:var(--warn);font-weight:600}
+.ok-grande{display:grid;justify-items:center;text-align:center;gap:12px;padding:20px 0}
+.ok-grande .circ{width:72px;height:72px;border-radius:50%;display:grid;place-items:center;background:color-mix(in srgb,var(--ok) 16%,transparent);color:var(--ok)}
+.ok-grande .circ .ico{width:36px;height:36px}
+
+/* ---------- asistente ---------- */
+.fab{position:fixed;right:max(16px,env(safe-area-inset-right));bottom:max(16px,env(safe-area-inset-bottom));z-index:80;display:flex;align-items:center;gap:10px;padding:0 20px 0 14px;min-height:56px;border-radius:999px;border:0;background:var(--fg);color:var(--bg);font-weight:600;cursor:pointer;box-shadow:0 12px 30px -10px rgba(0,0,0,.5)}
+.fab .pto{width:30px;height:30px;border-radius:50%;background:var(--brand);display:grid;place-items:center;color:var(--brand-ink)}
+.chat{position:fixed;right:max(12px,env(safe-area-inset-right));bottom:84px;z-index:85;width:min(400px,calc(100vw - 24px));height:min(600px,calc(100dvh - 110px));display:none;flex-direction:column;background:var(--surface);border:1px solid var(--line-2);border-radius:24px;box-shadow:0 30px 80px -20px rgba(0,0,0,.45);overflow:hidden}
+.chat.ver{display:flex;animation:sube .3s cubic-bezier(.2,.8,.2,1)}
+.chat-cab{display:flex;align-items:center;gap:12px;padding:16px;border-bottom:1px solid var(--line)}
+.chat-cab .pto{width:40px;height:40px;border-radius:12px;background:var(--brand-soft);color:var(--brand);display:grid;place-items:center;flex:none}
+.chat-cab b{display:block;font:700 17px/1.1 var(--f-d)}
+.chat-cab span{font-size:13px;color:var(--muted)}
+.chat-cab button{margin-left:auto}
+.mensajes{flex:1;overflow:auto;padding:16px;display:flex;flex-direction:column;gap:10px;background:var(--bg)}
+.msg{max-width:86%;padding:10px 14px;border-radius:18px;font-size:15.5px;line-height:1.45;white-space:pre-line}
+.msg.bot{background:var(--surface);border:1px solid var(--line);border-bottom-left-radius:6px;align-self:flex-start}
+.msg.yo{background:var(--brand);color:var(--brand-ink);border-bottom-right-radius:6px;align-self:flex-end}
+.msg a{color:var(--brand);font-weight:600}
+.msg .acc{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.msg .acc button,.msg .acc a{font-size:13.5px;font-weight:600;padding:6px 12px;border-radius:999px;border:1px solid var(--line-2);background:var(--bg);cursor:pointer;text-decoration:none;color:var(--fg)}
+.escribiendo{display:inline-flex;gap:4px;padding:14px}
+.escribiendo i{width:7px;height:7px;border-radius:50%;background:var(--faint);animation:pun 1s infinite}
+.escribiendo i:nth-child(2){animation-delay:.15s}.escribiendo i:nth-child(3){animation-delay:.3s}
+@keyframes pun{50%{transform:translateY(-4px);opacity:.5}}
+.rapidas{display:flex;gap:6px;overflow-x:auto;padding:10px 12px 0;scrollbar-width:none}
+.rapidas button{flex:none;font-size:13.5px;padding:7px 12px;border-radius:999px;border:1px solid var(--line-2);background:var(--surface);cursor:pointer}
+.chat form{display:flex;gap:8px;padding:12px}
+.chat input{flex:1;min-width:0;min-height:46px;border-radius:999px;border:1.5px solid var(--line-2);background:var(--bg);padding:0 16px;font-size:16px}
+.chat form button{width:46px;height:46px;border-radius:50%;border:0;background:var(--brand);color:var(--brand-ink);display:grid;place-items:center;cursor:pointer;flex:none}
+.chat-nota{font-size:12px;color:var(--faint);padding:0 16px 12px;text-align:center}
+
+
+/* ---------- hero corporativo ---------- */
+.hero-foto{position:relative;border-radius:28px;overflow:hidden;aspect-ratio:4/5;min-height:420px;background:var(--bg-2);box-shadow:var(--shadow)}
+@media (max-width:979px){.hero-foto{aspect-ratio:4/3;min-height:0}}
+.hero-foto > img{width:100%;height:100%;object-fit:cover}
+.hero-foto::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 45%,rgba(11,22,38,.55))}
+.hero-foto .panel{position:absolute;left:16px;right:16px;bottom:16px;z-index:2;padding:18px;gap:14px;border-radius:22px;background:color-mix(in srgb,var(--surface) 92%,transparent);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
+@media (max-width:560px){.hero-foto{aspect-ratio:auto;display:flex;flex-direction:column}.hero-foto > img{aspect-ratio:4/3;height:auto}.hero-foto::after{display:none}.hero-foto .panel{position:static;border-radius:0 0 28px 28px;backdrop-filter:none}}
+.trayectoria{display:inline-flex;align-items:center;gap:14px;margin-top:26px;padding:12px 18px 12px 12px;border-radius:18px;background:var(--surface);border:1px solid var(--line)}
+.trayectoria b{font:800 34px/1 var(--f-d);color:var(--brand);letter-spacing:-.03em}
+.trayectoria span{font-size:14.5px;color:var(--muted);line-height:1.35}
+
+/* cifras en banda oscura */
+.cifras{background:var(--navy);border:0;color:#EEF2F7}
+.cifras .cifra span{color:#A9B6C7}
+.cifras .cifra b{color:#fff}
+
+/* ---------- servicios (bento) ---------- */
+.bento{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(min(260px,100%),1fr))}
+@media (min-width:1000px){.bento{grid-template-columns:repeat(4,minmax(0,1fr));grid-auto-rows:300px}.srv.xl{grid-column:span 2;grid-row:span 2}.srv.l{grid-column:span 2}.srv.full{grid-column:1/-1}}
+.srv{position:relative;isolation:isolate;display:flex;flex-direction:column;justify-content:flex-end;gap:8px;min-height:300px;padding:24px;border-radius:var(--r);overflow:hidden;color:#fff;text-decoration:none;background:#16273D}
+.srv > img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;transition:transform .7s cubic-bezier(.2,.7,.2,1)}
+.srv::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(9,18,32,.05) 20%,rgba(9,18,32,.82) 100%)}
+.srv:hover > img{transform:scale(1.05)}
+.srv .et{align-self:flex-start;font-size:12.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:5px 10px;border-radius:999px;background:rgba(255,255,255,.16);backdrop-filter:blur(6px);color:#fff}
+.srv h3{font-size:clamp(22px,2vw,28px);color:#fff}
+.srv.xl h3{font-size:clamp(28px,3vw,42px)}
+.srv p{color:#DCE4EE;font-size:15.5px;max-width:46ch}
+.srv ul{margin:4px 0 0;padding:0;list-style:none;display:flex;flex-wrap:wrap;gap:6px}
+.srv li{font-size:13px;padding:4px 10px;border-radius:999px;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.22)}
+.srv .ir{display:inline-flex;align-items:center;gap:8px;margin-top:6px;font-weight:600;font-size:15px;color:#fff;background:none;border:0;padding:0;cursor:pointer;align-self:flex-start;min-height:44px}
+.srv .ir:hover{text-decoration:underline;text-underline-offset:4px}
+
+/* ---------- instalaciones ---------- */
+.inst{display:grid;gap:18px;align-items:center}
+@media (min-width:960px){.inst{grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr)}}
+.inst-fotos{display:grid;grid-template-columns:1.3fr 1fr;grid-template-rows:1fr 1fr;gap:12px;height:clamp(360px,42vw,520px)}
+.inst-fotos img{width:100%;height:100%;object-fit:cover;border-radius:var(--r-s);background:var(--bg-2)}
+.inst-fotos img:first-child{grid-row:span 2}
+.gabs{margin:22px 0 0;padding:0;list-style:none;display:grid;gap:10px}
+.gabs li{display:flex;gap:14px;align-items:center;padding:14px 16px;border-radius:14px;background:var(--surface);border:1px solid var(--line)}
+.gabs li b{display:block}
+.gabs li span{font-size:14.5px;color:var(--muted)}
+.gabs .n{width:40px;height:40px;border-radius:12px;display:grid;place-items:center;background:var(--brand-soft);color:var(--brand);flex:none}
+
+
+.hero-grid > *{min-width:0}
+.sello{flex-wrap:wrap;max-width:100%}
+@media (max-width:560px){.campo .btn{display:none}.campo{padding:6px 18px}}
+/* aparición (respeta movimiento reducido) */
+@media (prefers-reduced-motion:no-preference){
+  @supports (animation-timeline: view()){
+    .rev{animation:aparece linear both;animation-timeline:view();animation-range:entry 0% entry 40%}
+    @keyframes aparece{from{opacity:0;transform:translateY(24px)}}
+  }
+}
+@media (prefers-reduced-motion:reduce){*{animation:none !important;transition:none !important;scroll-behavior:auto !important}}
+</style>
+</head>
+<body>
+
+<div class="progreso" aria-hidden="true"></div>
+
+<!-- Barra de propuesta -->
+<div class="propuesta" role="note">
+  <div class="wrap">
+    <span><b>Web de demostración</b> · Diseño y desarrollo de Astillero Software. Policlínica ficticia. <a href="/#trabajos" style="color:#9BDCEB">Volver a astillerosoftware.es</a></span>
+    <button type="button" id="bMejoras" aria-expanded="false" aria-controls="mejoras">Qué incluye esta web</button>
+  </div>
+</div>
+<div class="mejoras" id="mejoras">
+  <div class="wrap">
+    <ul>
+      <li>Cita online en 5 pasos, desde el móvil y a cualquier hora, conectable a la agenda real del centro.</li>
+      <li>Asistente virtual que responde dudas frecuentes (dirección, seguros, resultados, especialidades) las 24 horas.</li>
+      <li>Buscador instantáneo: escribe «TAC dental», «podólogo» o «carné de conducir» y llegas al servicio.</li>
+      <li>Comprobador «¿Trabajáis con mi seguro?» resuelto en un clic.</li>
+      <li>Servicios presentados como un gran centro médico: especialidades, odontología, TAC dental, radiología, podología, fisioterapia y estética.</li>
+      <li>Modo oscuro automático, accesible (contraste AA, teclado, lectores de pantalla) y pensada primero para el móvil.</li>
+      <li>Ligera y sin plugins: carga rápido y no necesita actualizaciones de seguridad constantes.</li>
+      <li>Preparada para Google: ficha de centro médico con dirección, teléfono y especialidades.</li>
+    </ul>
+    <small>Policlínica, profesionales y datos de contacto ficticios. Fotografías de ejemplo (Unsplash). Los huecos de cita y el asistente son una demostración.</small>
+  </div>
+</div>
+
+<!-- Cabecera -->
+<header class="top">
+  <div class="wrap barra">
+    <a class="marca" href="#inicio" aria-label="Policlínica Vereda, inicio">
+      <svg class="logo-v" viewBox="0 0 48 48" aria-hidden="true"><rect width="48" height="48" rx="14" fill="var(--navy)"/><path d="M24 11v26M11 24h26" stroke="#4FB6D3" stroke-width="5.5" stroke-linecap="round"/><path d="M24 24c6-1 10-5 11-11-6 1-10 5-11 11z" fill="#9BDCEB"/></svg>
+      <span><b>Policlínica Vereda</b><small>Centro médico · desde 1994</small></span>
+    </a>
+    <nav class="menu" aria-label="Principal">
+      <a href="#servicios">Servicios</a>
+      <a href="#especialistas">Especialistas</a>
+      <a href="#seguros">Seguros y resultados</a>
+      <a href="#pruebas">Pruebas</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+    <div class="acciones">
+      <button class="icono" id="bTema" type="button" aria-label="Cambiar entre modo claro y oscuro"><svg class="ico" viewBox="0 0 24 24"><path d="M12 3a9 9 0 1 0 9 9 7 7 0 0 1-9-9z"/></svg></button>
+      <button class="btn btn-1" type="button" data-cita>Pedir cita</button>
+      <button class="icono" id="bMenu" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="movil"><svg class="ico" viewBox="0 0 24 24"><path d="M4 8h16M4 16h16"/></svg></button>
+    </div>
+  </div>
+</header>
+
+<div class="movil" id="movil" role="dialog" aria-modal="true" aria-label="Menú">
+  <div class="fila">
+    <span class="kicker">Menú</span>
+    <button class="icono" id="bCerrarMenu" type="button" aria-label="Cerrar menú"><svg class="ico" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+  </div>
+  <a class="item" href="#servicios">Servicios <span aria-hidden="true">→</span></a>
+  <a class="item" href="#instalaciones">Instalaciones <span aria-hidden="true">→</span></a>
+  <a class="item" href="#especialistas">Especialistas <span aria-hidden="true">→</span></a>
+  <a class="item" href="#seguros">Seguros y resultados <span aria-hidden="true">→</span></a>
+  <a class="item" href="#pruebas">Pruebas y reconocimientos <span aria-hidden="true">→</span></a>
+  <a class="item" href="#contacto">Contacto <span aria-hidden="true">→</span></a>
+  <button class="btn btn-1" type="button" data-cita style="margin-top:12px">Pedir cita</button>
+  <a class="btn btn-wa" href="#contacto">WhatsApp 600 000 000</a>
+</div>
+
+<main id="inicio">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <span class="sello"><b>Desde 1994</b> Policlínica · 4 áreas</span>
+        <h1>Más de 30 años cuidando la salud <em>de tu familia</em>.</h1>
+        <p class="lead">Especialidades médicas, odontología, fisioterapia, medicina estética, radiología, TAC dental y podología en un mismo centro, con gabinetes propios para cada especialidad.</p>
+
+        <div class="buscador" role="search">
+          <label class="sr" for="q">Busca una especialidad, tratamiento o prueba</label>
+          <div class="campo">
+            <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+            <input id="q" type="search" placeholder="¿Qué necesitas? Traumatólogo, TAC dental, podólogo…" autocomplete="off" role="combobox" aria-expanded="false" aria-controls="lista-q" aria-autocomplete="list">
+            <button class="btn btn-1" type="button" data-cita>Pedir cita</button>
+          </div>
+          <div class="resultados" id="lista-q" role="listbox" aria-label="Resultados"></div>
+          <div class="sugerencias"><span>Prueba:</span>
+            <button type="button" data-sug="TAC dental">TAC dental</button>
+            <button type="button" data-sug="podología">podología</button>
+            <button type="button" data-sug="radiografía">radiografía</button>
+            <button type="button" data-sug="carné">carné de conducir</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-foto rev">
+        <img src="https://images.unsplash.com/photo-1758691463203-cce9d415b2b5?auto=format&fit=crop&w=1100&h=1375&q=70" alt="Dos médicos revisando un historial clínico en una tableta" fetchpriority="high">
+        <aside class="panel" aria-label="Accesos rápidos">
+          <div class="panel-cab"><b>¿Qué necesitas hoy?</b><span class="vivo"><i></i>Cita online</span></div>
+          <div class="unidades-mini">
+            <a class="um" data-u="clinica" href="#s-medicina"><b>Clínica</b><span>Especialistas y pruebas</span></a>
+            <a class="um" data-u="dental" href="#s-dental"><b>Dental</b><span>1.ª consulta gratuita</span></a>
+            <a class="um" data-u="estetica" href="#s-estetica"><b>Estética</b><span>Medicina estética</span></a>
+            <a class="um" data-u="fisio" href="#s-fisio"><b>Fisioterapia</b><span>Fisio y osteopatía</span></a>
+          </div>
+          <div class="contacto-rapido">
+            <a class="btn btn-2" href="#contacto"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg>Llamar</a>
+            <a class="btn btn-wa" href="#contacto"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 21l1.7-5A8.5 8.5 0 1 1 8 19.3z"/></svg>WhatsApp</a>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- CIFRAS -->
+  <div class="cifras">
+    <div class="wrap">
+      <div class="cifra"><b>+30 años</b><span>De trayectoria, desde 1994</span></div>
+      <div class="cifra"><b>+20</b><span>Especialidades médicas</span></div>
+      <div class="cifra"><b>4 áreas</b><span>Clínica, Dental, Estética y Fisioterapia</span></div>
+      <div class="cifra"><b>Gabinetes</b><span>Propios para cada especialidad</span></div>
+    </div>
+  </div>
+
+  <!-- SERVICIOS -->
+  <section id="servicios">
+    <div class="wrap">
+      <div class="cab rev">
+        <span class="kicker">Servicios</span>
+        <h2>Todo lo que tu salud necesita, bajo un mismo techo.</h2>
+        <p class="lead">Un equipo de especialistas y gabinetes equipados para cada disciplina. Sin desplazamientos a la capital.</p>
+      </div>
+      <div class="bento">
+        <article class="srv xl rev" id="s-medicina">
+          <img src="https://images.unsplash.com/photo-1758691462126-2ee47c8bf9e7?auto=format&fit=crop&w=1400&h=1000&q=70" alt="Médico atendiendo a una madre y su hijo en consulta" loading="lazy">
+          <span class="et">Clínica</span>
+          <h3>Especialidades médicas</h3>
+          <p>Más de veinte especialidades con consulta propia: medicina general e interna, traumatología, pediatría, ginecología, dermatología, urología, otorrino y más.</p>
+          <ul><li>Traumatología</li><li>Pediatría</li><li>Ginecología</li><li>Dermatología</li><li>Urología</li><li>Otorrino</li><li>Cirugía vascular</li></ul>
+          <button class="ir" type="button" data-cita="clinica">Pedir cita <span aria-hidden="true">→</span></button>
+        </article>
+        <article class="srv l rev" id="s-dental">
+          <img src="https://images.unsplash.com/photo-1722586663955-2f96a4c1f255?auto=format&fit=crop&w=1200&h=600&q=70" alt="Gabinete dental con sillón moderno" loading="lazy">
+          <span class="et">Dental</span>
+          <h3>Odontología</h3>
+          <p>Un dentista especializado para cada tratamiento. Primera consulta gratuita.</p>
+          <ul><li>Implantes</li><li>Invisalign</li><li>Odontopediatría</li><li>Periodoncia</li></ul>
+          <button class="ir" type="button" data-cita="dental">Pedir cita <span aria-hidden="true">→</span></button>
+        </article>
+        <article class="srv  rev" id="s-tac">
+          <img src="https://images.unsplash.com/photo-1777445374290-eedda5be8e5b?auto=format&fit=crop&w=900&h=700&q=70" alt="Radiografía panorámica dental" loading="lazy">
+          <span class="et">Diagnóstico</span>
+          <h3>TAC dental 3D</h3>
+          <p>Imagen tridimensional para planificar implantes, cirugía y ortodoncia con precisión.</p>
+          
+          <button class="ir" type="button" data-cita="dental">Pedir cita <span aria-hidden="true">→</span></button>
+        </article>
+        <article class="srv  rev" id="s-rx">
+          <img src="https://images.unsplash.com/photo-1616012480717-fd9867059ca0?auto=format&fit=crop&w=900&h=700&q=70" alt="Radiografía de tórax" loading="lazy">
+          <span class="et">Diagnóstico</span>
+          <h3>Radiología</h3>
+          <p>Rayos X y ortopantomografía en el centro, con entrega en papel, CD o por correo.</p>
+          
+          <button class="ir" type="button" data-cita="clinica">Pedir cita <span aria-hidden="true">→</span></button>
+        </article>
+        <article class="srv l rev" id="s-fisio">
+          <img src="https://images.unsplash.com/photo-1706353399656-210cca727a33?auto=format&fit=crop&w=1200&h=600&q=70" alt="Fisioterapeuta tratando la cadera de una paciente" loading="lazy">
+          <span class="et">Fisio</span>
+          <h3>Fisioterapia y osteopatía</h3>
+          <p>Deportiva, traumatológica, neurológica, suelo pélvico y a domicilio en toda la comarca.</p>
+          <ul><li>Suelo pélvico</li><li>Invasiva</li><li>Pilates terapéutico</li><li>Domicilio</li></ul>
+          <button class="ir" type="button" data-cita="fisio">Pedir cita <span aria-hidden="true">→</span></button>
+        </article>
+        <article class="srv  rev" id="s-estetica">
+          <img src="https://images.unsplash.com/photo-1761819922656-d1b77eef49c0?auto=format&fit=crop&w=900&h=700&q=70" alt="Profesional realizando un tratamiento facial" loading="lazy">
+          <span class="et">Estética</span>
+          <h3>Medicina estética</h3>
+          <p>Tratamientos faciales y corporales con aparatología de última generación.</p>
+          
+          <button class="ir" type="button" data-cita="estetica">Pedir cita <span aria-hidden="true">→</span></button>
+        </article>
+        <article class="srv  rev" id="s-podo">
+          <img src="https://images.unsplash.com/photo-1545463913-5083aa7359a6?auto=format&fit=crop&w=900&h=700&q=70" alt="Podóloga explorando el pie de un paciente" loading="lazy">
+          <span class="et">Clínica</span>
+          <h3>Podología</h3>
+          <p>Estudio y tratamiento del pie con podóloga especialista en gabinete propio.</p>
+          
+          <button class="ir" type="button" data-cita="clinica">Pedir cita <span aria-hidden="true">→</span></button>
+        </article>
+        <article class="srv full rev" id="s-reco">
+          <img src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?auto=format&fit=crop&w=1200&h=600&q=70" alt="Médico revisando radiografías en un negatoscopio" loading="lazy">
+          <span class="et">Clínica</span>
+          <h3>Reconocimientos y pruebas</h3>
+          <p>Carné de conducir, armas, seguridad privada y más. Analíticas, intolerancias, ECG y ecografía.</p>
+          <ul><li>Carné de conducir</li><li>Licencia de armas</li><li>Analíticas</li><li>Test de intolerancias</li></ul>
+          <button class="ir" type="button" data-cita="clinica">Pedir cita <span aria-hidden="true">→</span></button>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- INSTALACIONES -->
+  <section id="instalaciones" style="padding-top:0">
+    <div class="wrap inst">
+      <div class="rev">
+        <div class="cab" style="margin-bottom:0">
+          <span class="kicker">Instalaciones</span>
+          <h2>Gabinetes propios para cada especialidad.</h2>
+          <p class="lead">Cada disciplina trabaja en su espacio, con el equipamiento que necesita. Así ganamos en intimidad, higiene y tiempos de espera.</p>
+        </div>
+        <ul class="gabs">
+          <li><span class="n"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3v6a6 6 0 0 0 12 0V3"/><circle cx="20" cy="12" r="2"/><path d="M12 15v2a4 4 0 0 0 8 0v-3"/></svg></span><span><b>Consultas médicas</b><span>Una por especialidad, con exploración completa</span></span></li>
+          <li><span class="n"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3c-2.5 0-4 2-4 4.5 0 3 1.5 4.5 2 7.5.4 2.6.8 6 2.5 6s1.8-4 2.5-6c.4-1.2 1.6-1.2 2 0 .7 2 .8 6 2.5 6s2.1-3.4 2.5-6c.5-3 2-4.5 2-7.5C21 5 19.5 3 17 3c-2 0-3 1-5 1S9 3 7 3z"/></svg></span><span><b>Gabinetes dentales y TAC</b><span>Diagnóstico por imagen en el mismo centro</span></span></li>
+          <li><span class="n"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="13" cy="4" r="2"/><path d="M9 21l3-7 3 3v4M7 12l3-4 4 2 3 3"/></svg></span><span><b>Sala de fisioterapia</b><span>Camillas individuales y pilates terapéutico</span></span></li>
+          <li><span class="n"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9z"/></svg></span><span><b>Cabinas de medicina estética</b><span>Láser, radiofrecuencia y aparatología avanzada</span></span></li>
+          <li><span class="n"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M9 7h6M12 7v10M9 12h6"/></svg></span><span><b>Sala de radiología</b><span>Rayos X y ortopantomografía</span></span></li>
+        </ul>
+      </div>
+      <div class="inst-fotos rev">
+        <img src="https://images.unsplash.com/photo-1704455306925-1401c3012117?auto=format&fit=crop&w=900&h=1000&q=70" alt="Gabinete luminoso con sillón de exploración y equipamiento" loading="lazy">
+        <img src="https://images.unsplash.com/photo-1629909614456-6b1c5c94cecc?auto=format&fit=crop&w=700&h=500&q=70" alt="Sala de espera amplia y luminosa" loading="lazy">
+        <img src="https://images.unsplash.com/photo-1777269749032-d8d458ae594d?auto=format&fit=crop&w=700&h=500&q=70" alt="Pasillo de consultas" loading="lazy">
+      </div>
+    </div>
+  </section>
+
+  <!-- ESPECIALISTAS -->
+  <section class="esp-sec" id="especialistas">
+    <div class="wrap">
+      <div class="cab rev">
+        <span class="kicker">Especialistas</span>
+        <h2>Pon cara a quien te atiende.</h2>
+        <p class="lead">Elige especialidad y reserva directamente con el profesional.</p>
+      </div>
+      <div class="filtros" role="group" aria-label="Filtrar especialistas">
+        <button type="button" aria-pressed="true" data-f="todos">Todos</button>
+        <button type="button" aria-pressed="false" data-f="medica">Medicina</button>
+        <button type="button" aria-pressed="false" data-f="quirurgica">Cirugía y especialidades</button>
+        <button type="button" aria-pressed="false" data-f="infancia">Infancia y familia</button>
+      </div>
+      <div class="esp-grid" id="espGrid" aria-live="polite"></div>
+    </div>
+  </section>
+
+  <!-- SEGUROS + RESULTADOS -->
+  <section id="seguros">
+    <div class="wrap">
+      <div class="cab rev">
+        <span class="kicker">Seguros y resultados</span>
+        <h2>Lo que más nos preguntáis, resuelto aquí.</h2>
+      </div>
+      <div class="doble">
+        <div class="caja rev">
+          <h3>¿Trabajáis con mi seguro?</h3>
+          <p>Dinos cómo vienes y te lo decimos al momento.</p>
+          <div class="sel">
+            <label class="sr" for="seguro">Tu aseguradora</label>
+            <select id="seguro">
+              <option value="">Elige tu caso…</option>
+              <option value="privado-salud">Seguro privado de salud</option>
+              <option value="mutualidad">Mutualidad de funcionarios</option>
+              <option value="trafico">Accidente de tráfico</option>
+              <option value="laboral">Accidente laboral (mutua)</option>
+              <option value="privado">No tengo seguro</option>
+            </select>
+          </div>
+          <div class="veredicto" id="veredicto" role="status" aria-live="polite"></div>
+          <div class="logos" aria-label="Coberturas"><span>Aseguradoras privadas</span><span>Mutualidades</span><span>Mutuas laborales</span><span>Convenio de tráfico</span></div>
+        </div>
+        <div class="caja rev">
+          <h3>Tus resultados de análisis, online</h3>
+          <p>Consulta tus resultados e informes en el área del paciente con el código que te entregamos en el centro.</p>
+          <div class="labs">
+            <a class="lab" href="#seguros"><span>Resultados de laboratorio<small>Con el código de tu analítica</small></span><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg></a>
+            <a class="lab" href="#seguros"><span>Informes de radiología<small>Radiografías y TAC dental</small></span><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg></a>
+          </div>
+          <p style="font-size:14.5px">¿No encuentras tu código? Escríbenos por WhatsApp y te ayudamos.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRUEBAS Y RECONOCIMIENTOS -->
+  <section id="pruebas" style="padding-top:0">
+    <div class="wrap">
+      <div class="cab rev">
+        <span class="kicker">Pruebas y reconocimientos</span>
+        <h2>Pruebas y reconocimientos en el mismo edificio.</h2>
+        <p class="lead">Centro de reconocimientos médicos, radiología y pruebas complementarias, con resultados rápidos y sin desplazamientos.</p>
+      </div>
+      <div class="chips rev" aria-label="Reconocimientos médicos">
+        <span class="chip"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Carné de conducir</span>
+        <span class="chip"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Licencia de armas</span>
+        <span class="chip"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Seguridad privada</span>
+        <span class="chip"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Gruista</span>
+        <span class="chip"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Perros potencialmente peligrosos</span>
+        <span class="chip"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Titulaciones náuticas</span>
+      </div>
+      <div class="pruebas">
+        <details class="rev" open>
+          <summary>Radiología y diagnóstico <span class="mas" aria-hidden="true">+</span></summary>
+          <ul><li>Radiografía (en papel, CD o por correo electrónico)</li><li>Ortopantomografía dental</li><li>TAC dental 3D</li><li>Electrocardiograma</li><li>Ecografía ginecológica</li></ul>
+        </details>
+        <details class="rev">
+          <summary>Digestivo e intolerancias <span class="mas" aria-hidden="true">+</span></summary>
+          <ul><li>Test de aliento SIBO (hidrógeno y metano)</li><li>Intolerancia a la lactosa y a la fructosa</li><li>Predisposición genética a la intolerancia a la lactosa</li><li>Celiaquía</li><li>Helicobacter pylori (test de aliento)</li><li>Test de sensibilidad alimentaria</li></ul>
+        </details>
+        <details class="rev">
+          <summary>Análisis y otras pruebas <span class="mas" aria-hidden="true">+</span></summary>
+          <ul><li>Marcadores tumorales</li><li>Genotipado de trombofilia</li><li>Test de embarazo</li><li>Infecciones de transmisión sexual y VPH</li><li>Test de drogas</li><li>Prueba de paternidad (válida en procesos judiciales)</li></ul>
+        </details>
+        <details class="rev">
+          <summary>Accidentes de tráfico y laborales <span class="mas" aria-hidden="true">+</span></summary>
+          <ul><li>Primera atención en accidentes laborales</li><li>Gestión y recuperación de accidentes de tráfico</li><li>Rehabilitación en nuestra unidad de fisioterapia, centro adherido al convenio de tráfico</li></ul>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- TARJETA REGALO -->
+  <section style="padding-top:0">
+    <div class="wrap">
+      <div class="regalo-box rev">
+        <div style="display:grid;gap:16px">
+          <span class="kicker">Tarjeta regalo</span>
+          <h2>Regala salud y bienestar.</h2>
+          <p>Tarjetas regalo que combinan tratamientos de salud, belleza y bienestar de nuestras cuatro áreas. Tú eliges qué incluye.</p>
+          <div><button class="btn btn-1" type="button" data-cita="estetica">Preparar una tarjeta regalo</button></div>
+        </div>
+        <div class="caja-regalo" aria-hidden="true">
+          <svg viewBox="0 0 200 200"><rect x="30" y="80" width="140" height="100" rx="12" fill="#1F3A5C"/><rect x="22" y="58" width="156" height="34" rx="10" fill="#27507D"/><rect x="92" y="58" width="16" height="122" fill="#4FB6D3"/><path d="M100 58c-10-28-46-30-44-8 2 14 30 10 44 8zm0 0c10-28 46-30 44-8-2 14-30 10-44 8z" fill="none" stroke="#4FB6D3" stroke-width="8" stroke-linejoin="round"/><path d="M60 128h20M120 128h20M70 118v20M130 118v20" stroke="#7FD1E6" stroke-width="5" stroke-linecap="round"/></svg>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BLOG -->
+  <section style="padding-top:0">
+    <div class="wrap">
+      <div class="cab rev">
+        <span class="kicker">Consejos de salud</span>
+        <h2>Del equipo de Vereda.</h2>
+      </div>
+      <div class="posts">
+        <article class="post t-dental rev"><span class="et">Dental</span><h3>Tu boca durante el embarazo</h3><span>Por qué cambian las encías y qué revisiones conviene hacer.</span></article>
+        <article class="post t-fisio rev"><span class="et">Fisioterapia</span><h3>Latigazo cervical tras un accidente</h3><span>Qué es, cómo se trata y cuándo empezar la rehabilitación.</span></article>
+        <article class="post t-clinica rev"><span class="et">Clínica</span><h3>Dolor de pulgar por el móvil</h3><span>Molestias por el uso continuado de la pantalla y cómo evitarlas.</span></article>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACTO -->
+  <section id="contacto" style="padding-top:0">
+    <div class="wrap">
+      <div class="cab rev">
+        <span class="kicker">Contacto</span>
+        <h2>Estamos en el centro de la ciudad.</h2>
+      </div>
+      <div class="contacto-grid">
+        <div class="datos">
+          <div class="dato"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-6.2-7-12a7 7 0 0 1 14 0c0 5.8-7 12-7 12z"/><circle cx="12" cy="9" r="2.5"/></svg><span><b>C/ de la Salud, 12</b><span>Centro de la ciudad · Aparcamiento cercano</span></span></div>
+          <div class="dato"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg><span><b>900 000 000</b><span>Teléfono del centro</span></span></div>
+          <div class="dato"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 21l1.7-5A8.5 8.5 0 1 1 8 19.3z"/></svg><span><b>600 000 000</b><span>WhatsApp y móvil</span></span></div>
+          <div class="dato"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg><span><b>hola@policlinicavereda.example</b><span>Te respondemos en el día</span></span></div>
+          <div class="dato"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><span><b>Horario</b><span>Lunes a viernes, de 8:00 a 21:00 · Sábados, de 9:00 a 14:00</span></span></div>
+        </div>
+        <div class="mapa mapa-demo" aria-hidden="true"><span class="pin"><svg class="ico" viewBox="0 0 24 24"><path d="M12 21s-7-6.2-7-12a7 7 0 0 1 14 0c0 5.8-7 12-7 12z"/><circle cx="12" cy="9" r="2.5"/></svg></span><b>C/ de la Salud, 12</b><span>Mapa de ubicación</span></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="pie-grid">
+      <div>
+        <h4 style="display:flex;align-items:center;gap:10px"><svg class="logo-v logo-pie" viewBox="0 0 48 48" aria-hidden="true"><rect width="48" height="48" rx="14" fill="#24395A"/><path d="M24 11v26M11 24h26" stroke="#4FB6D3" stroke-width="5.5" stroke-linecap="round"/><path d="M24 24c6-1 10-5 11-11-6 1-10 5-11 11z" fill="#9BDCEB"/></svg>Policlínica Vereda</h4>
+        <p>Policlínica de demostración creada por Astillero Software. Todos los datos son ficticios.</p>
+      </div>
+      <div>
+        <h4>Servicios</h4>
+        <ul><li><a href="#s-medicina">Especialidades médicas</a></li><li><a href="#s-dental">Odontología y TAC dental</a></li><li><a href="#s-estetica">Medicina estética</a></li><li><a href="#s-fisio">Fisioterapia</a></li><li><a href="#s-podo">Podología</a></li><li><a href="#s-rx">Radiología</a></li></ul>
+      </div>
+      <div>
+        <h4>Pacientes</h4>
+        <ul><li><a href="#" data-cita>Pedir cita</a></li><li><a href="#seguros">Seguros</a></li><li><a href="#seguros">Resultados online</a></li></ul>
+      </div>
+      <div>
+        <h4>Astillero Software</h4>
+        <ul><li><a href="/">Volver a astillerosoftware.es</a></li><li><a href="/#contacto">Quiero una web así</a></li></ul>
+      </div>
+    </div>
+    <div class="legal">
+      <span>Policlínica ficticia · Datos y fotografías de ejemplo</span>
+      <span>Aviso legal · Privacidad · Cookies</span>
+      <span>Diseño y desarrollo: <a href="/">Astillero Software</a></span>
+    </div>
+  </div>
+</footer>
+
+<!-- ===== Modal de cita ===== -->
+<dialog id="dCita" aria-labelledby="tCita">
+  <div class="m-cab"><b id="tCita">Pedir cita</b><button class="icono" type="button" data-cerrar aria-label="Cerrar"><svg class="ico" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+  <div class="pasos" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+  <div class="m-cuerpo" id="mCuerpo" aria-live="polite"></div>
+  <div class="m-pie"><button class="btn btn-2" type="button" id="mAtras">Atrás</button><button class="btn btn-1" type="button" id="mSig">Continuar</button></div>
+</dialog>
+
+<!-- ===== Asistente ===== -->
+<button class="fab" id="fab" type="button" aria-expanded="false" aria-controls="chat"><span class="pto"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" style="width:18px;height:18px"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z"/></svg></span>¿Te ayudo?</button>
+<div class="chat" id="chat" role="dialog" aria-label="Asistente virtual de Policlínica Vereda">
+  <div class="chat-cab">
+    <span class="pto"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9z"/></svg></span>
+    <div><b>Asistente Vereda</b><span>Responde al momento · 24 h</span></div>
+    <button class="icono" type="button" id="cerrarChat" aria-label="Cerrar asistente"><svg class="ico" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+  </div>
+  <div class="mensajes" id="mensajes" aria-live="polite"></div>
+  <div class="rapidas">
+    <button type="button" data-p="¿Dónde estáis?">¿Dónde estáis?</button>
+    <button type="button" data-p="¿Trabajáis con mi seguro?">Mi seguro</button>
+    <button type="button" data-p="Quiero ver mis resultados">Resultados</button>
+    <button type="button" data-p="Necesito el reconocimiento del carné de conducir">Carné de conducir</button>
+    <button type="button" data-p="Quiero pedir cita">Pedir cita</button>
+  </div>
+  <form id="fChat"><label class="sr" for="tChat">Escribe tu pregunta</label><input id="tChat" autocomplete="off" placeholder="Escribe tu pregunta…"><button type="submit" aria-label="Enviar"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button></form>
+  <p class="chat-nota">Demostración. No da consejo médico: ante una urgencia, llama al 112.</p>
+</div>
+
+<script>
+(() => {
+"use strict";
+const $ = (s, c = document) => c.querySelector(s);
+const $$ = (s, c = document) => [...c.querySelectorAll(s)];
+const norm = s => s.normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase();
+
+/* ---------- datos de la policlínica de demostración ---------- */
+const UNIDADES = {
+  clinica: { n: "Clínica", c: "var(--c-clinica)" },
+  dental: { n: "Dental", c: "var(--c-dental)" },
+  estetica: { n: "Estética", c: "var(--c-estetica)" },
+  fisio: { n: "Fisioterapia", c: "var(--c-fisio)" }
+};
+const ESPECIALISTAS = [
+  { p: "Dra. Carmen Ruiz", e: "Medicina general · Dirección médica", g: "medica" },
+  { p: "Dr. Pablo Serrano", e: "Medicina interna", g: "medica" },
+  { p: "Dra. Inés Molina", e: "Dermatología", g: "medica" },
+  { p: "Dr. Javier Ortega", e: "Cirugía vascular", g: "quirurgica" },
+  { p: "Dr. Andrés Prieto", e: "Traumatología", g: "quirurgica" },
+  { p: "Dra. Marta Llorente", e: "Otorrinolaringología", g: "quirurgica" },
+  { p: "Dr. Luis Herrera", e: "Urología", g: "quirurgica" },
+  { p: "Dra. Sofía Navas", e: "Podología", g: "quirurgica", k: "pie podologo plantillas" },
+  { p: "Dr. Álvaro Gil", e: "Pediatría", g: "infancia" },
+  { p: "Dra. Elena Campos", e: "Ginecología y obstetricia", g: "infancia" },
+  { p: "Unidad de Psicología", e: "Psicología, pedagogía y logopedia", g: "infancia" }
+];
+const CATALOGO = [
+  ...ESPECIALISTAS.map(x => ({ t: x.e.split(" · ")[0], u: "clinica", d: x.p, k: x.k || "" })),
+  { t: "Psicología infantil", u: "clinica", d: "Unidad de Psicología", k: "niños psicologo" },
+  { t: "Reconocimiento carné de conducir", u: "clinica", d: "Centro de reconocimientos", k: "carnet psicotecnico renovar permiso" },
+  { t: "Reconocimiento licencia de armas", u: "clinica", d: "Centro de reconocimientos", k: "caza escopeta" },
+  { t: "Reconocimiento seguridad privada", u: "clinica", d: "Centro de reconocimientos", k: "vigilante" },
+  { t: "Reconocimiento gruista", u: "clinica", d: "Centro de reconocimientos", k: "grua" },
+  { t: "Perros potencialmente peligrosos", u: "clinica", d: "Centro de reconocimientos", k: "ppp licencia perro" },
+  { t: "Titulaciones náuticas", u: "clinica", d: "Centro de reconocimientos", k: "barco patron" },
+  { t: "Radiografía", u: "clinica", d: "Radiología", k: "rayos x placa radiologia" },
+  { t: "Ortopantomografía", u: "clinica", d: "Radiología dental", k: "panoramica dientes" },
+  { t: "TAC dental 3D", u: "dental", d: "Diagnóstico por imagen", k: "tac tag escaner cbct 3d implantes" },
+  { t: "Electrocardiograma", u: "clinica", d: "Medicina interna", k: "corazon ecg" },
+  { t: "Ecografía ginecológica", u: "clinica", d: "Ginecología", k: "eco embarazo" },
+  { t: "Test de intolerancia a la lactosa", u: "clinica", d: "Pruebas complementarias", k: "leche aliento" },
+  { t: "Test de intolerancia a la fructosa", u: "clinica", d: "Pruebas complementarias", k: "fruta aliento" },
+  { t: "Test SIBO", u: "clinica", d: "Pruebas complementarias", k: "intestino aliento hinchazon" },
+  { t: "Celiaquía", u: "clinica", d: "Pruebas complementarias", k: "gluten celiaco" },
+  { t: "Helicobacter pylori", u: "clinica", d: "Pruebas complementarias", k: "estomago aliento" },
+  { t: "Test de sensibilidad alimentaria", u: "clinica", d: "Pruebas complementarias", k: "alimentos intolerancia" },
+  { t: "Test de drogas", u: "clinica", d: "Pruebas complementarias", k: "toxicos" },
+  { t: "Prueba de paternidad", u: "clinica", d: "Pruebas complementarias", k: "adn" },
+  { t: "Test de embarazo", u: "clinica", d: "Pruebas complementarias", k: "embarazada" },
+  { t: "ITS y VPH", u: "clinica", d: "Pruebas complementarias", k: "transmision sexual papiloma" },
+  { t: "Accidente laboral", u: "clinica", d: "Unidad de accidentes", k: "mutua trabajo" },
+  { t: "Accidente de tráfico", u: "clinica", d: "Unidad de accidentes", k: "coche seguro latigazo" },
+  { t: "Odontología conservadora", u: "dental", d: "Empastes y restauraciones", k: "caries empaste" },
+  { t: "Odontopediatría", u: "dental", d: "Dentista infantil", k: "niños dentista infantil" },
+  { t: "Periodoncia", u: "dental", d: "Encías", k: "encias piorrea" },
+  { t: "Implantes dentales", u: "dental", d: "Implantología", k: "implante diente" },
+  { t: "Estética dental", u: "dental", d: "Sonrisa", k: "blanqueamiento carillas" },
+  { t: "Cirugía oral", u: "dental", d: "Injertos y encía", k: "muela juicio injerto" },
+  { t: "Ortodoncia e Invisalign", u: "dental", d: "Brackets y alineadores invisibles", k: "invisalign brackets alineadores ortodoncia invisible" },
+  { t: "Prótesis dentales", u: "dental", d: "Cerámica, zirconio o resina", k: "dentadura corona" },
+  { t: "Bruxismo y ATM", u: "dental", d: "Férulas y mandíbula", k: "rechinar ferula" },
+  { t: "Endodoncia", u: "dental", d: "Tratamiento del nervio", k: "matar nervio" },
+  { t: "Radiografía dental", u: "dental", d: "Ortopantomografía", k: "rayos dientes" },
+  { t: "Depilación láser", u: "estetica", d: "Para todo tipo de vello", k: "laser vello" },
+  { t: "Radiofrecuencia", u: "estetica", d: "Colágeno y firmeza", k: "flacidez" },
+  { t: "Tonificación muscular", u: "estetica", d: "Sin esfuerzo, con electromagnetismo", k: "musculo abdomen" },
+  { t: "Peeling de carbón", u: "estetica", d: "Rejuvenecimiento con carbón activo", k: "carbon peeling" },
+  { t: "Hidrodermoabrasión", u: "estetica", d: "Higiene facial avanzada", k: "limpieza facial" },
+  { t: "Eliminación de tatuajes", u: "estetica", d: "Y micropigmentación", k: "tatuaje" },
+  { t: "Tratamiento del acné", u: "estetica", d: "Granos, cicatrices y poros", k: "acne poros" },
+  { t: "Maderoterapia", u: "estetica", d: "Remodelación corporal", k: "celulitis" },
+  { t: "Presoterapia", u: "estetica", d: "Piernas cansadas y retención", k: "drenaje retencion piernas" },
+  { t: "Celulitis y remodelación corporal", u: "estetica", d: "Valoración gratuita", k: "grasa localizada cavitacion hifu" },
+  { t: "Rejuvenecimiento facial", u: "estetica", d: "Arrugas, manchas y flacidez", k: "arrugas manchas lifting" },
+  { t: "Fisioterapia general", u: "fisio", d: "Lesiones musculares y articulares", k: "dolor espalda contractura" },
+  { t: "Fisioterapia a domicilio", u: "fisio", d: "En toda la comarca", k: "casa" },
+  { t: "Fisioterapia deportiva", u: "fisio", d: "Prevención y recuperación", k: "deporte lesion" },
+  { t: "Fisioterapia pediátrica", u: "fisio", d: "Bebés, niños y adolescentes", k: "niños bebe" },
+  { t: "Fisioterapia neurológica", u: "fisio", d: "Sistema nervioso", k: "ictus" },
+  { t: "Suelo pélvico", u: "fisio", d: "Valoración incluida", k: "incontinencia postparto" },
+  { t: "Fisioterapia invasiva", u: "fisio", d: "Con ecografía", k: "epi puncion seca electrolisis" },
+  { t: "Osteopatía", u: "fisio", d: "Terapia manual", k: "" },
+  { t: "Pilates terapéutico", u: "fisio", d: "Con fisioterapeuta", k: "pilates" },
+  { t: "Cólico del lactante", u: "fisio", d: "Primeros 4 meses", k: "bebe llanto colico" },
+  { t: "Medicina estética facial", u: "estetica", d: "Rejuvenecimiento y lifting sin cirugía", k: "medicina estetica arrugas" },
+  { t: "Rehabilitación de prótesis de rodilla", u: "fisio", d: "Rehabilitación", k: "rodilla protesis" },
+  { t: "Rehabilitación por accidente de tráfico", u: "fisio", d: "Convenio de tráfico", k: "latigazo cervical coche" }
+];
+CATALOGO.forEach(x => x.s = norm(x.t + " " + x.d + " " + x.k + " " + UNIDADES[x.u].n));
+
+/* ---------- tema ---------- */
+const raiz = document.documentElement;
+$("#bTema").addEventListener("click", () => {
+  const oscuro = raiz.dataset.theme ? raiz.dataset.theme === "dark" : matchMedia("(prefers-color-scheme: dark)").matches;
+  raiz.dataset.theme = oscuro ? "light" : "dark";
+});
+
+/* ---------- barra de mejoras ---------- */
+$("#bMejoras").addEventListener("click", e => {
+  const ver = $("#mejoras").classList.toggle("ver");
+  e.currentTarget.setAttribute("aria-expanded", ver);
+});
+
+/* ---------- menú móvil ---------- */
+const movil = $("#movil");
+const menu = si => { movil.classList.toggle("ver", si); $("#bMenu").setAttribute("aria-expanded", si); document.body.style.overflow = si ? "hidden" : ""; };
+$("#bMenu").onclick = () => menu(true);
+$("#bCerrarMenu").onclick = () => menu(false);
+$$("a", movil).forEach(a => a.addEventListener("click", () => menu(false)));
+
+/* ---------- buscador ---------- */
+const q = $("#q"), lista = $("#lista-q");
+let sel = -1, hits = [];
+function buscar(texto) {
+  const t = norm(texto.trim());
+  if (!t) { lista.classList.remove("ver"); q.setAttribute("aria-expanded", "false"); return; }
+  const palabras = t.split(/\s+/);
+  hits = CATALOGO.map(x => {
+    let p = 0;
+    for (const w of palabras) { const ok = w.length < 4 ? x.s.split(/[^a-z0-9]+/).some(t => t.startsWith(w)) : x.s.includes(w); if (!ok) return null; p += norm(x.t).startsWith(w) ? 3 : norm(x.t).includes(w) ? 2 : 1; }
+    return { x, p };
+  }).filter(Boolean).sort((a, b) => b.p - a.p).slice(0, 8).map(h => h.x);
+  sel = -1;
+  lista.innerHTML = hits.length
+    ? hits.map((x, i) => `<button type="button" class="res" role="option" id="op-${i}" aria-selected="false" data-i="${i}"><span class="pt" style="background:${UNIDADES[x.u].c}"></span><span><b>${x.t}</b><span>${UNIDADES[x.u].n} · ${x.d}</span></span><em>Pedir cita →</em></button>`).join("")
+    : `<p class="vacio">No encontramos «${texto.replace(/[<>&]/g, "")}». Pregunta al asistente o llámanos al 900 000 000.</p>`;
+  lista.classList.add("ver"); q.setAttribute("aria-expanded", "true");
+}
+q.addEventListener("input", () => buscar(q.value));
+q.addEventListener("keydown", e => {
+  const ops = $$(".res", lista);
+  if (e.key === "ArrowDown" || e.key === "ArrowUp") {
+    e.preventDefault(); if (!ops.length) return;
+    sel = (sel + (e.key === "ArrowDown" ? 1 : -1) + ops.length) % ops.length;
+    ops.forEach((o, i) => o.setAttribute("aria-selected", i === sel));
+    q.setAttribute("aria-activedescendant", ops[sel].id);
+  } else if (e.key === "Enter" && sel >= 0) { e.preventDefault(); ops[sel].click(); }
+  else if (e.key === "Escape") { lista.classList.remove("ver"); }
+});
+lista.addEventListener("click", e => { const b = e.target.closest(".res"); if (!b) return; const x = hits[+b.dataset.i]; lista.classList.remove("ver"); abrirCita({ u: x.u, s: x.t }); });
+document.addEventListener("click", e => { if (!e.target.closest(".buscador")) lista.classList.remove("ver"); });
+$$("[data-sug]").forEach(b => b.addEventListener("click", () => { q.value = b.dataset.sug; q.focus(); buscar(q.value); }));
+
+/* ---------- especialistas ---------- */
+const grid = $("#espGrid");
+const iniciales = n => n.replace(/^(Dr\.|Dra\.|Unidad de)\s*/, "").split(" ").slice(0, 2).map(w => w[0]).join("");
+function pintarEsp(f) {
+  grid.innerHTML = ESPECIALISTAS.filter(x => f === "todos" || x.g === f).map((x, i) =>
+    `<div class="esp t-clinica" style="--vt:esp-${ESPECIALISTAS.indexOf(x)}"><span class="av" aria-hidden="true">${iniciales(x.p)}</span><span><b>${x.p}</b><span>${x.e}</span></span><button type="button" aria-label="Pedir cita con ${x.p}" data-esp="${ESPECIALISTAS.indexOf(x)}"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg></button></div>`).join("");
+}
+pintarEsp("todos");
+$$(".filtros button").forEach(b => b.addEventListener("click", () => {
+  const cambiar = () => { $$(".filtros button").forEach(x => x.setAttribute("aria-pressed", x === b)); pintarEsp(b.dataset.f); };
+  document.startViewTransition && !matchMedia("(prefers-reduced-motion: reduce)").matches ? document.startViewTransition(cambiar) : cambiar();
+}));
+grid.addEventListener("click", e => { const b = e.target.closest("[data-esp]"); if (!b) return; const x = ESPECIALISTAS[+b.dataset.esp]; abrirCita({ u: "clinica", s: x.e.split(" · ")[0], pro: x.p }); });
+
+/* ---------- seguros ---------- */
+const ver = $("#veredicto");
+const icoSi = '<svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>';
+const icoInfo = '<svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 8h.01M11 12h1v5h1"/></svg>';
+$("#seguro").addEventListener("change", e => {
+  const v = e.target.value;
+  const txt = {
+    "": null,
+    "privado-salud": [true, "Trabajamos con las principales aseguradoras privadas. Dinos cuál tienes y te confirmamos la cobertura antes de la cita."],
+    mutualidad: [true, "Atendemos a mutualistas. Trae tu tarjeta y, si tu entidad lo pide, el volante de autorización."],
+    trafico: [true, "Sí. Gestionamos tu caso y la rehabilitación en nuestra unidad de fisioterapia, adherida al convenio de tráfico."],
+    laboral: [true, "Sí. Contamos con unidad de accidentes laborales para la primera atención. Trae el parte de tu mutua."],
+    privado: [true, "Sin problema: puedes venir como paciente privado. Te informamos del precio antes de la consulta."]
+  }[v];
+  if (!txt) { ver.className = "veredicto"; return; }
+  ver.className = "veredicto ver " + (txt[0] ? "si" : "consulta");
+  ver.innerHTML = (txt[0] ? icoSi : icoInfo) + "<span>" + txt[1] + "</span>";
+});
+
+/* ---------- cita (asistente de 5 pasos) ---------- */
+const dlg = $("#dCita"), cuerpo = $("#mCuerpo"), bSig = $("#mSig"), bAtras = $("#mAtras");
+let paso = 0, cita = {};
+const DIAS = ["dom", "lun", "mar", "mié", "jue", "vie", "sáb"];
+const MESES = ["ene", "feb", "mar", "abr", "may", "jun", "jul", "ago", "sep", "oct", "nov", "dic"];
+function proximosDias() {
+  const out = []; const d = new Date(); d.setHours(0, 0, 0, 0);
+  while (out.length < 10) { d.setDate(d.getDate() + 1); if (d.getDay() !== 0 && d.getDay() !== 6) out.push(new Date(d)); }
+  return out;
+}
+function huecos(fecha) {
+  const base = ["09:00", "09:30", "10:00", "10:30", "11:00", "11:30", "12:00", "12:30", "13:00", "16:30", "17:00", "17:30", "18:00", "18:30"];
+  let s = fecha.getDate() * 7 + fecha.getMonth();
+  return base.map(h => { s = (s * 9301 + 49297) % 233280; return { h, libre: s / 233280 > 0.35 }; });
+}
+function pintarPaso() {
+  $$(".pasos i").forEach((i, k) => i.classList.toggle("on", k <= paso));
+  bAtras.style.visibility = paso > 0 && paso < 5 ? "visible" : "hidden";
+  bSig.style.display = paso < 5 ? "" : "none";
+  let h = "";
+  if (paso === 0) {
+    h = `<h4>¿En qué unidad?</h4><div class="opciones">${Object.entries(UNIDADES).map(([k, u]) => `<button type="button" class="op" data-v="${k}" aria-pressed="${cita.u === k}"><b style="color:${u.c}">${u.n}</b><span>${{ clinica: "Médicos y pruebas", dental: "1.ª consulta gratis", estetica: "Facial y corporal", fisio: "Fisio y osteopatía" }[k]}</span></button>`).join("")}</div>`;
+  } else if (paso === 1) {
+    const ops = CATALOGO.filter(x => x.u === cita.u);
+    h = `<h4>¿Qué necesitas en ${UNIDADES[cita.u].n}?</h4><div class="opciones">${ops.map(x => `<button type="button" class="op" data-v="${x.t}" aria-pressed="${cita.s === x.t}"><b>${x.t}</b><span>${x.d}</span></button>`).join("")}</div>`;
+  } else if (paso === 2) {
+    h = `<h4>Elige día</h4><div class="dias">${proximosDias().map(d => { const k = d.toISOString().slice(0, 10); return `<button type="button" class="op" data-v="${k}" aria-pressed="${cita.dia === k}"><span>${DIAS[d.getDay()]}</span><b>${d.getDate()}</b><span>${MESES[d.getMonth()]}</span></button>`; }).join("")}</div>`;
+  } else if (paso === 3) {
+    const d = new Date(cita.dia + "T00:00");
+    h = `<h4>Elige hora · ${DIAS[d.getDay()]} ${d.getDate()} ${MESES[d.getMonth()]}</h4><div class="horas">${huecos(d).map(x => `<button type="button" class="op" data-v="${x.h}" ${x.libre ? "" : "disabled"} aria-pressed="${cita.hora === x.h}">${x.h}</button>`).join("")}</div><p class="aviso-demo">Huecos de demostración: en la web real salen de la agenda del centro.</p>`;
+  } else if (paso === 4) {
+    const d = new Date(cita.dia + "T00:00");
+    h = `<h4>Tus datos</h4><div class="resumen"><div><span>Unidad</span><b>${UNIDADES[cita.u].n}</b></div><div><span>Servicio</span><b>${cita.s}</b></div>${cita.pro ? `<div><span>Profesional</span><b>${cita.pro}</b></div>` : ""}<div><span>Fecha</span><b>${DIAS[d.getDay()]} ${d.getDate()} ${MESES[d.getMonth()]} · ${cita.hora}</b></div></div>
+    <div class="form-cita"><label>Nombre y apellidos<input type="text" id="cNom" autocomplete="name" value="${cita.nom || ""}"></label><label>Teléfono móvil<input type="tel" id="cTel" autocomplete="tel" inputmode="tel" value="${cita.tel || ""}"></label><label class="check"><input type="checkbox" id="cPriv" ${cita.priv ? "checked" : ""}>Acepto la política de privacidad y que me contactéis para gestionar la cita.</label><label class="check"><input type="checkbox" id="cRec" checked>Quiero recibir un recordatorio por WhatsApp el día antes.</label></div>`;
+  } else {
+    h = `<div class="ok-grande"><span class="circ"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg></span><h4>¡Solicitud de cita lista!</h4><p style="color:var(--muted)">En la web real recibirías ahora la confirmación por WhatsApp y un enlace para añadirla a tu calendario o anularla.</p><p class="aviso-demo">Demostración: no se ha enviado ningún dato.</p><button type="button" class="btn btn-1" data-cerrar>Cerrar</button></div>`;
+  }
+  cuerpo.innerHTML = h;
+  bSig.textContent = paso === 4 ? "Confirmar cita" : "Continuar";
+  validar();
+}
+function validar() {
+  const ok = [cita.u, cita.s, cita.dia, cita.hora, cita.nom && cita.tel && cita.priv][paso];
+  bSig.disabled = !ok; bSig.style.opacity = ok ? 1 : .45;
+}
+cuerpo.addEventListener("click", e => {
+  const b = e.target.closest(".op"); if (!b || b.disabled) return;
+  const campo = ["u", "s", "dia", "hora"][paso];
+  if (campo === "u" && cita.u !== b.dataset.v) { cita.s = null; cita.pro = null; }
+  cita[campo] = b.dataset.v;
+  $$(".op", cuerpo).forEach(o => o.setAttribute("aria-pressed", o === b));
+  validar();
+});
+cuerpo.addEventListener("input", () => {
+  if (paso !== 4) return;
+  cita.nom = $("#cNom").value.trim(); cita.tel = $("#cTel").value.replace(/\D/g, "").length >= 9 ? $("#cTel").value : ""; cita.priv = $("#cPriv").checked;
+  validar();
+});
+bSig.addEventListener("click", () => { if (!bSig.disabled) { paso++; pintarPaso(); } });
+bAtras.addEventListener("click", () => { paso = Math.max(0, paso - 1); pintarPaso(); });
+dlg.addEventListener("click", e => { if (e.target.closest("[data-cerrar]") || e.target === dlg) dlg.close(); });
+function abrirCita(pre = {}) {
+  cita = { ...pre }; paso = pre.s ? 2 : pre.u ? 1 : 0;
+  menu(false); pintarPaso(); dlg.showModal();
+}
+document.addEventListener("click", e => { const b = e.target.closest("[data-cita]"); if (!b || b.closest("dialog")) return; e.preventDefault(); abrirCita(b.dataset.cita ? { u: b.dataset.cita } : {}); });
+
+/* ---------- asistente (demo con respuestas sobre datos reales del centro) ---------- */
+const chat = $("#chat"), fab = $("#fab"), msjs = $("#mensajes");
+let saludado = false;
+function abrirChat(si) {
+  chat.classList.toggle("ver", si); fab.setAttribute("aria-expanded", si);
+  if (si && !saludado) { saludado = true; bot("¡Hola! Soy el asistente de Policlínica Vereda. Puedo ayudarte con citas, seguros, resultados, pruebas y cómo llegar. ¿Qué necesitas?"); }
+  if (si) setTimeout(() => $("#tChat").focus(), 50);
+}
+fab.onclick = () => abrirChat(!chat.classList.contains("ver"));
+$("#cerrarChat").onclick = () => abrirChat(false);
+function añadir(html, quien) { const d = document.createElement("div"); d.className = "msg " + quien; d.innerHTML = html; msjs.appendChild(d); msjs.scrollTop = msjs.scrollHeight; return d; }
+function bot(html) {
+  const t = añadir('<span class="escribiendo" aria-label="Escribiendo"><i></i><i></i><i></i></span>', "bot");
+  setTimeout(() => { t.innerHTML = html; msjs.scrollTop = msjs.scrollHeight; }, 550);
+}
+const esc = s => s.replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+function responder(texto) {
+  const t = norm(texto);
+  const BCITA = (u = "") => `<div class="acc"><button type="button" data-cita="${u}">Pedir cita</button><a href="#contacto">WhatsApp</a></div>`;
+  if (/urgen|dolor (en el )?pecho|no puedo respirar|desmay|sangr/.test(t)) return "Si es una urgencia, llama ahora al <b>112</b>. Yo no puedo valorar síntomas.";
+  if (/donde|direcc|llegar|ubica|mapa|aparcar/.test(t)) return "Estamos en la <b>C/ de la Salud, 12</b>, en el centro de la ciudad, con aparcamiento cercano.";
+  if (/horari|hora abr|abris|abierto|cierra/.test(t)) return "Abrimos de lunes a viernes de 8:00 a 21:00 y los sábados de 9:00 a 14:00. Pide cita online y verás los huecos libres." + BCITA();
+  if (/seguro|mutua|aseguradora|poliza/.test(t)) return "Trabajamos con las principales aseguradoras privadas, mutualidades y mutuas laborales. Dime cuál tienes y te confirmamos la cobertura antes de la cita." + BCITA();
+  if (/resultado|analisis|analitica|laborator|informe/.test(t)) return "Puedes ver tus resultados e informes en el área del paciente con el código que te damos en el centro.";
+  if (/precio|cuanto cuesta|cuesta|tarifa|presupuesto/.test(t)) return "Te damos presupuesto sin compromiso. En Dental la <b>primera consulta es gratuita</b> y en Estética la valoración corporal también." + BCITA();
+  if (/cita|reserv|turno|consulta con/.test(t)) return "Puedo abrirte la cita online: eliges unidad, servicio, día y hora en menos de un minuto." + BCITA();
+  if (/domicilio|casa/.test(t)) return "Sí, hacemos <b>fisioterapia a domicilio</b> en toda la comarca." + BCITA("fisio");
+  if (/trabaj(ar|o) con vosotros|empleo|curriculum/.test(t)) return "Puedes enviar tu currículum a <b>hola@policlinicavereda.example</b>.";
+  const palabras = t.split(/\s+/).filter(w => w.length > 3);
+  const encontrados = CATALOGO.filter(x => palabras.some(w => x.s.includes(w))).slice(0, 3);
+  if (encontrados.length) return "Esto es lo que tenemos relacionado:\n" + encontrados.map(x => `• <b>${x.t}</b> — ${UNIDADES[x.u].n}${x.d ? " · " + x.d : ""}`).join("\n") + BCITA(encontrados[0].u);
+  return "No estoy seguro de haberte entendido. Puedes llamarnos al <b>900 000 000</b> o escribirnos por WhatsApp y te atiende una persona." + BCITA();
+}
+function preguntar(texto) { if (!texto.trim()) return; añadir(esc(texto), "yo"); bot(responder(texto)); }
+$("#fChat").addEventListener("submit", e => { e.preventDefault(); const i = $("#tChat"); preguntar(i.value); i.value = ""; });
+$$(".rapidas button").forEach(b => b.onclick = () => preguntar(b.dataset.p));
+msjs.addEventListener("click", e => { const b = e.target.closest("[data-cita]"); if (b) { e.stopPropagation(); abrirCita(b.dataset.cita ? { u: b.dataset.cita } : {}); } });
+
+addEventListener("keydown", e => { if (e.key === "Escape") { abrirChat(false); menu(false); } });
+})();
+</script>
+</body>
+</html>

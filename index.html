@@ -272,6 +272,21 @@ nav.menu a.activo::after{transform:scaleX(1)}
 .trab-txt .etq{align-self:flex-start}
 .trab-txt h3{font-size:clamp(30px,3.4vw,40px)}
 .trab-txt p{color:var(--muted)}
+/* segunda referencia: imagen a la derecha y paleta sanitaria */
+@media (min-width:960px){.trab.inv{grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr)}.trab.inv .trab-vista{order:2}}
+.trab-vista.salud{background:#DCE8EF}
+.salud .navg{background:#F6F4EF;box-shadow:0 24px 50px -24px rgba(15,30,51,.45)}
+.salud .navg-barra{background:#E2E8EE}
+.salud .navg-barra i{background:#B9C4D0}
+.salud .navg-barra span{background:#fff;color:#4B5A6E}
+.salud .navg-cinta{background:#0E6E8C}
+.salud .navg-cab{border-bottom-color:rgba(15,30,51,.12)}
+.salud .navg-cab b{color:#0F1E33;font-family:var(--f-body);letter-spacing:0;text-transform:none;font-size:14px;font-weight:700;display:flex;align-items:center;gap:8px}
+.salud .navg-cab em{background:#0E6E8C;border-radius:999px}
+.salud .navg-hero::before{background:linear-gradient(180deg,rgba(11,22,38,.2),rgba(11,22,38,.85))}
+.salud .navg-hero strong{font-family:var(--f-body);text-transform:none;letter-spacing:-.02em;font-weight:700;font-size:clamp(22px,3.2vw,36px);line-height:1.05;max-width:14ch}
+.salud .navg-pie{background:#fff}
+.salud .navg-pie figcaption{font-family:var(--f-body);text-transform:none;letter-spacing:0;font-weight:700;color:#0F1E33}
 .trab-txt ul{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:8px}
 .trab-txt li{border:1px solid var(--line-strong);border-radius:999px;padding:5px 12px;font-size:13.5px}
 .trab-txt .ctas{margin-top:auto;padding-top:8px}
@@ -655,6 +670,35 @@ img{max-width:100%}
               <a class="btn btn-2" href="#contacto">Quiero una para mi negocio</a>
             </div>
             <p class="trab-nota">Empresa ficticia creada como referencia.</p>
+          </div>
+        </article>
+        <article class="trab inv rev">
+          <a class="trab-vista salud" href="/referencias/policlinica-vereda/" aria-label="Abrir la web de demostración de Policlínica Vereda">
+            <div class="navg" aria-hidden="true">
+              <div class="navg-barra"><i></i><i></i><i></i><span>policlinicavereda · demostración</span></div>
+              <div class="navg-cinta"></div>
+              <div class="navg-cab"><b><svg width="20" height="20" viewBox="0 0 48 48"><rect width="48" height="48" rx="14" fill="#162437"/><path d="M24 11v26M11 24h26" stroke="#4FB6D3" stroke-width="5.5" stroke-linecap="round"/></svg>Policlínica Vereda</b><em>Pedir cita</em></div>
+              <div class="navg-hero">
+                <img src="https://images.unsplash.com/photo-1758691463203-cce9d415b2b5?auto=format&fit=crop&w=1000&h=600&q=60" alt="" loading="lazy">
+                <p>Especialidades · Dental · Fisio · Estética</p><strong>Más de 30 años cuidando la salud de tu familia.</strong>
+              </div>
+              <div class="navg-pie">
+                <figure><img src="https://images.unsplash.com/photo-1722586663955-2f96a4c1f255?auto=format&fit=crop&w=300&h=225&q=60" alt="" loading="lazy"><figcaption>Odontología</figcaption></figure>
+                <figure><img src="https://images.unsplash.com/photo-1777445374290-eedda5be8e5b?auto=format&fit=crop&w=300&h=225&q=60" alt="" loading="lazy"><figcaption>TAC dental</figcaption></figure>
+                <figure><img src="https://images.unsplash.com/photo-1706353399656-210cca727a33?auto=format&fit=crop&w=300&h=225&q=60" alt="" loading="lazy"><figcaption>Fisioterapia</figcaption></figure>
+              </div>
+            </div>
+          </a>
+          <div class="trab-txt">
+            <span class="etq">Demostración · Salud</span>
+            <h3>Policlínica Vereda</h3>
+            <p>Web para un centro médico con varias especialidades, odontología, fisioterapia y estética. Presenta los servicios como un gran centro y añade tecnología que ahorra llamadas: cita online en cinco pasos, asistente virtual 24 horas, buscador de servicios y comprobador de seguro.</p>
+            <ul><li>Cita online</li><li>Asistente virtual</li><li>Buscador de servicios</li><li>Modo oscuro</li></ul>
+            <div class="ctas">
+              <a class="btn btn-1" href="/referencias/policlinica-vereda/">Ver la web <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+              <a class="btn btn-2" href="#contacto">Quiero una para mi centro</a>
+            </div>
+            <p class="trab-nota">Centro ficticio creado como referencia.</p>
           </div>
         </article>
       </div>
