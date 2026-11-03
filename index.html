@@ -245,6 +245,19 @@ nav.menu a.activo::after{transform:scaleX(1)}
 /* segundo producto: Cucharón, con el móvil a la izquierda en escritorio */
 .proy-b{border-top:0}
 @media (min-width:960px){.proy-b .proy-grid > .escena{order:-1}}
+/* tercer producto: Nido, solo informativo (bajo petición) */
+.telefono.ni{background:#14130F;box-shadow:var(--shadow),inset 0 0 0 1.5px #34312A}
+.pantalla.ni{background:#F6F4EF;color:#1B1A17}
+.ni .p-cab span{color:#6D685E}
+.ni-cerrojo{margin:26px auto 4px;width:76px;height:76px;border-radius:50%;background:#fff;border:1px solid #E2DDD3;display:grid;place-items:center;color:#9A7A3F;box-shadow:0 10px 26px -12px rgba(20,19,15,.35)}
+.ni-cerrojo svg{width:30px;height:30px}
+.ni-bloq{text-align:center;display:grid;gap:4px}
+.ni-bloq b{font:700 15px/1.2 Georgia,serif}
+.ni-bloq small{color:#6D685E;font-size:10.5px}
+.ni-campo{background:#fff;border:1px solid #E2DDD3;border-radius:12px;padding:11px 12px;color:#6D685E;font-size:11px;letter-spacing:.3em}
+.ni-abrir{background:#9A7A3F;color:#fff;border-radius:12px;padding:11px;text-align:center;font-weight:600;font-size:11.5px}
+.ni .p-nav{border-top-color:#E2DDD3;color:#6D685E}
+.ni .p-nav span.on{color:#9A7A3F}
 /* trabajos web: referencias de clientes (demostraciones) */
 .trab-grid{display:grid;gap:28px}
 .trab{display:grid;gap:0;border:1px solid var(--line-strong);border-radius:var(--r);overflow:hidden;background:var(--surface);box-shadow:var(--shadow)}
@@ -649,6 +662,41 @@ img{max-width:100%}
     </div>
   </section>
 
+  <!-- TERCER PRODUCTO: NIDO (solo información, bajo petición) -->
+  <section class="proy plano" id="nido" style="border-top:0">
+    <div class="wrap proy-grid">
+      <div class="rev">
+        <span class="etq">Producto propio · bajo petición</span>
+        <h2>Nido</h2>
+        <p class="lead">Nuestra bóveda personal para lo más delicado: contraseñas, tarjetas, claves de equipos y notas seguras. Todo cifrado en tu propio dispositivo, sin servidores ni cuentas. La hicimos para uso propio y no se descarga desde la web: si te interesa, escríbenos y lo hablamos.</p>
+        <div class="datos">
+          <div><b>Windows</b><span>y Android</span></div>
+          <div><b>Cifrada</b><span>En tu dispositivo</span></div>
+          <div><b>A petición</b><span>Caso por caso</span></div>
+        </div>
+        <div class="ctas">
+          <a class="btn btn-1 iman" href="mailto:hola@astillerosoftware.es?subject=Inter%C3%A9s%20en%20Nido">Pedir información <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <a class="btn btn-2" href="/nido/">Ver qué hace</a>
+        </div>
+        <p style="margin-top:18px"><a href="/nido/" style="color:var(--muted);font-size:15px">Todo sobre Nido →</a></p>
+      </div>
+      <div class="escena rev">
+        <div class="telefono ni" aria-hidden="true">
+          <div class="pantalla ni">
+            <div class="p-cab"><b>Nido</b><span>09:41</span></div>
+            <div class="p-vista">
+              <div class="ni-cerrojo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></div>
+              <div class="ni-bloq"><b>Bóveda bloqueada</b><small>Escribe tu contraseña maestra</small></div>
+              <div class="ni-campo">••••••••••••</div>
+              <div class="ni-abrir">Abrir</div>
+            </div>
+            <div class="p-nav"><span class="on">Bóveda</span><span>Generador</span><span>Copias</span><span>Ajustes</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- TRABAJOS WEB -->
   <section id="trabajos">
     <div class="wrap">
@@ -901,6 +949,7 @@ img{max-width:100%}
         <a href="#servicios">Servicios</a>
         <a href="/cuaderna/">Cuaderna</a>
         <a href="/cucharon/">Cucharón</a>
+        <a href="/nido/">Nido</a>
         <a href="#contacto">Contacto</a>
         <a href="privacidad.html">Privacidad</a>
       </nav>
