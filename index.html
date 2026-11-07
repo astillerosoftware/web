@@ -240,7 +240,13 @@ nav.menu a.activo::after{transform:scaleX(1)}
 .novedad{display:inline-flex;align-items:center;gap:10px;margin:0 10px 10px 0;padding:7px 14px 7px 8px;border-radius:999px;border:1px solid color-mix(in srgb,var(--accent) 45%,var(--line-strong));background:var(--accent-soft);color:var(--fg);font-size:13px;text-decoration:none;transition:border-color .2s}
 .novedad:hover{border-color:var(--accent)}
 .novedad b{font:600 11px/1 var(--f-mono);letter-spacing:.12em;text-transform:uppercase;background:var(--accent);color:var(--accent-ink);padding:5px 8px;border-radius:999px}
-.novedad svg{width:14px;height:14px}
+.novedad svg{width:14px;height:14px;flex:none}
+.nov-txt{transition:opacity .3s,transform .3s}
+.novedad.cambia .nov-txt{opacity:0;transform:translateY(4px)}
+.nov-pts{display:inline-flex;gap:4px}
+.nov-pts:empty{display:none}
+.nov-pts i{width:5px;height:5px;border-radius:50%;background:color-mix(in srgb,var(--accent) 30%,transparent);transition:background .3s}
+.nov-pts i.on{background:var(--accent)}
 
 /* segundo producto: Cucharón, con el móvil a la izquierda en escritorio */
 .proy-b{border-top:0}
@@ -518,7 +524,7 @@ img{max-width:100%}
   <section class="hero plano">
     <div class="wrap hero-grid">
       <div>
-        <a class="novedad" href="#cucharon"><b>Nuevo</b>Cucharón: busca recetas y crea tu libro en PDF <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <a class="novedad" id="novedad" href="#cucharon"><b>Nuevo</b><span class="nov-txt">Cucharón: busca recetas y crea tu libro en PDF</span><span class="nov-pts" aria-hidden="true"></span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
         <span class="estado"><i></i>Aceptamos proyectos para este trimestre</span>
         <h1><span class="l"><span>Diseño y software</span></span><span class="l"><span>construidos</span></span><span class="l"><span><em>cuaderna a cuaderna</em></span></span></h1>
         <p class="lead">Webs, identidad gráfica, aplicaciones y herramientas a medida para negocios que quieren trabajar mejor. Del primer plano a la botadura, y después seguimos a bordo.</p>
@@ -598,7 +604,7 @@ img{max-width:100%}
   </section>
 
   <!-- PROYECTO DESTACADO -->
-  <section class="proy plano" id="proyectos">
+  <section class="proy plano" id="proyectos" data-novedad="2026-11-01" data-novedad-txt="Cuaderna: dicta tus notas y se ordenan solas">
     <div class="wrap proy-grid">
       <div class="rev">
         <span class="etq">Producto propio · en uso</span>
@@ -634,7 +640,7 @@ img{max-width:100%}
   </section>
 
   <!-- SEGUNDO PRODUCTO: CUCHARÓN -->
-  <section class="proy proy-b plano" id="cucharon">
+  <section class="proy proy-b plano" id="cucharon" data-novedad="2026-11-07" data-novedad-txt="Cucharón: busca recetas y crea tu libro en PDF">
     <div class="wrap proy-grid">
       <div class="rev">
         <span class="etq">Producto propio · nuevo</span>
@@ -670,7 +676,7 @@ img{max-width:100%}
   </section>
 
   <!-- TERCER PRODUCTO: NIDO (solo información, bajo petición) -->
-  <section class="proy plano" id="nido" style="border-top:0">
+  <section class="proy plano" id="nido" style="border-top:0" data-novedad="2026-11-03" data-novedad-txt="Nido: tu bóveda de contraseñas, bajo petición">
     <div class="wrap proy-grid">
       <div class="rev">
         <span class="etq">Producto propio · bajo petición</span>
@@ -713,7 +719,7 @@ img{max-width:100%}
         <p class="lead">Propuestas que diseñamos para enseñar cómo trabajamos con cada sector. Ábrelas, navégalas en el móvil y piensa en la tuya.</p>
       </div>
       <div class="trab-grid">
-        <article class="trab rev">
+        <article class="trab rev" id="ref-carnes-valdehierro" data-novedad="2026-11-01" data-novedad-txt="Web de demostración: Carnes Valdehierro">
           <a class="trab-vista" href="/referencias/carnes-valdehierro/" aria-label="Abrir la web de demostración de Carnes Valdehierro">
             <div class="navg" aria-hidden="true">
               <div class="navg-barra"><i></i><i></i><i></i><span>carnesvaldehierro · demostración</span></div>
@@ -742,7 +748,7 @@ img{max-width:100%}
             <p class="trab-nota">Empresa ficticia creada como referencia.</p>
           </div>
         </article>
-        <article class="trab inv rev">
+        <article class="trab inv rev" id="ref-policlinica-vereda" data-novedad="2026-11-01" data-novedad-txt="Web de demostración: Policlínica Vereda">
           <a class="trab-vista salud" href="/referencias/policlinica-vereda/" aria-label="Abrir la web de demostración de Policlínica Vereda">
             <div class="navg" aria-hidden="true">
               <div class="navg-barra"><i></i><i></i><i></i><span>policlinicavereda · demostración</span></div>
@@ -771,7 +777,7 @@ img{max-width:100%}
             <p class="trab-nota">Centro ficticio creado como referencia.</p>
           </div>
         </article>
-        <article class="trab rev">
+        <article class="trab rev" id="ref-talleres-biela" data-novedad="2026-11-01" data-novedad-txt="Web de demostración: Talleres Biela">
           <a class="trab-vista taller" href="/referencias/talleres-biela/" aria-label="Abrir la web de demostración de Talleres Biela">
             <div class="navg" aria-hidden="true">
               <div class="navg-barra"><i></i><i></i><i></i><span>talleresbiela · demostración</span></div>
@@ -980,6 +986,41 @@ img{max-width:100%}
   const temaGuardado = ls.get("astillero.tema"); if (temaGuardado) raiz.dataset.theme = temaGuardado;
   const oscuroAhora = () => raiz.dataset.theme ? raiz.dataset.theme === "dark" : !matchMedia("(prefers-color-scheme: light)").matches;
   $("#bTema").onclick = () => { const t = oscuroAhora() ? "light" : "dark"; raiz.dataset.theme = t; ls.set("astillero.tema", t); leerColores(); };
+
+  /* ---------- aviso de novedades ----------
+     Se monta solo a partir de los bloques de la página que llevan
+     data-novedad="AAAA-MM-DD" y data-novedad-txt="Texto del aviso".
+     Para anunciar algo nuevo basta con ponerle esos dos atributos (y un id). */
+  (() => {
+    const caja = $("#novedad"); if (!caja) return;
+    const DIAS = 30, MAX = 3, hoy = Date.now();
+    const todas = $$("[data-novedad]").map((el, orden) => ({
+      id: el.id, txt: el.dataset.novedadTxt, fecha: new Date(el.dataset.novedad + "T00:00:00"), orden
+    })).filter(n => n.id && n.txt && !isNaN(n.fecha))
+      .sort((a, b) => b.fecha - a.fecha || b.orden - a.orden);
+    if (!todas.length) { caja.remove(); return; }
+    const recientes = todas.filter(n => (hoy - n.fecha) / 864e5 <= DIAS).slice(0, MAX);
+    const lista = recientes.length ? recientes : todas.slice(0, 1);
+    caja.querySelector("b").textContent = recientes.length ? "Nuevo" : "Novedad";
+    const txt = caja.querySelector(".nov-txt"), pts = caja.querySelector(".nov-pts");
+    if (lista.length > 1) pts.innerHTML = lista.map(() => "<i></i>").join("");
+    let i = 0;
+    const pintar = () => {
+      const n = lista[i]; txt.textContent = n.txt; caja.href = "#" + n.id;
+      caja.setAttribute("aria-label", "Novedad: " + n.txt);
+      [...pts.children].forEach((p, k) => p.classList.toggle("on", k === i));
+    };
+    pintar();
+    if (lista.length < 2 || reducido) return;
+    let parado = false;
+    ["mouseenter", "focusin"].forEach(e => caja.addEventListener(e, () => parado = true));
+    ["mouseleave", "focusout"].forEach(e => caja.addEventListener(e, () => parado = false));
+    setInterval(() => {
+      if (parado || document.hidden) return;
+      caja.classList.add("cambia");
+      setTimeout(() => { i = (i + 1) % lista.length; pintar(); caja.classList.remove("cambia"); }, 300);
+    }, 5000);
+  })();
 
   /* ---------- aviso breve ---------- */
   let tt; const aviso = txt => { const t = $("#toast"); t.textContent = txt; t.classList.add("ver"); clearTimeout(tt); tt = setTimeout(() => t.classList.remove("ver"), 2200); };
