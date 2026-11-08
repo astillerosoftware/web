@@ -264,6 +264,37 @@ nav.menu a.activo::after{transform:scaleX(1)}
 .ni-abrir{background:#9A7A3F;color:#fff;border-radius:12px;padding:11px;text-align:center;font-weight:600;font-size:11.5px}
 .ni .p-nav{border-top-color:#E2DDD3;color:#6D685E}
 .ni .p-nav span.on{color:#9A7A3F}
+/* cuarto producto: Singladura (fotos del viaje), con sus colores: lacre, tinta y plano */
+.telefono.si{background:#0D1B2B;box-shadow:var(--shadow),inset 0 0 0 1.5px #24364B;transform:rotate(4deg)}
+.telefono.si:hover{transform:rotate(0)}
+.pantalla.si{background:#EDF1F4;color:#0D1B2B;font-family:"Instrument Sans",system-ui,sans-serif}
+.si .p-cab{background:#0D1B2B;color:#fff;padding-bottom:12px}
+.si .p-cab b{font:800 20px/1 var(--f-display);text-transform:uppercase;letter-spacing:.03em;display:flex;align-items:center;gap:7px}
+.si .p-cab b::before{content:"";width:18px;height:18px;border-radius:5px;flex:none;background:#A8322D url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cg transform='rotate(5 50 51)'%3E%3Crect x='25' y='22' width='50' height='58' rx='3' fill='%23fff'/%3E%3Crect x='30' y='27' width='40' height='38' rx='1.5' fill='%230d1b2b'/%3E%3Cpath d='M51 33L51 53L62 53Z' fill='%23fff'/%3E%3Cpath d='M49 37L49 53L41 53Z' fill='%23e3563e'/%3E%3C/g%3E%3C/svg%3E") center/100% no-repeat}
+.si .p-cab span{color:#93A7BC}
+.si-et{font:500 8px/1.4 var(--f-mono);letter-spacing:.12em;text-transform:uppercase;color:#5A6B7D}
+.si-h{font:800 17px/1 var(--f-display);text-transform:uppercase;margin:2px 0}
+.si-mom{display:flex;justify-content:space-between;align-items:baseline;font-size:10px;color:#5A6B7D}
+.si-mom b{font:600 11px/1 var(--f-mono);color:#0D1B2B}
+.si-rej{display:grid;grid-template-columns:repeat(3,1fr);gap:3px}
+.si-t{position:relative;aspect-ratio:1;border-radius:4px;background:linear-gradient(160deg,#9BC3DB,#3E6E8E 60%,#24435A)}
+.si-t.b{background:linear-gradient(170deg,#F1C58B,#D9845A 55%,#7C3B2C)}
+.si-t.c{background:linear-gradient(180deg,#BFD9E6 0 45%,#E9DCC4 45% 60%,#C9A57A)}
+.si-t.d{background:linear-gradient(150deg,#7FA36B,#44683A 60%,#2C4527)}
+.si-t.e{background:linear-gradient(200deg,#F6E7C8,#E3B87A 50%,#A8322D)}
+.si-t.f{background:linear-gradient(160deg,#2B3F5C,#0D1B2B 70%)}
+.si-t i{position:absolute;right:3px;bottom:3px;width:13px;height:13px;border-radius:50%;font:700 7px/13px var(--f-body);font-style:normal;text-align:center;color:#fff;background:#A8322D;box-shadow:0 0 0 1.5px #fff}
+.si-t i.v{background:#2F7D6D}.si-t i.n{background:#C4862F}.si-t i.m{background:#4A5FA8}
+.si-t.ok::after{content:"✓";position:absolute;left:3px;top:3px;width:13px;height:13px;border-radius:50%;background:#A8322D;color:#fff;font-size:8px;line-height:13px;text-align:center}
+.si-t.no{opacity:.45}
+.si-btn{margin-top:auto;background:#A8322D;color:#fff;border-radius:10px;padding:10px;text-align:center;font-weight:600;font-size:11px}
+.si-zip{background:#fff;border:1px solid #D5DEE6;border-radius:10px;padding:8px 10px;display:flex;justify-content:space-between;align-items:center;font-size:10.5px}
+.si-zip small{display:block;color:#5A6B7D;font-size:9px}
+.si-zip em{font:600 9px var(--f-mono);font-style:normal;color:#2F7D6D}
+.si-cand{display:flex;gap:7px;align-items:flex-start;background:#fff;border:1px solid #D5DEE6;border-radius:10px;padding:8px 10px;font-size:9.5px;line-height:1.35}
+.si-cand svg{width:14px;height:14px;flex:none;color:#A8322D}
+.si .p-nav{border-top:1px solid #D5DEE6;background:#fff;color:#5A6B7D;font-weight:600}
+.si .p-nav span.on{color:#A8322D}
 /* trabajos web: referencias de clientes (demostraciones) */
 .trab-grid{display:grid;gap:28px}
 .trab{display:grid;gap:0;border:1px solid var(--line-strong);border-radius:var(--r);overflow:hidden;background:var(--surface);box-shadow:var(--shadow)}
@@ -710,6 +741,42 @@ img{max-width:100%}
     </div>
   </section>
 
+  <!-- CUARTO PRODUCTO: SINGLADURA (fotos del viaje) -->
+  <section class="proy proy-b plano" id="singladura" data-novedad="2026-11-08" data-novedad-txt="Singladura: las fotos del viaje, de todos">
+    <div class="wrap proy-grid">
+      <div class="rev">
+        <span class="etq">Producto propio · nuevo</span>
+        <h2>Singladura</h2>
+        <p class="lead">Nuestra app para juntar las fotos de un viaje. Cada uno sube las suyas desde su móvil y todos tienen el viaje entero, por día y por hora, en calidad original. Sin cuentas y cifrada: ni nosotros podemos ver las fotos. Al cerrarse el viaje, se borra todo.</p>
+        <div class="pestanas" role="tablist" aria-label="Funciones de Singladura">
+          <button role="tab" aria-selected="true" data-s="juntar" id="s-juntar">Juntar</button>
+          <button role="tab" aria-selected="false" data-s="linea" id="s-linea">Línea de tiempo</button>
+          <button role="tab" aria-selected="false" data-s="descargar" id="s-descargar">Descargar</button>
+        </div>
+        <p class="pest-txt" id="siTxt" aria-live="polite"></p>
+        <div class="datos">
+          <div><b>Cifrada</b><span>De extremo a extremo</span></div>
+          <div><b>Sin cuentas</b><span>Basta el enlace</span></div>
+          <div><b>Original</b><span>Calidad completa</span></div>
+        </div>
+        <div class="ctas">
+          <a class="btn btn-1 iman" href="https://singladura.astillerosoftware.es/" target="_blank" rel="noopener">Probar Singladura <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M9 7h8v8"/></svg></a>
+          <a class="btn btn-2" href="#contacto">Quiero algo así para mi negocio</a>
+        </div>
+        <p style="margin-top:18px"><a href="/singladura/" style="color:var(--muted);font-size:15px">Todo sobre Singladura →</a></p>
+      </div>
+      <div class="escena rev">
+        <div class="telefono si" aria-hidden="true">
+          <div class="pantalla si">
+            <div class="p-cab"><b>Singladura</b><span id="siHora">09:41</span></div>
+            <div class="p-vista" id="siVista"></div>
+            <div class="p-nav"><span class="on">Viaje</span><span>Fotos</span><span>Invitar</span><span>Mis viajes</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- TRABAJOS WEB -->
   <section id="trabajos">
     <div class="wrap">
@@ -963,6 +1030,7 @@ img{max-width:100%}
         <a href="/cuaderna/">Cuaderna</a>
         <a href="/cucharon/">Cucharón</a>
         <a href="/nido/">Nido</a>
+        <a href="/singladura/">Singladura</a>
         <a href="#contacto">Contacto</a>
         <a href="privacidad.html">Privacidad</a>
       </nav>
@@ -1193,6 +1261,26 @@ img{max-width:100%}
   cuMostrar("buscar");
   if (!reducido) setInterval(() => { if (cuParado || document.hidden) return; cuIdx = (cuIdx + 1) % 3; cuMostrar(["buscar", "comensales", "libro"][cuIdx]); }, 6000);
   const cuHora = () => { $("#cuHora").textContent = new Date().toLocaleTimeString("es-ES", {hour: "2-digit", minute: "2-digit"}); }; cuHora(); setInterval(cuHora, 30000);
+
+  /* ---------- Singladura: pestañas que cambian la pantalla ---------- */
+  const siTextos = {
+    juntar: "Eliges fotos de tu galería y Singladura mira en el móvil cuáles encajan con las fechas del viaje. Tú decides cuáles compartir; las demás no salen de tu móvil.",
+    linea: "Las fotos de todos, juntas por día y por momentos, con la inicial de quien la hizo. Puedes ver solo las de una persona y abrir cada una a pantalla completa.",
+    descargar: "Te llevas el viaje entero en calidad original, en un ZIP con las fotos ordenadas por fecha y autor. Al llegar la fecha de cierre se borra todo, también las fotos."
+  };
+  const siT = (c, i = "", ok = "") => `<div class="si-t ${c} ${ok}">${i}</div>`;
+  const siPantallas = {
+    juntar: `<span class="si-et">Oporto · 12–15 nov.</span><b class="si-h">Añade las tuyas</b><span class="si-et">38 de 212 encajan con el viaje</span><div class="si-rej">${siT("", "", "ok")}${siT("b", "", "ok")}${siT("c", "", "ok")}${siT("d", "", "ok")}${siT("e", "", "ok")}${siT("f", "", "no")}</div><span class="si-et">¿Son del viaje? · 3</span><div class="si-rej">${siT("c", "", "no")}${siT("b", "", "no")}${siT("d", "", "no")}</div><div class="si-btn">Compartir 38 fotos</div>`,
+    linea: `<span class="si-et">Oporto · 4 personas · 214 fotos</span><b class="si-h">Sábado 12 nov.</b><div class="si-mom"><b>11:40</b><span>6 fotos</span></div><div class="si-rej">${siT("", "<i>L</i>")}${siT("c", "<i class='v'>A</i>")}${siT("b", "<i class='n'>T</i>")}${siT("d", "<i>L</i>")}${siT("", "<i class='m'>M</i>")}${siT("c", "<i class='v'>A</i>")}</div><div class="si-mom"><b>20:15</b><span>3 fotos</span></div><div class="si-rej">${siT("e", "<i class='n'>T</i>")}${siT("f", "<i>L</i>")}${siT("b", "<i class='m'>M</i>")}</div>`,
+    descargar: `<span class="si-et">Oporto · 214 fotos · 484 MB</span><b class="si-h">Descargar el viaje</b><div class="si-zip"><div>Oporto (1 de 2).zip<small>132 fotos · 300 MB</small></div><em>LISTO</em></div><div class="si-zip"><div>Oporto (2 de 2).zip<small>82 fotos · 184 MB</small></div><em>64 %</em></div><div class="si-cand"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="10" width="16" height="11" rx="2.5"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg><span><b>Cifradas en tu móvil.</b> Ni nosotros podemos verlas. Abierto hasta el 14 de enero.</span></div><div class="si-btn">Descargar el viaje completo</div>`
+  };
+  const siPest = $$("#singladura .pestanas button");
+  const siMostrar = clave => { siPest.forEach(b => b.setAttribute("aria-selected", b.dataset.s === clave)); $("#siTxt").textContent = siTextos[clave]; $("#siVista").innerHTML = siPantallas[clave]; };
+  let siIdx = 0, siParado = false;
+  siPest.forEach(b => b.onclick = () => { siMostrar(b.dataset.s); siParado = true; });
+  siMostrar("juntar");
+  if (!reducido) setInterval(() => { if (siParado || document.hidden) return; siIdx = (siIdx + 1) % 3; siMostrar(["juntar", "linea", "descargar"][siIdx]); }, 6000);
+  const siHora = () => { $("#siHora").textContent = new Date().toLocaleTimeString("es-ES", {hour: "2-digit", minute: "2-digit"}); }; siHora(); setInterval(siHora, 30000);
 
   /* ---------- método: línea de avance ---------- */
   const proceso = $("#proceso"), pasos = $$(".paso"), linea = $("#avance");
