@@ -2,6 +2,7 @@
 <html lang="es">
 <head>
 <meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://images.unsplash.com; connect-src 'self' https://cuaderna-jam-gwhugrdqcub6e9ba.swedencentral-01.azurewebsites.net https://cloudflareinsights.com; base-uri 'self'; form-action 'self'; object-src 'none'">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Carnes Valdehierro · Web de demostración · Astillero Software</title>
 <meta name="description" content="Web de demostración de Astillero Software para un obrador cárnico mayorista ficticio: cerdo, cordero y ternera de la dehesa, calidades y encargos profesionales.">
@@ -358,16 +359,8 @@ footer a{color:var(--muted)}
   </div>
 </footer>
 
-<script>
-document.getElementById("fEncargo").addEventListener("submit", function (e) {
-  e.preventDefault();
-  if (this.querySelector(".aviso")) return;
-  var p = document.createElement("p");
-  p.className = "aviso"; p.setAttribute("role", "status");
-  p.textContent = "Esto es una web de demostración: el encargo no se envía. En la versión real llegaría al correo y al móvil del obrador.";
-  this.appendChild(p);
-});
-</script>
+<script src="/referencias/carnes-valdehierro/demo.js"></script>
 <script src="/referencias/demo-astillero.js" defer></script>
+<!-- Cloudflare Web Analytics: visitas anónimas, sin cookies --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "b1773a76f675484aae87de5303c89475"}'></script>
 </body>
 </html>

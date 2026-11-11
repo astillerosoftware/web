@@ -2,6 +2,7 @@
 <html lang="es">
 <head>
 <meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://images.unsplash.com; connect-src 'self' https://cuaderna-jam-gwhugrdqcub6e9ba.swedencentral-01.azurewebsites.net https://cloudflareinsights.com; base-uri 'self'; form-action 'self'; object-src 'none'">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Nido · Bóveda personal de contraseñas | Astillero Software</title>
 <meta name="description" content="Nido es una bóveda personal para contraseñas, tarjetas y notas delicadas. Cifrada en tu propio dispositivo, sin servidor y sin cuentas. Disponible solo bajo petición.">
@@ -15,7 +16,7 @@
 <meta property="og:image" content="https://astillerosoftware.es/og.png">
 <link rel="stylesheet" href="/fuentes/fuentes.css">
 <link rel="stylesheet" href="/paginas.css">
-<script>try{var t=localStorage.getItem("astillero.tema");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+<script src="/js/tema.js"></script>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -72,6 +73,7 @@
       <a class="txt" href="/cuaderna/">Cuaderna</a>
       <a class="txt" href="/cucharon/">Cucharón</a>
       <a class="txt" href="/nido/" aria-current="page">Nido</a>
+      <a class="txt" href="/singladura/">Singladura</a>
       <a class="btn btn-1" href="/#contacto">Hablemos</a>
     </nav>
   </div>
@@ -207,6 +209,7 @@
       <a href="/cuaderna/">Cuaderna</a>
       <a href="/cucharon/">Cucharón</a>
       <a href="/nido/">Nido</a>
+      <a href="/singladura/">Singladura</a>
       <a href="/#contacto">Contacto</a>
       <a href="/aviso-legal.html">Aviso legal</a>
         <a href="/privacidad.html">Privacidad</a>
@@ -214,5 +217,6 @@
     </nav>
   </div>
 </footer>
+<!-- Cloudflare Web Analytics: visitas anónimas, sin cookies --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "b1773a76f675484aae87de5303c89475"}'></script>
 </body>
 </html>

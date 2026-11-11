@@ -2,6 +2,7 @@
 <html lang="es">
 <head>
 <meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://images.unsplash.com; connect-src 'self' https://cuaderna-jam-gwhugrdqcub6e9ba.swedencentral-01.azurewebsites.net https://cloudflareinsights.com; base-uri 'self'; form-action 'self'; object-src 'none'">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Astillero Software · Diseño web, apps y software a medida</title>
 <meta name="description" content="Estudio de diseño y software: webs, identidad gráfica, aplicaciones y herramientas a medida.">
@@ -238,7 +239,13 @@ nav.menu a.activo::after{transform:scaleX(1)}
 .novedad{display:inline-flex;align-items:center;gap:10px;margin:0 10px 10px 0;padding:7px 14px 7px 8px;border-radius:999px;border:1px solid color-mix(in srgb,var(--accent) 45%,var(--line-strong));background:var(--accent-soft);color:var(--fg);font-size:13px;text-decoration:none;transition:border-color .2s}
 .novedad:hover{border-color:var(--accent)}
 .novedad b{font:600 11px/1 var(--f-mono);letter-spacing:.12em;text-transform:uppercase;background:var(--accent);color:var(--accent-ink);padding:5px 8px;border-radius:999px}
-.novedad svg{width:14px;height:14px}
+.novedad svg{width:14px;height:14px;flex:none}
+.nov-txt{transition:opacity .3s,transform .3s}
+.novedad.cambia .nov-txt{opacity:0;transform:translateY(4px)}
+.nov-pts{display:inline-flex;gap:4px}
+.nov-pts:empty{display:none}
+.nov-pts i{width:5px;height:5px;border-radius:50%;background:color-mix(in srgb,var(--accent) 30%,transparent);transition:background .3s}
+.nov-pts i.on{background:var(--accent)}
 
 /* segundo producto: Cucharón, con el móvil a la izquierda en escritorio */
 .proy-b{border-top:0}
@@ -256,6 +263,37 @@ nav.menu a.activo::after{transform:scaleX(1)}
 .ni-abrir{background:#9A7A3F;color:#fff;border-radius:12px;padding:11px;text-align:center;font-weight:600;font-size:11.5px}
 .ni .p-nav{border-top-color:#E2DDD3;color:#6D685E}
 .ni .p-nav span.on{color:#9A7A3F}
+/* cuarto producto: Singladura (fotos del viaje), con sus colores: lacre, tinta y plano */
+.telefono.si{background:#0D1B2B;box-shadow:var(--shadow),inset 0 0 0 1.5px #24364B;transform:rotate(4deg)}
+.telefono.si:hover{transform:rotate(0)}
+.pantalla.si{background:#EDF1F4;color:#0D1B2B;font-family:"Instrument Sans",system-ui,sans-serif}
+.si .p-cab{background:#0D1B2B;color:#fff;padding-bottom:12px}
+.si .p-cab b{font:800 20px/1 var(--f-display);text-transform:uppercase;letter-spacing:.03em;display:flex;align-items:center;gap:7px}
+.si .p-cab b::before{content:"";width:18px;height:18px;border-radius:5px;flex:none;background:#A8322D url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cg transform='rotate(5 50 51)'%3E%3Crect x='25' y='22' width='50' height='58' rx='3' fill='%23fff'/%3E%3Crect x='30' y='27' width='40' height='38' rx='1.5' fill='%230d1b2b'/%3E%3Cpath d='M51 33L51 53L62 53Z' fill='%23fff'/%3E%3Cpath d='M49 37L49 53L41 53Z' fill='%23e3563e'/%3E%3C/g%3E%3C/svg%3E") center/100% no-repeat}
+.si .p-cab span{color:#93A7BC}
+.si-et{font:500 8px/1.4 var(--f-mono);letter-spacing:.12em;text-transform:uppercase;color:#5A6B7D}
+.si-h{font:800 17px/1 var(--f-display);text-transform:uppercase;margin:2px 0}
+.si-mom{display:flex;justify-content:space-between;align-items:baseline;font-size:10px;color:#5A6B7D}
+.si-mom b{font:600 11px/1 var(--f-mono);color:#0D1B2B}
+.si-rej{display:grid;grid-template-columns:repeat(3,1fr);gap:3px}
+.si-t{position:relative;aspect-ratio:1;border-radius:4px;background:linear-gradient(160deg,#9BC3DB,#3E6E8E 60%,#24435A)}
+.si-t.b{background:linear-gradient(170deg,#F1C58B,#D9845A 55%,#7C3B2C)}
+.si-t.c{background:linear-gradient(180deg,#BFD9E6 0 45%,#E9DCC4 45% 60%,#C9A57A)}
+.si-t.d{background:linear-gradient(150deg,#7FA36B,#44683A 60%,#2C4527)}
+.si-t.e{background:linear-gradient(200deg,#F6E7C8,#E3B87A 50%,#A8322D)}
+.si-t.f{background:linear-gradient(160deg,#2B3F5C,#0D1B2B 70%)}
+.si-t i{position:absolute;right:3px;bottom:3px;width:13px;height:13px;border-radius:50%;font:700 7px/13px var(--f-body);font-style:normal;text-align:center;color:#fff;background:#A8322D;box-shadow:0 0 0 1.5px #fff}
+.si-t i.v{background:#2F7D6D}.si-t i.n{background:#C4862F}.si-t i.m{background:#4A5FA8}
+.si-t.ok::after{content:"✓";position:absolute;left:3px;top:3px;width:13px;height:13px;border-radius:50%;background:#A8322D;color:#fff;font-size:8px;line-height:13px;text-align:center}
+.si-t.no{opacity:.45}
+.si-btn{margin-top:auto;background:#A8322D;color:#fff;border-radius:10px;padding:10px;text-align:center;font-weight:600;font-size:11px}
+.si-zip{background:#fff;border:1px solid #D5DEE6;border-radius:10px;padding:8px 10px;display:flex;justify-content:space-between;align-items:center;font-size:10.5px}
+.si-zip small{display:block;color:#5A6B7D;font-size:9px}
+.si-zip em{font:600 9px var(--f-mono);font-style:normal;color:#2F7D6D}
+.si-cand{display:flex;gap:7px;align-items:flex-start;background:#fff;border:1px solid #D5DEE6;border-radius:10px;padding:8px 10px;font-size:9.5px;line-height:1.35}
+.si-cand svg{width:14px;height:14px;flex:none;color:#A8322D}
+.si .p-nav{border-top:1px solid #D5DEE6;background:#fff;color:#5A6B7D;font-weight:600}
+.si .p-nav span.on{color:#A8322D}
 /* trabajos web: referencias de clientes (demostraciones) */
 .trab-grid{display:grid;gap:28px}
 .trab{display:grid;gap:0;border:1px solid var(--line-strong);border-radius:var(--r);overflow:hidden;background:var(--surface);box-shadow:var(--shadow)}
@@ -318,35 +356,42 @@ nav.menu a.activo::after{transform:scaleX(1)}
 .trab-txt .ctas{margin-top:auto;padding-top:8px}
 .trab-nota{font-size:13px;color:var(--faint)}
 
-.telefono.cu{background:#1E2136;box-shadow:var(--shadow),inset 0 0 0 1.5px #3b3f63;transform:rotate(4deg)}
+.telefono.cu{background:#172033;box-shadow:var(--shadow),inset 0 0 0 1.5px #2C3752;transform:rotate(4deg)}
 .telefono.cu:hover{transform:rotate(0)}
-.pantalla.cu{background:#EAF1FF;color:#1E2136;font-family:"Nunito","Instrument Sans",system-ui,sans-serif;background-image:repeating-conic-gradient(#E1EAFC 0 25%,transparent 0 50%);background-size:28px 28px}
-.cu .p-cab b{font:800 22px/1 var(--f-display);text-transform:uppercase;letter-spacing:.04em;color:#FF5B3A;text-shadow:1.5px 1.5px 0 #1E2136}
-.cu .p-cab span{color:#5A6082}
-.cu-pega{display:flex;gap:6px;align-items:center;background:#fff;border:2px solid #1E2136;border-radius:999px;padding:6px 6px 6px 12px;font:500 10px var(--f-mono);color:#5A6082;box-shadow:2px 2px 0 #1E2136}
-.cu-pega span{flex:1;min-width:0;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
-.cu-pega i{font-style:normal;background:#FF5B3A;color:#fff;border-radius:999px;padding:5px 9px;font:800 10px var(--f-body);white-space:nowrap}
-.cu-ficha{background:#fff;border:2px solid #1E2136;border-radius:14px;box-shadow:3px 3px 0 #1E2136;overflow:hidden}
-.cu-ficha .arte{height:62px;display:grid;place-items:center;font-size:32px;background:#FFE08A;border-bottom:2px solid #1E2136}
-.cu-ficha .cuerpo{padding:8px 10px;display:grid;gap:3px}
-.cu-ficha b{font-weight:900;font-size:13px}
-.cu-ficha small{color:#5A6082;font-weight:700;font-size:10px}
-.cu-ficha .fte{color:#7457F5;font-weight:900;font-size:10px}
-.cu-paso{display:flex;align-items:center;justify-content:space-between;gap:8px;font-weight:900;font-size:12px}
-.cu-paso .ctl{display:flex;align-items:center;border:2px solid #1E2136;border-radius:999px;background:#FFC53D;overflow:hidden}
-.cu-paso .ctl i{font-style:normal;width:26px;text-align:center;font-size:14px}
-.cu-paso .ctl output{min-width:24px;text-align:center;font:800 15px var(--f-display)}
-.cu-ing{background:#fff;border:2px solid #1E2136;border-radius:12px;padding:6px 10px;display:grid;gap:4px;font-size:11px;font-weight:700}
-.cu-ing div{display:flex;gap:8px}
-.cu-ing em{font-style:normal;font:500 10.5px var(--f-mono);color:#7457F5;min-width:44px}
-.cu-lista{background:#fff;border:2px solid #1E2136;border-radius:12px;padding:7px 10px;font-size:11px;font-weight:700;display:grid;gap:4px}
-.cu-lista h4{margin:0 0 2px;font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:#5A6082}
-.cu-lista div{display:flex;gap:7px;align-items:center}
-.cu-lista i{width:12px;height:12px;border-radius:3px;border:1.5px solid #1E2136;flex:none}
-.cu-lista .ok i{background:#2FBF8F}
-.cu-lista .ok span{text-decoration:line-through;color:#5A6082}
-.cu .p-nav{border-top:2px solid #1E2136;background:#fff;color:#5A6082;font-weight:800}
-.cu .p-nav span.on{color:#FF5B3A}
+.pantalla.cu{background:#F3F1EC;color:#172033;font-family:"Instrument Sans",system-ui,sans-serif;background-image:linear-gradient(rgba(23,32,51,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(23,32,51,.05) 1px,transparent 1px);background-size:14px 14px}
+.cu .p-cab b{font:800 22px/1 var(--f-display);text-transform:uppercase;letter-spacing:.03em;color:#172033;display:flex;align-items:center;gap:7px}
+.cu .p-cab b::before{content:"";width:18px;height:18px;border-radius:5px;flex:none;background:#B23A26 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cg fill='none' stroke='%23FBF6EC' stroke-width='5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M11 33h24a12 12 0 0 1-24 0z'/%3E%3Cpath d='M35 33L49 15'/%3E%3C/g%3E%3C/svg%3E") center/100% no-repeat}
+.cu .p-cab span{color:#5D6577}
+.cu-busca{display:flex;gap:6px;align-items:center;background:#fff;border:1px solid #C3BCAD;border-radius:999px;padding:5px 5px 5px 11px;font-size:10.5px}
+.cu-busca span{flex:1;min-width:0;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
+.cu-busca i{font-style:normal;background:#B23A26;color:#fff;border-radius:999px;padding:4px 9px;font-weight:600;font-size:10px}
+.cu-et{font:500 8px/1.4 var(--f-mono);letter-spacing:.12em;text-transform:uppercase;color:#5D6577}
+.cu-ficha{background:#fff;border:1px solid #DEDAD0;border-radius:10px;padding:8px 10px;display:grid;gap:2px}
+.cu-ficha .sup{display:flex;justify-content:space-between;align-items:baseline;gap:6px}
+.cu-ficha b{font-weight:600;font-size:12px;line-height:1.25}
+.cu-ficha small{color:#5D6577;font-size:9.5px}
+.cu-ficha .fte{font-size:9.5px;color:#5D6577}
+.cu-ficha .fte strong{color:#172033;font-weight:600}
+.cu-nota{font:800 19px/1 var(--f-display);color:#172033}
+.cu-ficha.top .cu-nota{color:#B23A26}
+.cu-paso{display:flex;align-items:center;justify-content:space-between;gap:8px;font-weight:600;font-size:11.5px}
+.cu-paso .ctl{display:flex;align-items:center;border:1px solid #C3BCAD;border-radius:999px;background:#fff;overflow:hidden}
+.cu-paso .ctl i{font-style:normal;width:24px;text-align:center;font-size:13px}
+.cu-paso .ctl output{min-width:20px;text-align:center;font:500 12px var(--f-mono)}
+.cu-ing{background:#fff;border:1px solid #DEDAD0;border-radius:10px;padding:6px 10px;display:grid;gap:5px;font-size:11px}
+.cu-ing div{display:flex;gap:8px;border-top:1px dashed #DEDAD0;padding-top:5px}
+.cu-ing div:first-child{border-top:0;padding-top:0}
+.cu-ing em{font-style:normal;font:500 10px var(--f-mono);color:#B23A26;min-width:52px}
+.cu-libro{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:2px}
+.cu-pag{aspect-ratio:148/210;border-radius:4px;background:#fff;box-shadow:0 6px 14px rgba(23,32,51,.16);padding:9px 8px;display:flex;flex-direction:column;gap:3px;font-size:6.5px;color:#5D6577;overflow:hidden}
+.cu-pag.portada{background:#B23A26;color:#FBF6EC;box-shadow:0 6px 14px rgba(23,32,51,.16),inset 0 0 0 3px #B23A26,inset 0 0 0 3.6px #FBF6EC;justify-content:center}
+.cu-pag.portada b{font:800 17px/.95 var(--f-display);text-transform:uppercase;color:#FBF6EC}
+.cu-pag h5{margin:0 0 3px;font:800 12px/1 var(--f-display);color:#172033}
+.cu-pag .l{display:flex;justify-content:space-between;gap:4px;border-bottom:1px dotted #D6D0C4;padding-bottom:1px}
+.cu-pag .l span:last-child{color:#B23A26;font-weight:600}
+.cu-pag .c{font:600 5.5px var(--f-mono);letter-spacing:.1em;color:#B23A26;margin-top:3px}
+.cu .p-nav{border-top:1px solid #DEDAD0;background:#fff;color:#5D6577;font-weight:600}
+.cu .p-nav span.on{color:#172033}
 
 /* PROCESO */
 .proceso{display:grid;gap:0;position:relative}
@@ -509,7 +554,7 @@ img{max-width:100%}
   <section class="hero plano">
     <div class="wrap hero-grid">
       <div>
-        <a class="novedad" href="#cucharon"><b>Nuevo</b>Cucharón: tus recetas, siempre con su fuente <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <a class="novedad" id="novedad" href="#cucharon"><b>Nuevo</b><span class="nov-txt">Cucharón: busca recetas y crea tu libro en PDF</span><span class="nov-pts" aria-hidden="true"></span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
         <span class="estado"><i></i>Aceptamos proyectos para este trimestre</span>
         <h1><span class="l"><span>Diseño y software</span></span><span class="l"><span>construidos</span></span><span class="l"><span><em>cuaderna a cuaderna</em></span></span></h1>
         <p class="lead">Webs, identidad gráfica, aplicaciones y herramientas a medida para negocios que quieren trabajar mejor. Del primer plano a la botadura, y después seguimos a bordo.</p>
@@ -589,7 +634,7 @@ img{max-width:100%}
   </section>
 
   <!-- PROYECTO DESTACADO -->
-  <section class="proy plano" id="proyectos">
+  <section class="proy plano" id="proyectos" data-novedad="2026-11-01" data-novedad-txt="Cuaderna: dicta tus notas y se ordenan solas">
     <div class="wrap proy-grid">
       <div class="rev">
         <span class="etq">Producto propio · en uso</span>
@@ -625,16 +670,16 @@ img{max-width:100%}
   </section>
 
   <!-- SEGUNDO PRODUCTO: CUCHARÓN -->
-  <section class="proy proy-b plano" id="cucharon">
+  <section class="proy proy-b plano" id="cucharon" data-novedad="2026-11-07" data-novedad-txt="Cucharón: busca recetas y crea tu libro en PDF">
     <div class="wrap proy-grid">
       <div class="rev">
         <span class="etq">Producto propio · nuevo</span>
         <h2>Cucharón</h2>
-        <p class="lead">Nuestro recetario. Pegas el enlace de cualquier receta y la convierte en una ficha clara, igual que todas las demás y siempre con su fuente: la web o el libro, el autor y el enlace a la original.</p>
+        <p class="lead">Nuestro recetario. Buscas una receta o pegas su enlace y la convierte en una ficha clara, igual que todas las demás y siempre con su fuente. Con tus recetas, creas tu propio libro de cocina en PDF.</p>
         <div class="pestanas" role="tablist" aria-label="Funciones de Cucharón">
-          <button role="tab" aria-selected="true" data-c="enlace" id="c-enlace">Pega el enlace</button>
+          <button role="tab" aria-selected="true" data-c="buscar" id="c-buscar">Buscar</button>
           <button role="tab" aria-selected="false" data-c="comensales" id="c-comensales">Comensales</button>
-          <button role="tab" aria-selected="false" data-c="lista" id="c-lista">Lista de la compra</button>
+          <button role="tab" aria-selected="false" data-c="libro" id="c-libro">Tu libro en PDF</button>
         </div>
         <p class="pest-txt" id="cuTxt" aria-live="polite"></p>
         <div class="datos">
@@ -653,7 +698,7 @@ img{max-width:100%}
           <div class="pantalla cu">
             <div class="p-cab"><b>Cucharón</b><span id="cuHora">09:41</span></div>
             <div class="p-vista" id="cuVista"></div>
-            <div class="p-nav"><span class="on">Recetas</span><span>Añadir</span><span>Lista</span><span>Ruleta</span></div>
+            <div class="p-nav"><span class="on">Recetas</span><span>Buscar</span><span>Añadir</span><span>Compra</span><span>Ruleta</span></div>
           </div>
         </div>
       </div>
@@ -661,7 +706,7 @@ img{max-width:100%}
   </section>
 
   <!-- TERCER PRODUCTO: NIDO (solo información, bajo petición) -->
-  <section class="proy plano" id="nido" style="border-top:0">
+  <section class="proy plano" id="nido" style="border-top:0" data-novedad="2026-11-03" data-novedad-txt="Nido: tu bóveda de contraseñas, bajo petición">
     <div class="wrap proy-grid">
       <div class="rev">
         <span class="etq">Producto propio · bajo petición</span>
@@ -695,6 +740,42 @@ img{max-width:100%}
     </div>
   </section>
 
+  <!-- CUARTO PRODUCTO: SINGLADURA (fotos del viaje) -->
+  <section class="proy proy-b plano" id="singladura" data-novedad="2026-11-08" data-novedad-txt="Singladura: las fotos del viaje, de todos">
+    <div class="wrap proy-grid">
+      <div class="rev">
+        <span class="etq">Producto propio · nuevo</span>
+        <h2>Singladura</h2>
+        <p class="lead">Nuestra app para juntar las fotos de un viaje. Cada uno sube las suyas desde su móvil y todos tienen el viaje entero, por día y por hora, en calidad original. Sin cuentas y cifrada: ni nosotros podemos ver las fotos. Al cerrarse el viaje, se borra todo.</p>
+        <div class="pestanas" role="tablist" aria-label="Funciones de Singladura">
+          <button role="tab" aria-selected="true" data-s="juntar" id="s-juntar">Juntar</button>
+          <button role="tab" aria-selected="false" data-s="linea" id="s-linea">Línea de tiempo</button>
+          <button role="tab" aria-selected="false" data-s="descargar" id="s-descargar">Descargar</button>
+        </div>
+        <p class="pest-txt" id="siTxt" aria-live="polite"></p>
+        <div class="datos">
+          <div><b>Cifrada</b><span>De extremo a extremo</span></div>
+          <div><b>Sin cuentas</b><span>Basta el enlace</span></div>
+          <div><b>Original</b><span>Calidad completa</span></div>
+        </div>
+        <div class="ctas">
+          <a class="btn btn-1 iman" href="https://singladura.astillerosoftware.es/" target="_blank" rel="noopener">Probar Singladura <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M9 7h8v8"/></svg></a>
+          <a class="btn btn-2" href="#contacto">Quiero algo así para mi negocio</a>
+        </div>
+        <p style="margin-top:18px"><a href="/singladura/" style="color:var(--muted);font-size:15px">Todo sobre Singladura →</a></p>
+      </div>
+      <div class="escena rev">
+        <div class="telefono si" aria-hidden="true">
+          <div class="pantalla si">
+            <div class="p-cab"><b>Singladura</b><span id="siHora">09:41</span></div>
+            <div class="p-vista" id="siVista"></div>
+            <div class="p-nav"><span class="on">Viaje</span><span>Fotos</span><span>Invitar</span><span>Mis viajes</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- TRABAJOS WEB -->
   <section id="trabajos">
     <div class="wrap">
@@ -704,7 +785,7 @@ img{max-width:100%}
         <p class="lead">Propuestas que diseñamos para enseñar cómo trabajamos con cada sector. Ábrelas, navégalas en el móvil y piensa en la tuya.</p>
       </div>
       <div class="trab-grid">
-        <article class="trab rev">
+        <article class="trab rev" id="ref-carnes-valdehierro" data-novedad="2026-11-01" data-novedad-txt="Web de demostración: Carnes Valdehierro">
           <a class="trab-vista" href="/referencias/carnes-valdehierro/" aria-label="Abrir la web de demostración de Carnes Valdehierro">
             <div class="navg" aria-hidden="true">
               <div class="navg-barra"><i></i><i></i><i></i><span>carnesvaldehierro · demostración</span></div>
@@ -733,7 +814,7 @@ img{max-width:100%}
             <p class="trab-nota">Empresa ficticia creada como referencia.</p>
           </div>
         </article>
-        <article class="trab inv rev">
+        <article class="trab inv rev" id="ref-policlinica-vereda" data-novedad="2026-11-01" data-novedad-txt="Web de demostración: Policlínica Vereda">
           <a class="trab-vista salud" href="/referencias/policlinica-vereda/" aria-label="Abrir la web de demostración de Policlínica Vereda">
             <div class="navg" aria-hidden="true">
               <div class="navg-barra"><i></i><i></i><i></i><span>policlinicavereda · demostración</span></div>
@@ -762,7 +843,7 @@ img{max-width:100%}
             <p class="trab-nota">Centro ficticio creado como referencia.</p>
           </div>
         </article>
-        <article class="trab rev">
+        <article class="trab rev" id="ref-talleres-biela" data-novedad="2026-11-01" data-novedad-txt="Web de demostración: Talleres Biela">
           <a class="trab-vista taller" href="/referencias/talleres-biela/" aria-label="Abrir la web de demostración de Talleres Biela">
             <div class="navg" aria-hidden="true">
               <div class="navg-barra"><i></i><i></i><i></i><span>talleresbiela · demostración</span></div>
@@ -948,6 +1029,7 @@ img{max-width:100%}
         <a href="/cuaderna/">Cuaderna</a>
         <a href="/cucharon/">Cucharón</a>
         <a href="/nido/">Nido</a>
+        <a href="/singladura/">Singladura</a>
         <a href="#contacto">Contacto</a>
         <a href="/aviso-legal.html">Aviso legal</a>
         <a href="privacidad.html">Privacidad</a>
@@ -960,271 +1042,7 @@ img{max-width:100%}
 <button class="arriba" id="bArriba" aria-label="Volver arriba"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 19V5M6 11l6-6 6 6"/></svg></button>
 <div class="toast" id="toast" role="status"></div>
 
-<script>
-(() => {
-  const $ = s => document.querySelector(s), $$ = s => [...document.querySelectorAll(s)];
-  const reducido = matchMedia("(prefers-reduced-motion: reduce)").matches;
-  const ls = { get(k){ try { return localStorage.getItem(k); } catch(e){ return null; } }, set(k,v){ try { localStorage.setItem(k,v); } catch(e){} } };
-  // Dirección del servidor que recibe los mensajes. Vacía: se ofrece copiar el mensaje.
-  const API_CONTACTO = "https://cuaderna-jam-gwhugrdqcub6e9ba.swedencentral-01.azurewebsites.net/api/contacto";
-
-  /* ---------- tema ---------- */
-  const raiz = document.documentElement;
-  const temaGuardado = ls.get("astillero.tema"); if (temaGuardado) raiz.dataset.theme = temaGuardado;
-  const oscuroAhora = () => raiz.dataset.theme ? raiz.dataset.theme === "dark" : !matchMedia("(prefers-color-scheme: light)").matches;
-  $("#bTema").onclick = () => { const t = oscuroAhora() ? "light" : "dark"; raiz.dataset.theme = t; ls.set("astillero.tema", t); leerColores(); };
-
-  /* ---------- aviso breve ---------- */
-  let tt; const aviso = txt => { const t = $("#toast"); t.textContent = txt; t.classList.add("ver"); clearTimeout(tt); tt = setTimeout(() => t.classList.remove("ver"), 2200); };
-
-  /* ---------- cabecera, progreso, volver arriba ---------- */
-  const cab = $("#cabecera"), prog = $("#progreso"), arriba = $("#bArriba");
-  let ultimo = 0, pendiente = false;
-  const alScroll = () => {
-    pendiente = false;
-    const y = scrollY, alto = document.documentElement.scrollHeight - innerHeight;
-    prog.style.transform = `scaleX(${alto > 0 ? y / alto : 0})`;
-    cab.classList.toggle("solido", y > 12);
-    cab.classList.toggle("oculto", y > 400 && y > ultimo + 4 && !$("#movil").classList.contains("abierto"));
-    if (y < ultimo - 4) cab.classList.remove("oculto");
-    ultimo = y;
-    arriba.classList.toggle("ver", y > 900);
-    avanceProceso();
-  };
-  addEventListener("scroll", () => { if (!pendiente){ pendiente = true; requestAnimationFrame(alScroll); } }, {passive: true});
-  arriba.onclick = () => scrollTo({top: 0, behavior: reducido ? "auto" : "smooth"});
-
-  /* ---------- menú: enlace activo ---------- */
-  const enlaces = $$("nav.menu a");
-  const secciones = enlaces.map(a => $(a.getAttribute("href")));
-  const io = new IntersectionObserver(es => es.forEach(e => {
-    if (e.isIntersecting) enlaces.forEach(a => a.classList.toggle("activo", a.getAttribute("href") === "#" + e.target.id));
-  }), {rootMargin: "-45% 0px -50% 0px"});
-  secciones.forEach(s => s && io.observe(s));
-
-  /* ---------- menú móvil ---------- */
-  const movil = $("#movil"), bMenu = $("#bMenu");
-  const abrir = si => { movil.classList.toggle("abierto", si); bMenu.setAttribute("aria-expanded", si); document.body.style.overflow = si ? "hidden" : ""; if (si) setTimeout(() => $("#bCerrar").focus(), 200); else bMenu.focus({preventScroll: true}); };
-  bMenu.onclick = () => abrir(true); $("#bCerrar").onclick = () => abrir(false);
-  movil.querySelectorAll("a").forEach(a => a.addEventListener("click", () => abrir(false)));
-  addEventListener("keydown", e => { if (e.key === "Escape" && movil.classList.contains("abierto")) abrir(false); });
-
-  /* ---------- aparición suave (visible siempre; solo se desplaza) ---------- */
-  if (!reducido && "IntersectionObserver" in window){
-    const rev = $$(".rev").filter(el => el.getBoundingClientRect().top > innerHeight);
-    rev.forEach(el => el.classList.add("pre"));
-    const ob = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting){ e.target.classList.remove("pre"); ob.unobserve(e.target); } }), {rootMargin: "0px 0px -8% 0px"});
-    rev.forEach(el => ob.observe(el));
-  }
-
-  /* ---------- cinta: duplicar para bucle continuo ---------- */
-  const pista = $("#pista"); pista.innerHTML += pista.innerHTML;
-
-  /* ---------- botones magnéticos ---------- */
-  if (!reducido && matchMedia("(pointer:fine)").matches){
-    $$(".iman").forEach(b => {
-      b.addEventListener("pointermove", e => { const r = b.getBoundingClientRect(); b.style.setProperty("--mx", ((e.clientX - r.left - r.width/2) * .18) + "px"); b.style.setProperty("--my", ((e.clientY - r.top - r.height/2) * .25) + "px"); });
-      b.addEventListener("pointerleave", () => { b.style.setProperty("--mx", "0px"); b.style.setProperty("--my", "0px"); });
-    });
-  }
-
-  /* ---------- foco de luz en tarjetas ---------- */
-  $$(".serv").forEach(c => c.addEventListener("pointermove", e => { const r = c.getBoundingClientRect(); c.style.setProperty("--x", (e.clientX - r.left) + "px"); c.style.setProperty("--y", (e.clientY - r.top) + "px"); }));
-
-  /* ---------- plano de formas interactivo ---------- */
-  const cv = $("#casco"), ctx = cv.getContext("2d");
-  let col = {};
-  function leerColores(){ const s = getComputedStyle(raiz); col = { linea: s.getPropertyValue("--line-strong").trim(), tenue: s.getPropertyValue("--line").trim(), acento: s.getPropertyValue("--accent").trim(), fg: s.getPropertyValue("--fg").trim(), muted: s.getPropertyValue("--muted").trim() }; dibujar(); }
-  matchMedia("(prefers-color-scheme: light)").addEventListener?.("change", leerColores);
-  let W = 0, H = 0, dpr = 1;
-  const estado = { manga: 1, llenado: .55, objManga: 1, objLlenado: .55, t: 0, raton: null };
-  function medir(){ const r = cv.getBoundingClientRect(); dpr = Math.min(devicePixelRatio || 1, 2); W = r.width; H = r.height; cv.width = W * dpr; cv.height = H * dpr; ctx.setTransform(dpr, 0, 0, dpr, 0, 0); dibujar(); }
-  function dibujar(){
-    if (!W) return;
-    ctx.clearRect(0, 0, W, H);
-    const cx = W / 2, cub = H * .30, base = H * .72, prof = base - cub;
-    const semi = W * .36 * estado.manga, N = 10;
-    // líneas de agua y línea base
-    ctx.lineWidth = 1;
-    for (let k = 0; k <= 5; k++){
-      const y = base - prof * k / 5;
-      ctx.strokeStyle = k === 3 ? col.acento : col.tenue; ctx.setLineDash(k === 3 ? [6, 5] : []);
-      ctx.beginPath(); ctx.moveTo(W * .06, y); ctx.lineTo(W * .94, y); ctx.stroke();
-    }
-    ctx.setLineDash([]);
-    // crujía
-    ctx.strokeStyle = col.linea; ctx.setLineDash([2, 4]); ctx.beginPath(); ctx.moveTo(cx, H * .14); ctx.lineTo(cx, H * .9); ctx.stroke(); ctx.setLineDash([]);
-    // cuadernas: popa a la izquierda, proa a la derecha
-    for (let i = 0; i <= N; i++){
-      const f = i / N;
-      const forma = 1 - Math.pow(Math.abs(f - .45) / .55, 2.1);       // manga relativa de cada cuaderna
-      const w = semi * Math.max(.06, forma);
-      const lleno = estado.llenado * (.55 + .45 * forma);
-      const lado = f < .45 ? -1 : 1;
-      const ola = reducido ? 0 : Math.sin(estado.t * .9 + i * .55) * 2;
-      const xs = cx + lado * w, xFondo = cx;
-      ctx.strokeStyle = i === 5 ? col.acento : col.fg;
-      ctx.globalAlpha = i === 5 ? 1 : .35 + .5 * forma;
-      ctx.lineWidth = i === 5 ? 2 : 1.2;
-      ctx.beginPath();
-      ctx.moveTo(xs, cub + ola);
-      ctx.bezierCurveTo(cx + lado * w * (1.02 + .1 * estado.manga), cub + prof * lleno, cx + lado * w * (.15 + .6 * lleno), base, xFondo, base);
-      ctx.stroke();
-    }
-    ctx.globalAlpha = 1;
-    // cubierta y cota de manga
-    ctx.strokeStyle = col.muted; ctx.lineWidth = 1;
-    ctx.beginPath(); ctx.moveTo(cx - semi, cub - 18); ctx.lineTo(cx + semi, cub - 18); ctx.stroke();
-    [cx - semi, cx + semi].forEach(x => { ctx.beginPath(); ctx.moveTo(x, cub - 24); ctx.lineTo(x, cub - 12); ctx.stroke(); });
-    ctx.fillStyle = col.muted; ctx.font = "500 10.5px 'JetBrains Mono', monospace"; ctx.textAlign = "center";
-    ctx.fillText("MANGA", cx, cub - 24);
-    ctx.textAlign = "left"; ctx.fillStyle = col.acento; ctx.fillText("LF", W * .06, base - prof * 3 / 5 - 6);
-    // retícula del cursor
-    if (estado.raton){
-      const {x, y} = estado.raton; ctx.strokeStyle = col.acento; ctx.globalAlpha = .55; ctx.setLineDash([3, 4]);
-      ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, H); ctx.moveTo(0, y); ctx.lineTo(W, y); ctx.stroke(); ctx.setLineDash([]); ctx.globalAlpha = 1;
-      ctx.beginPath(); ctx.arc(x, y, 5, 0, Math.PI * 2); ctx.stroke();
-    }
-  }
-  const lectura = $("#lecturaManga");
-  cv.addEventListener("pointermove", e => {
-    const r = cv.getBoundingClientRect(); const x = e.clientX - r.left, y = e.clientY - r.top;
-    estado.raton = {x, y};
-    estado.objManga = .72 + .52 * Math.abs(x - r.width / 2) / (r.width / 2);
-    estado.objLlenado = .3 + .6 * (y / r.height);
-    if (reducido){ estado.manga = estado.objManga; estado.llenado = estado.objLlenado; dibujar(); }
-  });
-  cv.addEventListener("pointerleave", () => { estado.raton = null; estado.objManga = 1; estado.objLlenado = .55; if (reducido){ estado.manga = 1; estado.llenado = .55; dibujar(); } });
-  let visible = true, ultimoT = 0;
-  new IntersectionObserver(es => { visible = es[0].isIntersecting; }).observe(cv);
-  function bucle(t){
-    requestAnimationFrame(bucle);
-    if (!visible || document.hidden) return;
-    const dt = Math.min(.05, (t - ultimoT) / 1000 || 0); ultimoT = t;
-    estado.t += dt; estado.manga += (estado.objManga - estado.manga) * .08; estado.llenado += (estado.objLlenado - estado.llenado) * .08;
-    lectura.textContent = "Manga " + estado.manga.toFixed(2).replace(".", ",");
-    dibujar();
-  }
-  new ResizeObserver(medir).observe(cv);
-  leerColores();
-  if (!reducido) requestAnimationFrame(bucle);
-
-  /* ---------- Cuaderna: pestañas que cambian la pantalla ---------- */
-  const textos = {
-    dictar: "Pulsas el botón, hablas y listo. Cuaderna pasa la voz a texto y guarda el audio por si acaso. Pensada para apuntar desde el coche o al salir de una visita.",
-    ordenar: "La inteligencia artificial pone título, separa tareas, detecta fechas y personas y te lo recuerda a tiempo. Tú solo apuntas.",
-    pasar: "Pasa una nota a otra persona por WhatsApp con un enlace claro. Quien la recibe la abre, la marca como hecha y te llega el aviso."
-  };
-  const pantallas = {
-    dictar: `<div class="nota"><b>Llamar a Ramírez por el pedido</b><small>Hoy · 09:12 · dictada</small></div><div class="ondas">${Array.from({length: 16}, (_, i) => `<i style="animation-delay:${(i * .07).toFixed(2)}s"></i>`).join("")}</div><div class="micro"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg></div>`,
-    ordenar: `<div class="nota"><b>Presupuesto cuadro eléctrico</b><small>Mañana · 10:00</small><div class="chips"><i>Cliente</i><i>Recordatorio</i></div></div><div class="nota"><b>Lista de material</b><small>3 de 5 hechas</small><div class="chips"><i>Lista</i><i>Obra</i></div></div><div class="nota"><b>Idea: catálogo en PDF</b><small>Sin fecha</small><div class="chips"><i>Idea</i></div></div>`,
-    pasar: `<div class="nota"><b>Revisar instalación nave 3</b><small>Para Ana · viernes</small></div><div class="wa">Hola Ana 👋<br><b>📒 Revisar instalación nave 3</b><br>📅 Para el viernes<br>👉 Ábrela y márcala como hecha</div><div class="nota" style="border-color:#7FB58F"><b>✓ Ana la ha marcado como hecha</b><small>Hace un momento</small></div>`
-  };
-  const pest = $$("#proyectos .pestanas button");
-  const mostrar = clave => { pest.forEach(b => b.setAttribute("aria-selected", b.dataset.p === clave)); $("#pestTxt").textContent = textos[clave]; $("#pVista").innerHTML = pantallas[clave]; };
-  pest.forEach(b => b.onclick = () => { mostrar(b.dataset.p); parado = true; });
-  let idx = 0, parado = false; mostrar("dictar");
-  if (!reducido) setInterval(() => { if (parado || document.hidden) return; idx = (idx + 1) % 3; mostrar(["dictar", "ordenar", "pasar"][idx]); }, 6000);
-  const hora = () => { const d = new Date(); $("#pHora").textContent = d.toLocaleTimeString("es-ES", {hour: "2-digit", minute: "2-digit"}); }; hora(); setInterval(hora, 30000);
-
-  /* ---------- Cucharón: pestañas que cambian la pantalla ---------- */
-  const cuTextos = {
-    enlace: "Pegas el enlace de la receta y Cucharón la lee: ingredientes, pasos, tiempo, dificultad y, siempre, de dónde sale. Si viene de un libro, basta con una foto.",
-    comensales: "Dices cuántos sois y todas las cantidades se recalculan al momento. Después puedes cocinarla paso a paso, en letra grande.",
-    lista: "Juntas varias recetas en la lista de la compra: suma lo repetido, lo ordena por pasillos del súper y la copias para WhatsApp."
-  };
-  const cuPantallas = {
-    enlace: `<div class="cu-pega"><span>https://…/lentejas-estofadas</span><i>Ordenar</i></div><div class="cu-ficha"><div class="arte">🍲</div><div class="cuerpo"><b>Lentejas estofadas</b><small>⏱ 60 min · 👥 4 · Fácil</small><span class="fte">📖 Fuente: Cocina de la abuela</span></div></div><div class="cu-ficha"><div class="cuerpo"><b>Paella de verduras</b><small>⏱ 50 min · 👥 6 · Media</small><span class="fte">📖 Una revista de cocina</span></div></div><div class="cu-ficha"><div class="cuerpo"><b>Tarta de queso</b><small>⏱ 75 min · 👥 8 · Fácil</small><span class="fte">📖 Tu libro de cocina</span></div></div>`,
-    comensales: `<div class="cu-paso"><span>Comensales</span><span class="ctl"><i>−</i><output>6</output><i>+</i></span></div><div class="cu-ing"><div><em>450 g</em>lentejas pardinas</div><div><em>1½</em>cebolla</div><div><em>3 dientes</em>ajo</div><div><em>1½ cdta.</em>pimentón dulce</div><div><em>2,3 l</em>agua</div></div><div class="cu-ficha"><div class="cuerpo"><small>Original: 4 comensales</small><span class="fte">📖 Cocina de la abuela</span></div></div>`,
-    lista: `<div class="cu-lista"><h4>🥕 Fruta y verdura</h4><div class="ok"><i></i><span>2 cebollas</span></div><div><i></i><span>1 kg tomates</span></div></div><div class="cu-lista"><h4>🥫 Despensa</h4><div class="ok"><i></i><span>450 g lentejas</span></div><div><i></i><span>300 g harina</span></div></div><div class="cu-lista"><h4>🥚 Lácteos y huevos</h4><div><i></i><span>6 huevos</span></div></div>`
-  };
-  const cuPest = $$("#cucharon .pestanas button");
-  const cuMostrar = clave => { cuPest.forEach(b => b.setAttribute("aria-selected", b.dataset.c === clave)); $("#cuTxt").textContent = cuTextos[clave]; $("#cuVista").innerHTML = cuPantallas[clave]; };
-  let cuIdx = 0, cuParado = false;
-  cuPest.forEach(b => b.onclick = () => { cuMostrar(b.dataset.c); cuParado = true; });
-  cuMostrar("enlace");
-  if (!reducido) setInterval(() => { if (cuParado || document.hidden) return; cuIdx = (cuIdx + 1) % 3; cuMostrar(["enlace", "comensales", "lista"][cuIdx]); }, 6000);
-  const cuHora = () => { $("#cuHora").textContent = new Date().toLocaleTimeString("es-ES", {hour: "2-digit", minute: "2-digit"}); }; cuHora(); setInterval(cuHora, 30000);
-
-  /* ---------- método: línea de avance ---------- */
-  const proceso = $("#proceso"), pasos = $$(".paso"), linea = $("#avance");
-  function avanceProceso(){
-    const r = proceso.getBoundingClientRect(), centro = innerHeight * .55;
-    const h = Math.max(0, Math.min(r.height - 16, centro - r.top));
-    linea.style.setProperty("--h", h + "px");
-    pasos.forEach(p => { const pr = p.getBoundingClientRect(); p.classList.toggle("vivo", pr.top + 30 < centro); });
-  }
-  avanceProceso();
-
-  /* ---------- configurador ---------- */
-  const plazos = ["Lo antes posible", "En un mes", "En unos 2 meses", "En 3 a 6 meses", "Sin prisa"];
-  const leerConfig = () => ({
-    tipos: $$("#cTipo input:checked").map(i => i.value),
-    punto: $("#cPunto input:checked")?.value || "",
-    plazo: plazos[+$("#cPlazo").value - 1],
-    pres: $("#cPres input:checked")?.value || ""
-  });
-  function pintarConfig(){
-    const c = leerConfig();
-    $("#rTipo").textContent = c.tipos.length ? c.tipos.join(", ") : "Marca al menos una opción";
-    $("#rPunto").textContent = c.punto; $("#rPlazo").textContent = c.plazo; $("#rPres").textContent = c.pres;
-    $("#cPlazoTxt").textContent = c.plazo;
-    $("#medidor").style.setProperty("--p", (c.tipos.length ? 55 + Math.min(45, c.tipos.length * 15) : 15) + "%");
-  }
-  $("#configurador").addEventListener("change", pintarConfig); $("#cPlazo").addEventListener("input", pintarConfig); pintarConfig();
-  $("#bLlevar").addEventListener("click", () => {
-    const c = leerConfig();
-    const txt = `Necesito: ${c.tipos.length ? c.tipos.join(", ") : "(por concretar)"}.\nPunto de partida: ${c.punto}.\nPlazo: ${c.plazo}.\nPresupuesto aproximado: ${c.pres}.\n\nMás detalles: `;
-    const m = $("#fMsg"); m.value = txt; contar(); setTimeout(() => { m.focus({preventScroll: true}); m.setSelectionRange(m.value.length, m.value.length); }, 600);
-    aviso("Resumen añadido al formulario");
-  });
-
-  /* ---------- formulario ---------- */
-  const fMsg = $("#fMsg");
-  const contar = () => { $("#fCont").textContent = `${fMsg.value.length} / 1500`; };
-  fMsg.addEventListener("input", contar);
-  const reglas = { fNombre: v => v.trim().length >= 2, fEmail: v => /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v.trim()), fMsg: v => v.trim().length >= 20 };
-  const validar = id => { const el = $("#" + id), ok = reglas[id](el.value), c = el.closest(".campo"); c.classList.toggle("mal", !ok); c.classList.toggle("bien", ok); return ok; };
-  Object.keys(reglas).forEach(id => { $("#" + id).addEventListener("blur", () => { if ($("#" + id).value) validar(id); }); $("#" + id).addEventListener("input", () => { if ($("#" + id).closest(".campo").classList.contains("mal")) validar(id); }); });
-  const fAviso = $("#fAviso");
-  $("#formulario").addEventListener("submit", async e => {
-    e.preventDefault();
-    const malos = Object.keys(reglas).filter(id => !validar(id));
-    if (malos.length){ $("#" + malos[0]).focus(); return; }
-    if (!$("#fAcepto").checked){ aviso("Marca la casilla de aceptación para enviar"); $("#fAcepto").focus(); return; }
-    const datos = { nombre: $("#fNombre").value.trim(), empresa: $("#fEmpresa").value.trim(), email: $("#fEmail").value.trim(), tel: $("#fTel").value.trim(), mensaje: fMsg.value.trim(), web: $("#fWeb").value };
-    const b = $("#fEnviar"); b.disabled = true; b.firstChild.textContent = "Enviando… ";
-    let enviado = false;
-    if (API_CONTACTO){
-      try { const r = await fetch(API_CONTACTO, {method: "POST", headers: {"Content-Type": "application/json"}, body: JSON.stringify(datos)}); enviado = r.ok; } catch(err){ enviado = false; }
-    }
-    b.disabled = false; b.firstChild.textContent = "Enviar mensaje ";
-    fAviso.hidden = false;
-    if (enviado){
-      fAviso.className = "aviso-f ok"; fAviso.innerHTML = `<b>Mensaje enviado.</b><span>Gracias, ${datos.nombre.split(" ")[0]}. Te escribiremos a ${datos.email}.</span>`;
-      e.target.reset(); contar(); $$(".campo").forEach(c => c.classList.remove("bien"));
-    } else {
-      const texto = `${datos.nombre}${datos.empresa ? " (" + datos.empresa + ")" : ""}\n${datos.email}${datos.tel ? " · " + datos.tel : ""}\n\n${datos.mensaje}`;
-      fAviso.className = "aviso-f";
-      fAviso.innerHTML = `<b>No hemos podido enviarlo desde aquí.</b><span>Copia el mensaje y mándalo a <b>hola@astillerosoftware.es</b>. Lo recibimos igual.</span><pre id="fTexto"></pre><div><button type="button" class="copiar" id="fCopiar" style="margin:0">Copiar mensaje</button></div>`;
-      $("#fTexto").textContent = texto;
-      $("#fCopiar").onclick = () => copiar(texto, "Mensaje copiado");
-    }
-    fAviso.scrollIntoView({block: "nearest", behavior: reducido ? "auto" : "smooth"});
-  });
-
-  /* ---------- copiar ---------- */
-  function copiar(txt, ok){
-    const p = navigator.clipboard?.writeText(txt);
-    if (p) p.then(() => aviso(ok), () => seleccionar());
-    else seleccionar();
-    function seleccionar(){ const el = $("#fTexto") || $("#correo"); const r = document.createRange(); r.selectNodeContents(el); const s = getSelection(); s.removeAllRanges(); s.addRange(r); aviso("Selecciónalo y cópialo"); }
-  }
-  $$("[data-copiar]").forEach(b => b.onclick = () => copiar($("#" + b.dataset.copiar).textContent, "Correo copiado"));
-
-  $("#anio").textContent = new Date().getFullYear();
-})();
-</script>
+<script src="/js/portada.js"></script>
 <!-- Cloudflare Web Analytics: visitas anónimas, sin cookies --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "b1773a76f675484aae87de5303c89475"}'></script>
 </body>
 </html>

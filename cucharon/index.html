@@ -2,20 +2,21 @@
 <html lang="es">
 <head>
 <meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://images.unsplash.com; connect-src 'self' https://cuaderna-jam-gwhugrdqcub6e9ba.swedencentral-01.azurewebsites.net https://cloudflareinsights.com; base-uri 'self'; form-action 'self'; object-src 'none'">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Cucharón · Recetario que convierte enlaces en fichas | Astillero Software</title>
-<meta name="description" content="Pega el enlace de una receta y Cucharón la convierte en una ficha clara, siempre con su fuente. Ajusta cantidades por comensales y prepara la lista de la compra. Gratis y sin cuentas.">
+<meta name="description" content="Busca recetas o pega su enlace y Cucharón las convierte en fichas claras, siempre con su fuente. Ajusta comensales, prepara la compra y crea tu propio libro de cocina en PDF. Gratis y sin cuentas.">
 <link rel="canonical" href="https://astillerosoftware.es/cucharon/">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <meta name="theme-color" content="#0A1522">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Cucharón · Tus recetas en fichas, siempre con su fuente">
-<meta property="og:description" content="Pega el enlace de una receta y tenla en una ficha clara, con comensales y lista de la compra. Gratis y sin cuentas.">
+<meta property="og:description" content="Busca recetas, guárdalas en fichas claras con su fuente y crea tu propio libro de cocina en PDF. Gratis y sin cuentas.">
 <meta property="og:url" content="https://astillerosoftware.es/cucharon/">
 <meta property="og:image" content="https://astillerosoftware.es/og.png">
 <link rel="stylesheet" href="/fuentes/fuentes.css">
 <link rel="stylesheet" href="/paginas.css">
-<script>try{var t=localStorage.getItem("astillero.tema");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+<script src="/js/tema.js"></script>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -23,7 +24,7 @@
     {
       "@type": "SoftwareApplication",
       "name": "Cucharón",
-      "description": "Recetario que convierte el enlace de una receta en una ficha clara, siempre con su fuente, con cantidades por comensales y lista de la compra.",
+      "description": "Recetario que busca recetas en la web y convierte cada una en una ficha clara, siempre con su fuente, con cantidades por comensales, lista de la compra y libro de cocina en PDF.",
       "applicationCategory": "LifestyleApplication",
       "operatingSystem": "Android, iOS, Windows, macOS, Web",
       "url": "https://astillerosoftware.es/cucharon/",
@@ -43,21 +44,23 @@
 }
 </script>
 <style>
-.telefono{background:#1E2136;box-shadow:var(--shadow),inset 0 0 0 1.5px #3b3f63;transform:rotate(4deg)}
-.pantalla{background:#EAF1FF;color:#1E2136;background-image:repeating-conic-gradient(#E1EAFC 0 25%,transparent 0 50%);background-size:28px 28px}
-.p-cab b{font:800 22px/1 var(--f-display);text-transform:uppercase;letter-spacing:.04em;color:#FF5B3A;text-shadow:1.5px 1.5px 0 #1E2136}
-.p-cab span{font-size:10px;color:#5A6082}
-.cu-pega{display:flex;gap:6px;align-items:center;background:#fff;border:2px solid #1E2136;border-radius:999px;padding:6px 6px 6px 12px;font:500 10px var(--f-mono);color:#5A6082;box-shadow:2px 2px 0 #1E2136}
-.cu-pega span{flex:1;min-width:0;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
-.cu-pega i{font-style:normal;background:#FF5B3A;color:#fff;border-radius:999px;padding:5px 9px;font:800 10px var(--f-body)}
-.cu-ficha{background:#fff;border:2px solid #1E2136;border-radius:14px;box-shadow:3px 3px 0 #1E2136;overflow:hidden}
-.cu-ficha .arte{height:60px;display:grid;place-items:center;font-size:30px;background:#FFE08A;border-bottom:2px solid #1E2136}
-.cu-ficha .cuerpo{padding:8px 10px;display:grid;gap:3px}
-.cu-ficha b{font-weight:800;font-size:13px}
-.cu-ficha small{color:#5A6082;font-weight:600;font-size:10px}
-.cu-ficha .fte{color:#7457F5;font-weight:800;font-size:10px}
-.p-nav{border-top:2px solid #1E2136;background:#fff;color:#5A6082;font-weight:700}
-.p-nav span.on{color:#FF5B3A}
+.telefono{background:#172033;box-shadow:var(--shadow),inset 0 0 0 1.5px #2C3752;transform:rotate(4deg)}
+.pantalla{background:#F3F1EC;color:#172033;font-family:"Instrument Sans",system-ui,sans-serif;background-image:linear-gradient(rgba(23,32,51,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(23,32,51,.05) 1px,transparent 1px);background-size:14px 14px}
+.p-cab b{font:800 22px/1 var(--f-display);text-transform:uppercase;letter-spacing:.03em;color:#172033;display:flex;align-items:center;gap:7px}
+.p-cab b::before{content:"";width:18px;height:18px;border-radius:5px;flex:none;background:#B23A26 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cg fill='none' stroke='%23FBF6EC' stroke-width='5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M11 33h24a12 12 0 0 1-24 0z'/%3E%3Cpath d='M35 33L49 15'/%3E%3C/g%3E%3C/svg%3E") center/100% no-repeat}
+.p-cab span{font-size:10px;color:#5D6577}
+.cu-busca{display:flex;gap:6px;align-items:center;background:#fff;border:1px solid #C3BCAD;border-radius:999px;padding:5px 5px 5px 11px;font-size:10.5px}
+.cu-busca span{flex:1;min-width:0;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
+.cu-busca i{font-style:normal;background:#B23A26;color:#fff;border-radius:999px;padding:4px 9px;font-weight:600;font-size:10px}
+.cu-et{font:500 8px/1.4 var(--f-mono);letter-spacing:.12em;text-transform:uppercase;color:#5D6577}
+.cu-ficha{background:#fff;border:1px solid #DEDAD0;border-radius:10px;padding:8px 10px;display:grid;gap:2px}
+.cu-ficha .sup{display:flex;justify-content:space-between;align-items:baseline;gap:6px}
+.cu-ficha b{font-weight:600;font-size:12px;line-height:1.25}
+.cu-ficha small{color:#5D6577;font-size:9.5px}
+.cu-nota{font:800 19px/1 var(--f-display);color:#172033}
+.cu-ficha.top .cu-nota{color:#B23A26}
+.p-nav{border-top:1px solid #DEDAD0;background:#fff;color:#5D6577;font-weight:600}
+.p-nav span.on{color:#172033}
 </style>
 </head>
 <body>
@@ -72,6 +75,7 @@
       <a class="txt" href="/cuaderna/">Cuaderna</a>
       <a class="txt" href="/cucharon/" aria-current="page">Cucharón</a>
       <a class="txt" href="/nido/">Nido</a>
+      <a class="txt" href="/singladura/">Singladura</a>
       <a class="btn btn-1" href="/#contacto">Hablemos</a>
     </nav>
   </div>
@@ -86,7 +90,7 @@
           <span class="etq">App de Astillero Software · gratis</span>
           <h1>Cucharón</h1>
           <p class="sub">Tus recetas en fichas claras, siempre con su fuente</p>
-          <p class="lead">Pega el enlace de cualquier receta y Cucharón la convierte en una ficha ordenada, igual que todas las demás. Ajusta las cantidades a los que sois, prepara la lista de la compra y cocina paso a paso.</p>
+          <p class="lead">Busca recetas en la web o pega el enlace de cualquiera y Cucharón la convierte en una ficha ordenada, igual que todas las demás. Ajusta las cantidades a los que sois, prepara la compra, cocina paso a paso y crea tu propio libro de cocina en PDF.</p>
           <div class="datos">
             <div><b>Instalable</b><span>Android, iPhone y PC</span></div>
             <div><b>Gratis</b><span>Sin cuentas</span></div>
@@ -101,12 +105,13 @@
           <div class="telefono"><div class="pantalla">
             <div class="p-cab"><b>Cucharón</b><span>09:41</span></div>
             <div class="p-vista">
-              <div class="cu-pega"><span>https://…/lentejas-estofadas</span><i>Ordenar</i></div>
-              <div class="cu-ficha"><div class="arte">🍲</div><div class="cuerpo"><b>Lentejas estofadas</b><small>⏱ 60 min · 👥 4 · Fácil</small><span class="fte">📖 Fuente: Cocina de la abuela</span></div></div>
-              <div class="cu-ficha"><div class="cuerpo"><b>Paella de verduras</b><small>⏱ 50 min · 👥 6 · Media</small><span class="fte">📖 Una revista de cocina</span></div></div>
-              <div class="cu-ficha"><div class="cuerpo"><b>Tarta de queso</b><small>⏱ 75 min · 👥 8 · Fácil</small><span class="fte">📖 Tu libro de cocina</span></div></div>
+              <div class="cu-busca"><span>merluza en salsa verde</span><i>Buscar</i></div>
+              <span class="cu-et">3 recetas · revisadas 8 webs</span>
+              <div class="cu-ficha top"><div class="sup"><span class="cu-et">01 · Cocina Fácil</span><span class="cu-nota">86</span></div><b>Merluza en salsa verde</b><small>35 min · para 4 · 4,8 ★ (312)</small></div>
+              <div class="cu-ficha"><div class="sup"><span class="cu-et">02 · Recetas de la tía</span><span class="cu-nota">71</span></div><b>Merluza a la vasca</b><small>40 min · para 2</small></div>
+              <div class="cu-ficha"><div class="sup"><span class="cu-et">03 · Una revista</span><span class="cu-nota">64</span></div><b>Merluza con almejas</b><small>30 min · para 4</small></div>
             </div>
-            <div class="p-nav"><span class="on">Recetas</span><span>Añadir</span><span>Lista</span><span>Ruleta</span></div>
+            <div class="p-nav"><span>Recetas</span><span class="on">Buscar</span><span>Añadir</span><span>Compra</span><span>Ruleta</span></div>
           </div></div>
         </div>
       </div>
@@ -117,10 +122,20 @@
     <div class="wrap">
       <div class="cab">
         <span class="mono">Qué hace</span>
-        <h2>De un enlace<br>a la mesa</h2>
+        <h2>De la web<br>a la mesa</h2>
         <p class="lead">Se acabaron las recetas perdidas entre pestañas, capturas y anuncios. Cada receta en su ficha, todas con el mismo formato.</p>
       </div>
       <div class="funciones">
+        <article class="fn">
+          <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg></div>
+          <h3>Busca en la web</h3>
+          <p>Escribe lo que te apetece. Cucharón lee las recetas de los primeros resultados y te las ordena por su puesto en el buscador, lo completas y claras que son y sus valoraciones.</p>
+        </article>
+        <article class="fn">
+          <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2z"/><path d="M4 21V5"/><path d="M9 8h6"/></svg></div>
+          <h3>Tu libro en PDF</h3>
+          <p>Con tus recetas, un libro de cocina con portada, dedicatoria, índice y un cierre con todas las fuentes. Para imprimir o regalar.</p>
+        </article>
         <article class="fn">
           <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M10 13a5 5 0 0 0 7.5.5l3-3a5 5 0 0 0-7-7l-1.7 1.7"/><path d="M14 11a5 5 0 0 0-7.5-.5l-3 3a5 5 0 0 0 7 7l1.7-1.7"/></svg></div>
           <h3>Pega el enlace</h3>
@@ -162,7 +177,7 @@
         <h2>Tres pasos</h2>
       </div>
       <ol class="pasos">
-        <li><h3>Encuentra</h3><p>Ves una receta que te gusta en una web, o la tienes en un libro de cocina.</p></li>
+        <li><h3>Encuentra</h3><p>Búscala desde la app, o pega la que viste en una web o tienes en un libro.</p></li>
         <li><h3>Guarda</h3><p>Pegas el enlace o haces una foto. Cucharón la convierte en ficha con su fuente.</p></li>
         <li><h3>Cocina</h3><p>Eliges comensales, sacas la lista de la compra y la sigues paso a paso.</p></li>
       </ol>
@@ -180,6 +195,8 @@
         <details><summary>¿En qué dispositivos funciona? <i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></i></summary><p class="r">Se instala en Android, iPhone y ordenador directamente desde el navegador, sin pasar por ninguna tienda de aplicaciones.</p></details>
         <details><summary>¿Por qué muestra siempre la fuente? <i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></i></summary><p class="r">Porque cada receta tiene un autor. Cucharón te ayuda a ordenar las recetas que te gustan, pero siempre enlaza a la original para que el mérito sea de quien la creó.</p></details>
         <details><summary>¿Puedo guardar recetas de un libro? <i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></i></summary><p class="r">Sí. Haz una foto de la página y Cucharón la convierte en ficha, indicando el libro como fuente.</p></details>
+        <details><summary>¿Cómo ordena el buscador las recetas? <i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></i></summary><p class="r">Con una nota de 0 a 100 que calcula con lo que publica cada web: su puesto en el buscador, si la receta está completa, si es clara de seguir y sus valoraciones. Ninguna web paga por salir antes.</p></details>
+        <details><summary>¿Cómo es el libro en PDF? <i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></i></summary><p class="r">Tamaño libro (A5) o folio (A4), con portada, dedicatoria, índice con páginas, una portadilla por categoría, tus recetas con sus notas y, al final, una página con todas las fuentes. Se crea en tu propio dispositivo.</p></details>
         <details><summary>¿Hacéis apps así para empresas? <i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></i></summary><p class="r">Sí. Cucharón es un producto propio de Astillero Software, y hacemos aplicaciones a medida con la misma forma de trabajar. <a href="/#contacto">Cuéntanos tu proyecto</a>.</p></details>
       </div>
     </div>
@@ -205,6 +222,7 @@
       <a href="/cuaderna/">Cuaderna</a>
       <a href="/cucharon/">Cucharón</a>
       <a href="/nido/">Nido</a>
+      <a href="/singladura/">Singladura</a>
       <a href="/#contacto">Contacto</a>
       <a href="/aviso-legal.html">Aviso legal</a>
         <a href="/privacidad.html">Privacidad</a>
@@ -212,5 +230,6 @@
     </nav>
   </div>
 </footer>
+<!-- Cloudflare Web Analytics: visitas anónimas, sin cookies --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "b1773a76f675484aae87de5303c89475"}'></script>
 </body>
 </html>
