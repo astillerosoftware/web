@@ -51,11 +51,11 @@ sitemap.xml robots.txt og.png favicon.svg favicon-firma.png CNAME _redirects
 - Nada de datos personales de usuarios: las apps no ven la información de nadie, y la web tampoco debe recogerla salvo en el formulario.
 
 ## Ramas
-- `main`: lo publicado.
-- `textos-legales`: aviso legal, cookies y fuentes propias. Ya fusionada en `main` (15 nov 2026); se puede borrar.
-- `cucharon`, `nido-bajo-peticion`, `claude/project-thread-0g1om9`: antiguas o ya fusionadas, se pueden borrar.
+- `main`: lo publicado. Es la única rama; los cambios grandes van en una rama propia que se borra al fusionarla.
 
 ## Comprobaciones
 - Observatory: el repositorio `astillerosoftware/cuaderna` tiene el workflow **«Comprobar web»** (`comprobar-web.yml`), que pasa
-  Mozilla Observatory a astillerosoftware.es y a cuaderna.astillerosoftware.es. Lanzarlo tras cambios de seguridad.
+  Mozilla Observatory a astillerosoftware.es y a cuaderna.astillerosoftware.es, y lista qué pruebas fallan. Lanzarlo tras cambios de seguridad.
+  Nota actual: A+ (105). La única prueba que resta es SRI (−5) por el script de Cloudflare Web Analytics sin `integrity`:
+  se deja así a propósito para no fijar una versión del script que Cloudflare pueda retirar.
 - Commits en español, describiendo el cambio para una persona no técnica.
