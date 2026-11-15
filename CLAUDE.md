@@ -24,7 +24,7 @@ cuaderna/ cucharon/ singladura/   página propia de cada app (enlazan a la app e
 referencias/<demo>/        webs de demostración (carnes-valdehierro, policlinica-vereda, talleres-biela), cada una con su demo.js
 referencias/demo-astillero.js     común a las demos: botón fijo para volver a Astillero y cierre al final
 privacidad.html aviso-legal.html cookies.html   textos legales
-fuentes/                   tipografías propias (woff2) y fuentes.css
+fuentes/                   tipografías propias (woff) y fuentes.css
 sitemap.xml robots.txt og.png favicon.svg favicon-firma.png CNAME _redirects
 ```
 
@@ -50,7 +50,7 @@ sitemap.xml robots.txt og.png favicon.svg favicon-firma.png CNAME _redirects
 
 ## Ramas
 - `main`: lo publicado.
-- `textos-legales`: aviso legal, política de cookies y fuentes propias. Al día con `main` y con su CSP; pendiente de fusionar.
+- `textos-legales`: aviso legal, cookies y fuentes propias. Ya fusionada en `main` (15 nov 2026); se puede borrar.
 - `cucharon`, `nido-bajo-peticion`, `claude/project-thread-0g1om9`: antiguas o ya fusionadas, se pueden borrar.
 
 ## Comprobaciones
