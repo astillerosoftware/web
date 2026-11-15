@@ -23,7 +23,8 @@ paginas.css                estilos comunes de las páginas interiores
 cuaderna/ cucharon/ singladura/   página propia de cada app (enlazan a la app en su subdominio *.astillerosoftware.es)
 referencias/<demo>/        webs de demostración (carnes-valdehierro, policlinica-vereda, talleres-biela), cada una con su demo.js
 referencias/demo-astillero.js     común a las demos: botón fijo para volver a Astillero y cierre al final
-privacidad.html            política de privacidad
+privacidad.html aviso-legal.html cookies.html   textos legales
+fuentes/                   tipografías propias (woff2) y fuentes.css
 sitemap.xml robots.txt og.png favicon.svg favicon-firma.png CNAME _redirects
 ```
 
@@ -43,7 +44,7 @@ sitemap.xml robots.txt og.png favicon.svg favicon-firma.png CNAME _redirects
   Si se quita o añade un producto, revisar que siga alternando y que la primera tras otra lleve `border-top:0`.
 - **Formulario de contacto**: envía por `fetch` a `https://cuaderna-jam-gwhugrdqcub6e9ba.swedencentral-01.azurewebsites.net/api/contacto`
   (servidor de Cuaderna, que reenvía el correo). Ese dominio está en `connect-src`. En pruebas, interceptar la petición para no mandar mensajes reales.
-- **Fuentes**: hoy se cargan de Google Fonts (permitido en la CSP). La rama `textos-legales` las sirve desde `/fuentes` y quita Google Fonts de la CSP.
+- **Fuentes**: se sirven desde `/fuentes` (`fuentes/fuentes.css`), sin Google Fonts. No añadir fuentes externas.
 - **Imagen de Astillero Software** en todo: rojo lacre, tinta azul marino, cuadrícula de plano. Firmar siempre como Astillero Software, nunca con nombres personales.
 - Nada de datos personales de usuarios: las apps no ven la información de nadie, y la web tampoco debe recogerla salvo en el formulario.
 
