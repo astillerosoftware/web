@@ -42,6 +42,8 @@ sitemap.xml robots.txt og.png favicon.svg favicon-firma.png CNAME _redirects
   Para anunciar algo, basta con poner esos atributos al bloque nuevo.
 - **Productos en la portada**: secciones `.proy` que alternan el móvil a derecha e izquierda (`.proy-b` = móvil a la izquierda).
   Si se quita o añade un producto, revisar que siga alternando y que la primera tras otra lleve `border-top:0`.
+  La etiqueta `.etq` con `data-etq-auto` pone «Producto propio · nuevo» los 30 días siguientes al `data-novedad` de su sección
+  y luego «en uso» (en el HTML se escribe «en uso»). Producto nuevo = ponerle `data-etq-auto` y fecha a la sección.
 - **Formulario de contacto**: envía por `fetch` a `https://cuaderna-jam-gwhugrdqcub6e9ba.swedencentral-01.azurewebsites.net/api/contacto`
   (servidor de Cuaderna, que reenvía el correo). Ese dominio está en `connect-src`. En pruebas, interceptar la petición para no mandar mensajes reales.
 - **Fuentes**: se sirven desde `/fuentes` (`fuentes/fuentes.css`), sin Google Fonts. No añadir fuentes externas.

@@ -46,6 +46,14 @@
     }, 5000);
   })();
 
+  /* ---------- etiqueta «nuevo» de los productos ----------
+     Las etiquetas con data-etq-auto dicen «Producto propio · nuevo» durante los
+     30 días siguientes a la fecha data-novedad de su sección, y luego «en uso». */
+  $$(".etq[data-etq-auto]").forEach(etq => {
+    const f = new Date((etq.closest("[data-novedad]")?.dataset.novedad || "") + "T00:00:00");
+    if (!isNaN(f) && (Date.now() - f) / 864e5 <= 30) etq.textContent = "Producto propio · nuevo";
+  });
+
   /* ---------- aviso breve ---------- */
   let tt; const aviso = txt => { const t = $("#toast"); t.textContent = txt; t.classList.add("ver"); clearTimeout(tt); tt = setTimeout(() => t.classList.remove("ver"), 2200); };
 
